@@ -42,6 +42,11 @@ general_info["elements"].each_with_index do |player, index|
   new.away_team_id = player["team"]
   new.home_team_id = player["team"]
   new.api_id = player["id"]
+  new.form = player["form"]
+  new.price = player["now_cost"].to_f / 10
+  new.web_name = player["web_name"]
+  new.ict = player["ict_index"]
+  new.selected = player["selected_by_percent"]
   new.save
 end
 

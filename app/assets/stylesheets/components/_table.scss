@@ -1,13 +1,16 @@
 tr {
   padding: 10px;
   margin-bottom: 5px;
-  border: 1px;
+  border: 5px;
   border-color: black;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.35);
 }
 
 table {
-  border-collapse:separate;
-  border-spacing:0 15px;
+  border-collapse: separate;
+  border-spacing: 0 15px;
   width: 100%;
 }
 
