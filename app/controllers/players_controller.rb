@@ -16,8 +16,8 @@ class PlayersController < ApplicationController
     @ranked = []
     @players.each_with_index do |player, index|
       player_info = general_info["elements"][index]
-      fixture_diffculty = 15
-      score = player_info["form"].to_f / 10 * (1 / fixture_diffculty.to_f)
+      fixture_difficulty = fixture_difficulty(player.api_id)
+      score = player_info["form"].to_f / 10 * (1 / fixture_difficulty.to_f)
       @ranked << {
         last_name: player_info["web_name"],
         position: player.position,
@@ -26,9 +26,26 @@ class PlayersController < ApplicationController
         form: player_info["form"],
         price: player_info["now_cost"].to_f / 10,
         selected: player_info["selected_by_percent"].to_f,
-        ict: player_info["ict_index"].to_f
+        ict: player_info["ict_index"].to_f,
+        fixture_difficulty: fixture_difficulty
       }
     end
-    return @ranked.sort_by { |player| player[:score] }.reverse
+    return @ranked.sort_by { |p| p[:score] }.reverse
+  end
+
+  def fixture_difficulty(id)
+    # Currently getting data from 685 APIs so very slow
+    # Need to only search logical player APIs
+    url = "https://fantasy.premierleague.com/api/element-summary/#{id}/"
+    fixtures = JSON.parse(URI.open(url).read)["fixtures"]
+    difficulties = []
+    fixtures.first(5).each do |fixture|
+      difficulties << fixture["difficulty"].to_i
+    end
+    return difficulties.sum
+  end
+
+  def logical_searches
+    # return array of players to call api for fixture difficulty
   end
 end
