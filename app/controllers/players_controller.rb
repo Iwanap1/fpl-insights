@@ -14,6 +14,7 @@ class PlayersController < ApplicationController
     general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
     general_info = JSON.parse(URI.open(general_url).read)
     @ranked = []
+    @top = general_info["elements"]
     @players.each_with_index do |player, index|
       player_info = general_info["elements"][index]
       fixture_difficulty = fixture_difficulty(player.api_id)
