@@ -41,6 +41,7 @@ general_info["elements"].each_with_index do |player, index|
   end
   new.away_team_id = player["team"]
   new.home_team_id = player["team"]
+  new.api_id = player["id"]
   new.save
 end
 
