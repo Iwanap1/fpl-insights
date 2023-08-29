@@ -1,0 +1,27 @@
+<table>
+  <tr></tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Team</th>
+    <th>Price</th>
+    <th>Form</th>
+    <th>% Selected</th>
+    <th>Fixture Difficulty</th>
+    <th>ICT Index</th>
+
+  <%# need to turn @players to a sorted array of ranked players via our model %>
+  <% @ranked.first(10).each_with_index do |player, index| %>
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= @ranked[index][:last_name] %></td>
+    <td><%= @ranked[index][:position] %></td>
+    <td><%= @ranked[index][:team] %></td>
+    <td><%= @ranked[index][:price] %></td>
+    <td><%= @ranked[index][:form] %></td>
+    <td><%= @ranked[index][:selected] %></td>
+    <td><%= "TODO fixture difficulty" %></td>
+    <td><%= @ranked[index][:ict] %></td>
+  </tr>
+  <% end %>
+</table>

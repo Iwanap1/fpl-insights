@@ -1,0 +1,28 @@
+.form-container {
+  margin: 200px;
+  background-image: linear-gradient(#38003C, #FFFFFF);
+  width: 80%;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  color: white;
+}
+
+#default-button {
+  padding: 10px 20px;
+  background-color: #04F5FF;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
+  transition: color 0.5s;
+}
+
+#default-button:hover {
+  background-color: #00FF85;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,71 @@
+<div class="backg">
+  <div class="info-cards">
+          <span>Team Name</span>
+      <div class="card">
+          <i class="icon-gw"></i>
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="6"
+                data-counter-duration-value="2000"
+                data-counter-target="display">
+                0</span>
+          <span>Game Week</span>
+      </div>
+      <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="99"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Team Rating</span>
+      </div>
+      <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="14.5"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Balance (£10M)</span>
+      </div>
+      <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="75"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Team Ranking</span>
+      </div>
+  </div>
+
+  <div class="content-container">
+      <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Strengths
+          <span class="button-text">Here are your point winners! Click me to see them!</span>
+      </button>
+      <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Weaknesses
+          <span class="button-text">You need to move some players on! Click me to see them!</span>
+      </button>
+  </div>
+
+  <div class="suggestions">
+      <button class="default-button">Click for further suggestions</button>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%# Build carousel in a partial file and render it below %>
+          <%# render "",  %>
+      </div>
+    </div>
+  </div>
+</div>
