@@ -1,1 +1,76 @@
 // Specific CSS for your home-page
+
+.home-container{
+  background-repeat: no-repeat;
+  height: 100vh;
+  h1 {
+    color: #535353;
+    font-size: 72px;
+    font-weight: 800;
+    font-family: 'League Spartan';
+  }
+  h2 {
+    color: #989797;
+    font-size: 42px;
+    font-weight: 100;
+    font-family: 'Raleway';
+  }
+}
+
+.top-text {
+  height: 30vh;
+  padding: 80px;
+  padding-top: 30px;
+}
+
+.right-button {
+  padding: 80px;
+  height: 30vh;
+  padding-right: 30px;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: #838282;
+    font-size: 40px;
+    font-weight: 100;
+    font-family: 'Raleway';
+  }
+  i {
+    color: #838282;
+    font-size: 40px;
+    padding-left: 18px;
+    transform:scale(1,1.5);
+  }
+}
+
+.bottom-button {
+  padding: 80px;
+  padding-top: 250px;
+  height: 40vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-decoration: none;
+    color: #838282;
+    font-size: 40px;
+    font-weight: 300;
+    font-family: 'Raleway';
+  }
+  i {
+    color: #838282;
+    font-size: 40px;
+    transform:scale(1.5,1);
+  }
+}
+
+// .lower {
+//   display:flex;
+// }
+
+// #haaland {
+//   transform:scale(0.4,0.4);
+// }
