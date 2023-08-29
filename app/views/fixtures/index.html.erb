@@ -1,0 +1,16 @@
+<div class="fixture-container">
+  <div class="fixture-titles">
+    <h1> Fixtures </h1>
+    <h2> Gameweek 4: <%="#{@fixtures[0].date}"%></h2>
+   </div>
+  <ul>
+    <% @fixtures.each do |fixture| %>
+    <div class="fixture-row">
+    <i class="fa-solid fa-chevron-down fa-xs"></i>
+      <div class="fixture-item">
+        <li> <%= "#{fixture.home_team.name} vs #{fixture.away_team.name}" %></li>
+      </div>
+    </div>
+        <% end %>
+  </ul>
+</div>
