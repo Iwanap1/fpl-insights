@@ -10,19 +10,21 @@ general_info = JSON.parse(URI.open(general_url).read)
 fixture_url = "https://fantasy.premierleague.com/api/fixtures/"
 fixture_info = JSON.parse(URI.open(fixture_url).read)
 
-general_info["teams"].each do |team|
+general_info["teams"].each_with_index do |team, index|
   new = HomeTeam.new
   new.name = team["name"]
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
+  new.image_path = "#{index + 1}.png"
   new.save
 end
 
-general_info["teams"].each do |team|
+general_info["teams"].each_with_index do |team, index|
   new = AwayTeam.new
   new.name = team["name"]
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
+  new.image_path = "#{index + 1}.png"
   new.save
 end
 
