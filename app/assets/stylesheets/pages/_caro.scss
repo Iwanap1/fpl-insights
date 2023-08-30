@@ -1,0 +1,86 @@
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 5%;
+  position: relative;
+}
+
+.carousel-card {
+  min-width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex: 0 0 calc(80%);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  margin: 0 5%;
+}
+
+
+button[data-action="carousel#goPrev"],
+button[data-action="carousel#goNext"] {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+button[data-action="carousel#goPrev"] {
+  left: 2%;
+}
+
+button[data-action="carousel#goNext"] {
+  right: 2%;
+}
+
+.player-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.player-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.player-team {
+  margin-top: 5px;
+  color: gray;
+}
+
+.player-stats {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.indicator-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #333; /* color for the active card's indicator */
+}
