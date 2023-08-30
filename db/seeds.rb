@@ -45,13 +45,14 @@ general_info["elements"].each_with_index do |player, index|
   new.form = player["form"]
   new.price = player["now_cost"].to_f / 10
   new.web_name = player["web_name"]
-  new.ict = player["ict_index"]
+  new.ict = player["ict_index"].to_f
   new.selected = player["selected_by_percent"]
   new.chance = player["chance_of_playing_next_round"].to_f / 100
-  new.expected_goal_involvements = player["expected_goal_involvements"].to_f
-  new.expected_goals_conceded = player["expected_goal_conceded"].to_f
+  new.expected_goal_involvements = player["expected_goal_involvements_per_90"].to_f
+  new.expected_goals_conceded = player["expected_goal_conceded_per_90"].to_f
   new.transfers_in = player["transfers_in_event"]
   new.penalty_order = player["penalty_order"].nil? ? 5 : player["penalty_order"]
+  new.minutes = player["minutes"]
   new.save
 end
 

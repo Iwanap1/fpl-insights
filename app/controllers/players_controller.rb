@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
     update_data if needs_updating?
     @players = Player.all
     # Getting API data for each player and putting into array of hashes
-    @ranked = @players.sort_by { |p| p.general }.reverse
+    @ranked = @players.sort_by { |p| p.general_score }.reverse
   end
 
   def show
@@ -33,18 +33,20 @@ class PlayersController < ApplicationController
       player.form = element["form"].to_f
       player.price = element["now_cost"].to_f / 10
       player.web_name = element["web_name"]
-      player.ict = element["ict_index"]
+      player.ict = element["ict_index"].to_f
       player.selected = element["selected_by_percent"]
       player.updated_at = Time.now
       player.fixture_difficulty = fixtures(player.api_id)
       player.chance = element["chance_of_playing_next_round"].to_f / 100
-      player.expected_goal_involvements = element["expected_goal_involvements"].to_f
-      player.expected_goals_conceded = element["expected_goal_conceded"].to_f
+      player.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
+      player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
       player.transfers_in = element["transfers_in_event"]
       player.penalty_order = element["penalty_order"].nil? ? 5 : element["penalty_order"]
+      player.minutes = element["minutes"]
       player.save
     end
   end
+
 
   private
 
