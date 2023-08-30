@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     latest_picks.each do |element|
       players << all_players.find { |p| p.api_id == element["element"] }
     end
-    return players.sort_by { |p| p.general_score }.reverse
+    return players.sort_by { |p| p.general_score }
   end
 
   private

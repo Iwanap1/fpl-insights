@@ -4,7 +4,7 @@ require "json"
 class PlayersController < ApplicationController
   def index
     @players = Player.all
-    update_data if needs_updating?
+    update_data if (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 10
     @players = Player.all
     # Getting API data for each player and putting into array of hashes
     @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
@@ -46,7 +46,7 @@ class PlayersController < ApplicationController
       player.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
       player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
       player.transfers_in = element["transfers_in_event"]
-      player.penalty_order = element["penalty_order"].nil? ? 5 : element["penalty_order"]
+      player.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
       player.minutes = element["minutes"]
       player.save
     end
@@ -54,8 +54,4 @@ class PlayersController < ApplicationController
 
   private
 
-  # Updates Player table every 8 hours but should change to whenever GW is done
-  def needs_updating?
-    (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 10
-  end
 end
