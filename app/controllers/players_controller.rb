@@ -4,38 +4,16 @@ require "json"
 class PlayersController < ApplicationController
   def index
     @players = Player.all
-    update_data
+    update_data if needs_updating?
+    @players = Player.all
     # Getting API data for each player and putting into array of hashes
-    @ranked = rankings
+    @ranked = @players.sort_by { |p| p.general }.reverse
   end
 
   def show
   end
 
-  def rankings
-    # Returns top 10 transfers in array
-    general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
-    general_info = JSON.parse(URI.open(general_url).read)
-    @ranked = []
-    @players.each_with_index do |player, index|
-      fixture_difficulty = fixture_difficulty(player.api_id)
-      score = player.form / 10 * (1 / fixture_difficulty.to_f)
-      @ranked << {
-        last_name: player.web_name,
-        position: player.position,
-        team: player.home_team.short_name,
-        score: score,
-        form: player.form,
-        price: player.price,
-        selected: player.selected,
-        ict: player.ict,
-        fixture_difficulty: fixture_difficulty
-      }
-    end
-    return @ranked.sort_by { |p| p[:score] }.reverse
-  end
-
-  def fixture_difficulty(id)
+  def fixtures(id)
     # Currently getting data from 685 APIs so very slow
     # Need to only search logical player APIs
     url = "https://fantasy.premierleague.com/api/element-summary/#{id}/"
@@ -47,19 +25,31 @@ class PlayersController < ApplicationController
     return difficulties.sum
   end
 
-  def logical_searches
-    # return array of players to call api for fixture difficulty
+  def update_data
+    general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    elements = JSON.parse(URI.open(general_url).read)["elements"]
+    elements.each do |element|
+      player = @players.find { |item| item.api_id == element["id"].to_i }
+      player.form = element["form"].to_f
+      player.price = element["now_cost"].to_f / 10
+      player.web_name = element["web_name"]
+      player.ict = element["ict_index"]
+      player.selected = element["selected_by_percent"]
+      player.updated_at = Time.now
+      player.fixture_difficulty = fixtures(player.api_id)
+      player.chance = element["chance_of_playing_next_round"].to_f / 100
+      player.expected_goal_involvements = element["expected_goal_involvements"].to_f
+      player.expected_goals_conceded = element["expected_goal_conceded"].to_f
+      player.transfers_in = element["transfers_in_event"]
+      player.penalty_order = element["penalty_order"].nil? ? 5 : element["penalty_order"]
+      player.save
+    end
   end
-end
 
-private
+  private
 
-def update_data
-  general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
-  elements = JSON.parse(URI.open(general_url).read)["elements"]
-  elements.each do |element|
-    player = @players.find { |item| item.api_id == element["id"].to_i }
-    player.form = element["form"].to_f
-    player.save
+  # Updates Player table every 8 hours but should change to whenever GW is done
+  def needs_updating?
+    (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 10
   end
 end
