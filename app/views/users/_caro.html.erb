@@ -1,11 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+<div data-controller="carousel">
+<button data-action="carousel#goPrev"><i class="fa fa-arrow-left"></i></button>
+  <div class="carousel-container">
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 1<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 2<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 3<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 4<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 5<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+    <div class="carousel-card" data-carousel-target="card">
+      <div class="player-image"></div>
+      <div class="player-name">John Doe</div>
+      <div class="player-team">Manchester United</div>
+      <div class="player-stats">
+        Goals: 6<br>
+        Assists: 5<br>
+        Yellow Cards: 2
+      </div>
+    </div>
+  </div>
+<button data-action="carousel#goNext"><i class="fa fa-arrow-right"></i></button>
+  <div class="indicator-container">
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+  </div>
+</div>

@@ -1,26 +1,20 @@
 /* Base Styles */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); /* Importing Roboto font */
-
-body, h1, h2, p {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
 .backg{
   background-color: #f5f5f5;
 }
+
 .info-cards {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 20px 0px 20px 0px;
-  height: 30vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 equal-width columns */
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;  /* Adjust for space between cards */
+  width: 100%;
+  height: 100%;
+  margin: 0;
 
   .card {
-    width: 10%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     border: none;
     background-color: white;
     display: flex;
@@ -30,6 +24,7 @@ body, h1, h2, p {
     border-radius: 10px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s;
+    line-height: 1.5rem;
 
     &:hover {
         transform: scale(1.2);
@@ -37,7 +32,8 @@ body, h1, h2, p {
     }
 
     .counter {
-        font-size: 3rem;
+        margin-top: 10px;
+        font-size: 2.5rem;
         font-weight: bold;
         color: #333;
     }
@@ -47,81 +43,113 @@ body, h1, h2, p {
         font-size: 1rem;
         color: #888;
     }
+  }
 }
+// make the move-right class
 
-}
-
-.suggestions{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-}
 .content-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 15% 50% 30% 5%;
+  align-items: stretch;
   justify-content: center;
-  align-content: stretch;
-  height: 50vh;
+  grid-gap: 10px;
+  height: 40vh;
+  width: 90vw;
+  margin: 5vh auto;  /* Center container on page */
   padding: 30px;
+  // background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  // box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);  /* Softer shadow */
 }
 
-
-.weakness{
-  padding: 10px 20px;
-  background-color: #e90052;
+.strength, .weakness {
+  width: 100%;
+  height: 50%;
   color: white;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 2.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   transition: background-color 0.5s, color 0.5s;
+  line-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.strength{
-  padding: 10px 20px;
-  background-color: #00ff85;
-  color: white;
-  font-weight: bold;
-  font-size: 5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.5s, color 0.5s;
+.weakness {
+  background-color: #e90052;  /* Slight transparency */
+}
+
+.strength {
+  background-color: #00ff85;  /* Slight transparency */
 }
 
 .strength:hover {
   background-color: #02d871;
   color: white;
-  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
 }
+
+.weakness:hover {
+  background-color: #ab013d;
+  color: white;
+  box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
+}
+
+
 .button-text {
   font-size: 1rem;
   color: white;
   justify-content: center;
 }
 
-.weakness:hover {
-  background-color: #ab013d;
-  color: white;
-  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.5);
-}
-
-.sandw{
+.sandw {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin: 30px;
-  border-radius: 15px;
+  align-items: flex-end;  /* Push buttons to the right side of its container */
+  padding-right: 20px;  /* Adjust the padding to move more or less away from the center */
 }
 
+.new-card {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);  /* Slight transparency */
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Softer shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.suggestions:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
 .default-button {
-  padding: 10px 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #38003c;
   color: rgb(255, 255, 255);
   font-weight: bold;
@@ -151,6 +179,33 @@ body, h1, h2, p {
   align-items: center;
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
 }
+
+.custom-modal {
+  max-width: 95%; /* Set to desired width */
+}
+
+/* Modernize the modal content with rounded edges and shadow */
+.modal-content {
+  border-radius: 20px; /* Add rounded corners */
+  overflow: hidden; /* Hide any child content (like the modal-body) that might breach the rounded corners */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add a shadow for a lifted look */
+}
+
+/* Style the modal header for a cleaner look */
+.modal-header {
+  border-bottom: none;
+  padding: 15px 20px;
+}
+
+.modal-title {
+  font-weight: 500;
+}
+
+/* Style the modal body */
+.modal-body {
+  padding: 20px;
+}
+
 
 
 // saved for later use
