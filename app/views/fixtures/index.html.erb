@@ -2,15 +2,24 @@
   <div class="fixture-titles">
     <h1> Fixtures </h1>
     <h2> Gameweek 4: <%="#{@fixtures[0].date}"%></h2>
-   </div>
-  <ul>
-    <% @fixtures.each do |fixture| %>
-    <div class="fixture-row">
-    <i class="fa-solid fa-chevron-down fa-xs"></i>
-      <div class="fixture-item">
-        <li> <%= "#{fixture.home_team.name} vs #{fixture.away_team.name}" %></li>
+  </div>
+      <div class="accordion" id="accordionExample">
+        <% @fixtures.each_with_index do | fixture, index | %>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading<%= index %>">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+                <span></span>
+                <div class="d-flex">
+                  <div class="team-name text-end"><%= "#{fixture.home_team.name}" %></div><span class="mx-3">vs</span><div class="team-name"><%= "#{fixture.away_team.name}" %></div>
+                </div>
+              </button>
+            </h2>
+            <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong><%= "#{fixture.home_team.name}" %> vs <%= "#{fixture.away_team.name}" %></strong> <%="#{fixture.date}" %>
+              </div>
+            </div>
+          </div>
+       <% end %>
       </div>
-    </div>
-        <% end %>
-  </ul>
 </div>
