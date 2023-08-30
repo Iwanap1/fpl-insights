@@ -1,19 +1,19 @@
 /* Base Styles */
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(180deg, #38003C 0%, #38003C 40%, #fffaff 80%);
+  background: #38003C;
   font-family: 'Arial', sans-serif;
   color: #333;
   padding: 20px;
 }
 
 .backg {
-  background-color: #ffffff;
-  border-radius: 10px;
+  // background-color: #ffffff;
+  // border-radius: 10px;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+  // box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
   margin: 20px auto;
   height: 100vh;
 }
@@ -31,8 +31,8 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    background-color: white;
     display: flex;
+    background-color: white;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -71,7 +71,9 @@ body {
   grid-gap: 10px;
   height: 40vh;
   width: 90vw;
-  margin: 5vh auto;  /* Center container on page */
+  margin-left: 5vh;  /* Center container on page */
+  margin-right: 5vh;  /* Center container on page */
+  margin-bottom: 5vh;  /* Center container on page */
   padding: 30px;
   // background-color: #ffffff;
   border: none;
@@ -175,27 +177,13 @@ body {
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .default-button:hover {
   background-color: #28002b;
   color: rgb(228, 228, 228);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
-}
-
-
-.eval-card {
-  max-width: 200px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .custom-modal {
