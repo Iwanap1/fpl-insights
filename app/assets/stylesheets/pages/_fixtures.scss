@@ -1,6 +1,6 @@
 .fixture-container {
   background-image: linear-gradient(#00FF85, #FFFFFF);
-  margin: 200px;
+  margin: 150px;
   width: 100%;
   max-width: 1200px;
   margin: 50px auto;
@@ -8,12 +8,6 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border-radius: 8px;
   color: black;
-
-  ul {
-    padding-right: 300px;
-    list-style-type: none;
-    font-size: 40px;
-  }
 }
 
 .fixture-titles {
@@ -21,6 +15,7 @@
   align-items: center;
 
   h1 {
+    padding-left: 20px;
     font-size: 32px;
     color: #333;
     margin: 20px 0;
@@ -37,16 +32,17 @@
   }
 }
 
-.fixture-row {
-  display: flex;
+.accordion {
+  margin: 20px;
+}
+
+.team-name {
+  width: 120px;
+}
+
+.accordion-button {
   justify-content: space-between;
-}
-
-.fa-xs {
-  line-height: 2.083333em;
-}
-
-.fixture-item {
-  display: flex;
-  justify-content: center;
+  &:after {
+    margin-left: unset;
+  }
 }
