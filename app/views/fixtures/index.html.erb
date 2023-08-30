@@ -9,8 +9,16 @@
             <h2 class="accordion-header" id="heading<%= index %>">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
                 <span></span>
-                <div class="d-flex">
-                  <div class="team-name text-end"><%= "#{fixture.home_team.name}" %></div><span class="mx-3">vs</span><div class="team-name"><%= "#{fixture.away_team.name}" %></div>
+                <div class="d-flex align-items-center">
+                  <div class="team-name text-end">
+                    <%= "#{fixture.home_team.name}" %>
+                    <%= image_tag "#{fixture.home_team.image_path}", alt: "logo", style: "height: 30px; width: 30px;"%>
+                  </div>
+                  <span class="mx-3">vs</span>
+                  <div class="team-name">
+                    <%= image_tag "#{fixture.away_team.image_path}", alt: "logo", style: "height: 30px; width: 30px;"%>
+                    <%= "#{fixture.away_team.name}" %>
+                  </div>
                 </div>
               </button>
             </h2>
