@@ -1,7 +1,7 @@
 <div data-controller="carousel">
 <button data-action="carousel#goPrev"><i class="fa fa-arrow-left"></i></button>
   <div class="carousel-container">
-    <% @user_players.last(4).each do |player| %>
+    <% @user_players.first(4).each do |player| %>
     <div class="carousel-card" data-carousel-target="card">
       <div class="player-image"></div>
       <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
@@ -11,6 +11,7 @@
           <ul>
             <li>Form: <%= player.form %></li>
             <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
+            <li>Score: <%= (player.general_score * 100).round %></li>
           </ul>
           <% if player.penalty_order == 1 || player.minutes / @current_gw > 80 %>
           <ul>
