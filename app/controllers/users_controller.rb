@@ -7,16 +7,20 @@ class UsersController < ApplicationController
 
   def show
     general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    general_api = JSON.parse(URI.open(general_url).read)
     @User = User.find(params[:id])
     @fpl_id = 7090474
     @team_strengths = [] # Fetch player strengths here
     @team_weaknesses = [] # Fetch player weaknesses here
-    @current_gw = JSON.parse(URI.open(general_url).read)["events"].find { |week| week["is_current"] }["id"]
+    @current_gw = general_api["events"].find { |week| week["is_current"] }["id"]
     @weekly_ranks = weekly_ranks_array
     user_url = "https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/"
+    @users_api = JSON.parse(URI.open(user_url).read)
     @user_players = player_array
     @rating = (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4
-    @bank = JSON.parse(URI.open(user_url).read)["entry_history"]["bank"].to_f / 10
+    @bank = @users_api["entry_history"]["bank"].to_f / 10
+    @percentile = ((general_api["total_players"] - @weekly_ranks.last.to_f) / general_api["total_players"]) * 100
+    @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
   end
 
   def weekly_ranks_array

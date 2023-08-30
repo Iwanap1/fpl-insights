@@ -33,23 +33,23 @@
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span>Overall Ranking</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-end-value="<%= @percentile %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span>Overall Percentile</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-end-value="<%= @personal_api["leagues"]["classic"].last["entry_rank"] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span><%= @personal_api["leagues"]["classic"].last["name"] %> Ranking</span>
         </div>
       </div>
       <div class="move-right">
