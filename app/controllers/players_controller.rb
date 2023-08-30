@@ -7,7 +7,12 @@ class PlayersController < ApplicationController
     update_data if needs_updating?
     @players = Player.all
     # Getting API data for each player and putting into array of hashes
-    @ranked = @players.sort_by { |p| p.general_score }.reverse
+    @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
+    if params[:position] && params[:price]
+      @ranked = @filtered.sort_by { |p| p.general_score }.reverse
+    else
+      @ranked = @players.sort_by { |p| p.general_score }.reverse
+    end
   end
 
   def show

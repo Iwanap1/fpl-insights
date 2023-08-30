@@ -1,3 +1,21 @@
+<div>
+  <form action="/players">
+    <select name="price">
+      <option value="all">Max Price</option>
+      <% (39..140).to_a.map { |p| p.to_f / 10 }.each do |price| %>
+      <option value="<%= price %>">£<%= price %>m</option>
+      <% end %>
+    </select>
+    <select name="position">
+      <option value="all">Position</option>
+      <% ["GKP", "DEF", "MID", "FOR"].each do |pos| %>
+      <option value="<%= pos %>"><%= pos %></option>
+      <% end %>
+    </select>
+    <input type="submit">
+  </form>
+</div>
+
 <div class="container">
   <table>
     <tr>
