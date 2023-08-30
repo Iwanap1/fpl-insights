@@ -53,7 +53,7 @@ general_info["elements"].each_with_index do |player, index|
   new.expected_goal_involvements = player["expected_goal_involvements_per_90"].to_f
   new.expected_goals_conceded = player["expected_goal_conceded_per_90"].to_f
   new.transfers_in = player["transfers_in_event"]
-  new.penalty_order = player["penalty_order"].nil? ? 5 : player["penalty_order"]
+  new.penalty_order = player["penalties_order"].nil? ? 5 : player["penalties_order"]
   new.minutes = player["minutes"]
   new.save
 end

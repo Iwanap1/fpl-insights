@@ -7,8 +7,22 @@
       <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
       <div class="player-team"><%= player.home_team.name %></div>
       <div class="player-stats">
-        Form: <%= player.form %><br>
-        Goal Contributions per 90: <%= player.expected_goal_involvements %><br>
+        <div class="list-items">
+          <ul>
+            <li>Form: <%= player.form %></li>
+            <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
+          </ul>
+          <% if player.penalty_order == 1 || player.minutes / @current_gw > 80 %>
+          <ul>
+            <% if player.penalty_order == 1 %>
+              <li>Penalty taker</li>
+            <% end %>
+            <% if player.minutes / @current_gw > 80 %>
+              <li>Regular game time</li>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
       </div>
     </div>
     <% end %>
