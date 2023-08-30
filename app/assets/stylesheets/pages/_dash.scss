@@ -1,11 +1,26 @@
 /* Base Styles */
-.backg{
-  background-color: #f5f5f5;
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(180deg, #38003C 0%, #38003C 40%, #fffaff 80%);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+.backg {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+  margin: 20px auto;
+  height: 100vh;
 }
 
 .info-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 equal-width columns */
+  grid-template-columns: 1fr 1fr 1fr; /* 2 equal-width columns */
   grid-template-rows: 1fr 1fr;
   gap: 20px;  /* Adjust for space between cards */
   width: 100%;
@@ -22,12 +37,13 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s;
     line-height: 1.5rem;
 
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
+        z-index: 1000;
 
     }
 
@@ -112,18 +128,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;  /* Push buttons to the right side of its container */
-  padding-right: 20px;  /* Adjust the padding to move more or less away from the center */
+  // align-items: flex-end;
+  padding-right: 20px;
 }
 
 .new-card {
   height: 100%;
   width: 100%;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);  /* Slight transparency */
+  background-color: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Softer shadow */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,8 +152,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
+
 }
 
 .suggestions:hover {
@@ -155,7 +172,7 @@
   color: rgb(255, 255, 255);
   font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   transition: background-color 0.5s, color 0.5s;
