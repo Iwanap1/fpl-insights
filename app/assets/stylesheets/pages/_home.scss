@@ -5,13 +5,13 @@
   height: 100vh;
   h1 {
     color: #535353;
-    font-size: 72px;
+    font-size: 62px;
     font-weight: 800;
     font-family: 'League Spartan';
   }
   h2 {
     color: #989797;
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 100;
     font-family: 'Raleway';
   }
@@ -26,28 +26,27 @@
 .right-button {
   padding: 80px;
   height: 30vh;
-  padding-right: 30px;
+  padding-right: 35px;
   justify-content: flex-end;
   display: flex;
   align-items: center;
   a {
     text-decoration: none;
     color: #838282;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 100;
     font-family: 'Raleway';
   }
   i {
     color: #838282;
-    font-size: 40px;
+    font-size: 35px;
     padding-left: 18px;
     transform:scale(1,1.5);
   }
 }
 
 .bottom-button {
-  padding: 80px;
-  padding-top: 250px;
+  padding-top: 200px;
   height: 40vh;
   text-align: center;
   display: flex;
@@ -56,13 +55,13 @@
   a {
     text-decoration: none;
     color: #838282;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 300;
     font-family: 'Raleway';
   }
   i {
     color: #838282;
-    font-size: 40px;
+    font-size: 35px;
     transform:scale(1.5,1);
   }
 }
