@@ -7,7 +7,7 @@
         <div class="card">
           <i class="icon-gw"></i>
           <span class="counter" data-controller="counter"
-                data-counter-end-value="6"
+                data-counter-end-value="<%= @current_gw + 1 %>"
                 data-counter-duration-value="2000"
                 data-counter-target="display">
                 0</span>
@@ -15,23 +15,21 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="99"
+                data-counter-end-value="<%= @rating %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
           <span>Team Rating</span>
         </div>
         <div class="card">
-          <span class="counter" data-controller="counter"
-                data-counter-end-value="14.5"
-                data-counter-duration-value="3000"
-                data-counter-target="display">
-                0</span>
-          <span>Balance (£10M)</span>
+          <span class="counter" data-controller="counter">
+            <%= @bank %>
+          </span>
+          <span>Bank</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="75"
+                data-counter-end-value="<%= @weekly_ranks.last %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
@@ -43,7 +41,7 @@
           Strengths
           <span class="button-text">Here are your point winners!</span>
         </button>
-        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
           Weaknesses
           <span class="button-text">You need to move some players on!</span>
         </button>
@@ -64,6 +62,20 @@
       </div>
       <div class="modal-body">
           <%= render "caro", user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalWeak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= render "caroweak", user: @user %>
       </div>
     </div>
   </div>
