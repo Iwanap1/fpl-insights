@@ -19,16 +19,16 @@
 <div class="container">
   <table>
     <tr>
-      <th>Rank</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Team</th>
-      <th>Price</th>
-      <th>Form</th>
-      <th>% Selected</th>
-      <th>Fixture Difficulty</th>
-      <th>ICT Index</th>
-    </tr>
+  <th data-tooltip="Player's overall ranking in the league">Rank</th>
+  <th data-tooltip="Player's full name">Name</th>
+  <th data-tooltip="Player's position on the field">Position</th>
+  <th data-tooltip="The team the player is part of">Team</th>
+  <th data-tooltip="Current price of the player">Price</th>
+  <th data-tooltip="Player's current form based on recent performance">Form</th>
+  <th data-tooltip="Percentage of teams that have selected this player">% Selected</th>
+  <th data-tooltip="Difficulty of upcoming matches for this player - higher the number, tougher the fixtures!!">Fixture Difficulty</th>
+  <th data-tooltip="Index measuring player's Influence, Creativity, and Threat - a key statistic!">ICT Index</th>
+</tr>
 
     <% @ranked.first(10).each_with_index do |player, index| %>
     <tr class="<%= @ranked[index].home_team.short_name.downcase %>">

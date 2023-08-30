@@ -52,7 +52,6 @@ class PlayersController < ApplicationController
     end
   end
 
-
   private
 
   # Updates Player table every 8 hours but should change to whenever GW is done
