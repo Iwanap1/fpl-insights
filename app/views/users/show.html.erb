@@ -45,11 +45,11 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @personal_api["leagues"]["classic"].last["entry_rank"] %>"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span><%= @personal_api["leagues"]["classic"].last["name"] %> Ranking</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
         </div>
       </div>
       <div class="move-right">
