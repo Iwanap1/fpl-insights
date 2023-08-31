@@ -10,19 +10,21 @@ general_info = JSON.parse(URI.open(general_url).read)
 fixture_url = "https://fantasy.premierleague.com/api/fixtures/"
 fixture_info = JSON.parse(URI.open(fixture_url).read)
 
-general_info["teams"].each do |team|
+general_info["teams"].each_with_index do |team, index|
   new = HomeTeam.new
   new.name = team["name"]
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
+  new.image_path = "#{index + 1}.png"
   new.save
 end
 
-general_info["teams"].each do |team|
+general_info["teams"].each_with_index do |team, index|
   new = AwayTeam.new
   new.name = team["name"]
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
+  new.image_path = "#{index + 1}.png"
   new.save
 end
 
@@ -51,7 +53,7 @@ general_info["elements"].each_with_index do |player, index|
   new.expected_goal_involvements = player["expected_goal_involvements_per_90"].to_f
   new.expected_goals_conceded = player["expected_goal_conceded_per_90"].to_f
   new.transfers_in = player["transfers_in_event"]
-  new.penalty_order = player["penalty_order"].nil? ? 5 : player["penalty_order"]
+  new.penalty_order = player["penalties_order"].nil? ? 5 : player["penalties_order"]
   new.minutes = player["minutes"]
   new.save
 end
@@ -63,6 +65,9 @@ fixture_info.each do |fixture|
     new.away_team_id = fixture["team_a"]
     new.gameweek_number = fixture["event"]
     new.date = Date.parse(fixture["kickoff_time"].split("T")[0])
+    new.finished = fixture["finished"]
+    new.home_team_score = fixture["team_h_score"]
+    new.away_team_score = fixture["team_a_score"]
     new.save
   end
 end

@@ -37,12 +37,48 @@
 }
 
 .team-name {
-  width: 120px;
+  width: 180px;
 }
 
 .accordion-button {
   justify-content: space-between;
   &:after {
     margin-left: unset;
+  }
+}
+
+.date-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: white;
+  &:hover {
+  background-color: #e3e9e3;
+  }
+}
+
+button:hover {
+  background-color: #e3e9e3;
+  box-shadow: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.date-button {
+  text-decoration: none;
+  color: black;
+  background-color: rgba(232, 225, 225, 0.5);
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  &:hover {
+    background-color: rgba(232, 225, 225, 0.8);
   }
 }

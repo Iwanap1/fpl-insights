@@ -78,3 +78,5 @@ group :test do
 end
 
 gem "devise"
+gem "chartkick"
+gem "simple_calendar", "~> 2.4"

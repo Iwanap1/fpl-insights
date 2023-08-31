@@ -1,28 +1,48 @@
 /* Base Styles */
 body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(180deg, #38003C 0%, #38003C 40%, #fffaff 80%);
-  font-family: 'Arial', sans-serif;
+  // font-family: 'Roboto', sans-serif;
+  background: #38003C;
+  // font-family: 'Arial', sans-serif;
   color: #333;
   padding-bottom: 20px;
 }
 
-.backg {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
-  margin: 20px auto;
+
+.page-wrapper {
+  display: grid;
+  grid-template-rows: 40% 20% 40%;
   height: 100vh;
+  margin-left: 2.5%;
+}
+
+.top-main-card {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+
+.middle-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+
+.bottom-section {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .info-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 2 equal-width columns */
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 20px;  /* Adjust for space between cards */
+  gap: 20px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -31,8 +51,8 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    background-color: white;
     display: flex;
+    background-color: white;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -42,81 +62,69 @@ body {
     line-height: 1.5rem;
 
     &:hover {
-        transform: scale(1.1);
-        z-index: 1000;
-
+      transform: scale(1.1);
+      z-index: 1000;
     }
 
     .counter {
-        margin-top: 10px;
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #333;
-    }
+      margin-top: 10px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+      }
 
-    span:last-child {
+      span:last-child {
         margin-top: 10px;
         font-size: 1rem;
         color: #888;
+      }
     }
   }
-}
-// make the move-right class
 
-.content-container {
-  display: grid;
-  grid-template-columns: 15% 50% 30% 5%;
-  align-items: stretch;
-  justify-content: center;
-  grid-gap: 10px;
-  height: 40vh;
-  width: 90vw;
-  margin: 5vh auto;  /* Center container on page */
-  padding: 30px;
-  // background-color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  // box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);  /* Softer shadow */
-}
+  .strength, .weakness, .view-table {
+    width: 30%;
+    height: 60%;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.5s, color 0.5s;
+    line-height: 2rem;
+    align-items: center;
+  }
 
-.strength, .weakness {
-  width: 100%;
-  height: 48%;
-  margin-bottom: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 2.5rem;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.5s, color 0.5s;
-  line-height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .weakness {
+    background-color: #e90052;
+  }
 
-.weakness {
-  background-color: #e90052;  /* Slight transparency */
-}
+  .strength {
+    background-color: #00ff85;
+  }
 
-.strength {
-  background-color: #00ff85;  /* Slight transparency */
-}
+  .view-table {
+    background-color: #04F5FF;
+  }
 
-.strength:hover {
-  background-color: #02d871;
-  color: white;
-  box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
-}
+  .view-table:hover {
+    color: white;
+    box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
+    background-color: #03d1d8;
+  }
 
-.weakness:hover {
+  .strength:hover {
+    background-color: #02d871;
+    color: white;
+    box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
+  }
+
+  .weakness:hover {
   background-color: #ab013d;
   color: white;
   box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
 }
-
 
 .button-text {
   font-size: 1rem;
@@ -128,39 +136,37 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-items: flex-end;
-  padding-right: 20px;
 }
 
 .new-card {
+  margin-right: 20px;
   height: 100%;
-  width: 100%;
+  width: 7.5%;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
 }
 
 .suggestions {
+  margin: 10px;
   display: flex;
   align-items: center;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
-  border-radius: 15px;
-  cursor: pointer;
-
+  border-radius: 100%;
+  // cursor: pointer;
 }
 
 .suggestions:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
-
 
 .default-button {
   height: 100%;
@@ -175,27 +181,13 @@ body {
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .default-button:hover {
   background-color: #28002b;
   color: rgb(228, 228, 228);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
-}
-
-
-.eval-card {
-  max-width: 200px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .custom-modal {
@@ -224,7 +216,16 @@ body {
   padding: 20px;
 }
 
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-out;
+  width: 300%; /* Since there are three cards */
+  overflow: hidden;
+}
 
+.carousel-cards {
+  flex: 0 0 33.33%; /* Each card will take up one third of the wrapper */
+}
 
 // saved for later use
 // .card-title {

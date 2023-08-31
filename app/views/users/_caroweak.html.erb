@@ -1,14 +1,31 @@
 <div data-controller="carousel">
 <button data-action="carousel#goPrev"><i class="fa fa-arrow-left"></i></button>
   <div class="carousel-container">
-    <% @user_players.last(4).each do |player| %>
+    <% @user_players.first(4).each do |player| %>
     <div class="carousel-card" data-carousel-target="card">
-      <div class="player-image"></div>
+      <%= image_tag player.home_team.image_path, class: "player-image"%>
       <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
       <div class="player-team"><%= player.home_team.name %></div>
       <div class="player-stats">
-        Form: <%= player.form %><br>
-        Goal Contributions per 90: <%= player.expected_goal_involvements %><br>
+        <div class="list-items">
+          <ul>
+            <li>Price: <%= player.price %></li>
+            <li>Form: <%= player.form %></li>
+            <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
+            <li>Score: <%= (player.general_score * 100).round %></li>
+          </ul>
+          <% if player.penalty_order == 1 || player.minutes / @current_gw > 80 %>
+          <ul>
+            <% if player.penalty_order == 1 %>
+              <li>Penalty taker</li>
+            <% end %>
+            <% if player.minutes / @current_gw > 80 %>
+              <li>Regular game time</li>
+            <% end %>
+          </ul>
+          <% end %>
+          <%= link_to "Suggest Transfers", players_path(price: (player.price + @data[:bank]), position: player.position) %>
+        </div>
       </div>
     </div>
     <% end %>

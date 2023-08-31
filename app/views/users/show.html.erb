@@ -1,7 +1,10 @@
-<div class="backg">
-    <div class="content-container">
+<div class="page-wrapper">
+    <div class="top-main-card">
+      <div class="suggestions">
+          <button class="default-button">←</button>
+      </div>
       <div class="new-card">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </div>
       <div class="info-cards">
         <div class="card">
@@ -15,7 +18,7 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @rating %>"
+                data-counter-end-value="<%= @data[:team_rating] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
@@ -23,7 +26,7 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter">
-            <%= @bank %>
+            £<%= @data[:bank] %>m
           </span>
           <span>Bank</span>
         </div>
@@ -33,42 +36,74 @@
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span>Overall Ranking</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-end-value="<%= @data[:percentile] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span>Overall Percentile</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Ranking</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
         </div>
-      </div>
-      <div class="move-right">
-        <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Strengths
-          <span class="button-text">Here are your point winners!</span>
-        </button>
-        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
-          Weaknesses
-          <span class="button-text">You need to move some players on!</span>
-        </button>
       </div>
       <div class="suggestions">
           <button class="default-button">→</button>
       </div>
     </div>
+      <div class="middle-buttons-container">
+        <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Strengths 🏆
+            <span class="button-text">Here are your point winners!</span>
+        </button>
+        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
+            Weaknesses 🤕
+            <span class="button-text">You need to move some players on!</span>
+        </button>
+        <button class="sandw view-table">
+            View Table 📊
+            <span class="button-text">Check the detailed table here.</span>
+        </button>
+      </div>
+      <div class="bottom-section">
+        <div>
+            <div class="graphs">
+              <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+            </div>
+        </div>
+        <div>
+            <div class="graphs">
+              <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
+            </div>
+        </div>
+        <div>
+            <div class="graphs">
+              <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'}%>
+            </div>
+        </div>
+      </div>
+</div>
 
 
-<!-- Modal -->
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered custom-modal">
     <div class="modal-content">

@@ -1,7 +1,11 @@
 <div class="fixture-container">
   <div class="fixture-titles">
     <h1> Fixtures </h1>
-    <h2> Gameweek 4: <%="#{@fixtures[0].date}"%></h2>
+    <h2> Gameweek <%= "#{params[:gameweek] || @next_gw }"%>: <%="#{@fixtures[0].date}"%></h2>
+  </div>
+  <div class = "date-button-container mx-5">
+    <%= link_to '< Previous', fixtures_path(gameweek: (params[:gameweek].to_i - 1 if params[:gameweek].present?) || @next_gw - 1), class: "#{ 'disabled' if params[:gameweek] == '1'} date-button" %>
+    <%= link_to 'Next >', fixtures_path(gameweek: (params[:gameweek].to_i + 1 if params[:gameweek].present?) || @next_gw + 1), class: "#{ 'disabled' if params[:gameweek] == '38'} date-button" %>
   </div>
       <div class="accordion" id="accordionExample">
         <% @fixtures.each_with_index do | fixture, index | %>
@@ -9,8 +13,16 @@
             <h2 class="accordion-header" id="heading<%= index %>">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
                 <span></span>
-                <div class="d-flex">
-                  <div class="team-name text-end"><%= "#{fixture.home_team.name}" %></div><span class="mx-3">vs</span><div class="team-name"><%= "#{fixture.away_team.name}" %></div>
+                <div class="d-flex align-items-center">
+                  <div class="team-name text-end">
+                    <%= "#{fixture.home_team.name}" %>
+                    <%= image_tag "#{fixture.home_team.image_path}", alt: "logo", style: "height: 30px; width: 30px;"%>
+                  </div>
+                  <span class="mx-3"><%= fixture.finished? ? "#{fixture.home_team_score} | #{fixture.away_team_score}" : "vs" %></span>
+                  <div class="team-name">
+                    <%= image_tag "#{fixture.away_team.image_path}", alt: "logo", style: "height: 30px; width: 30px;"%>
+                    <%= "#{fixture.away_team.name}" %>
+                  </div>
                 </div>
               </button>
             </h2>
