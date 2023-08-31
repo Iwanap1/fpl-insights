@@ -13,19 +13,16 @@ class UsersController < ApplicationController
     @weekly_ranks = weekly_ranks_array
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
     @user_players = player_array
-    @rating = (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4
-    @bank = @users_api["entry_history"]["bank"].to_f / 10
-    @percentile = ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100
     @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
-    @data = collect_card_data
-    @graph_data = graph_data
+    @data = collect_current_gw_data
     @historical_data = historical_data
+    @graph_data = graph_data
     @bar_chart_data = points_bar_chart
     @price_dist_pie_data = price_dist_pie
   end
 
   # Returns hash available via @data on user/show
-  def collect_card_data
+  def collect_current_gw_data
     return {
       bank: @users_api["entry_history"]["bank"].to_f / 10,
       user_players: player_array,
@@ -45,8 +42,7 @@ class UsersController < ApplicationController
   end
 
   def player_array
-    url = "https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/"
-    latest_picks = JSON.parse(URI.open(url).read)["picks"]
+    latest_picks = @users_api["picks"]
     all_players = Player.all
     players = []
     latest_picks.each do |element|
