@@ -5,6 +5,7 @@ export default class extends Controller {
   currentCard = 0;
 
   connect() {
+    console.log("Hello, Stimulus!");
     this.showCard(this.currentCard);
   }
 

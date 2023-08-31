@@ -1,5 +1,8 @@
 <div class="page-wrapper">
     <div class="top-main-card">
+      <div class="suggestions">
+          <button class="default-button">←</button>
+      </div>
       <div class="new-card">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </div>
@@ -52,21 +55,21 @@
           <span><%= @personal_api["leagues"]["classic"].last["name"] %> Ranking</span>
         </div>
       </div>
-       <div class="suggestions">
+      <div class="suggestions">
           <button class="default-button">→</button>
       </div>
     </div>
       <div class="middle-buttons-container">
         <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Strengths
+            Strengths 🏆
             <span class="button-text">Here are your point winners!</span>
         </button>
         <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
-            Weaknesses
+            Weaknesses 🤕
             <span class="button-text">You need to move some players on!</span>
         </button>
         <button class="sandw view-table">
-            View Table
+            View Table 📊
             <span class="button-text">Check the detailed table here.</span>
         </button>
       </div>
@@ -79,7 +82,6 @@
         <div></div>
         <div></div>
       </div>
-    </div>
 </div>
 
 
