@@ -91,9 +91,12 @@ class UsersController < ApplicationController
       best_season = past_array.min { |a, b| a["rank"] <=> b["rank"] }["season_name"]
     end
     all_points = history_api["current"].map { |w| w["points"] }
+    best_score = past_array.empty? ? nil : past_array.max { |a, b| a["total_points"] <=> b["total_points"] }["total_points"]
+    best_score_season = past_array.empty? ? nil : past_array.max { |a, b| a["total_points"] <=> b["total_points"] }["season_name"]
     return {
       all_time_highest: [best_rank, best_season],
-      season_points_array: all_points
+      season_points_array: all_points,
+      best_score: [best_score, best_score_season]
     }
   end
 end
