@@ -10,7 +10,7 @@ body {
 
 .page-wrapper {
   display: grid;
-  grid-template-rows: 40% 20% 40%;
+  grid-template-rows: 40% 20% 70%;
   height: 100vh;
   margin-left: 2.5%;
 }
@@ -21,6 +21,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 95%;
+  // overflow: hidden;
+  margin-left: 1.245%;
 }
 
 .middle-buttons-container {
@@ -28,6 +30,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 95%;
+  margin-left: 1.245%;
 }
 
 .bottom-section {
@@ -36,6 +39,16 @@ body {
   width: 95%;
   height: 100%;
   margin: 0 auto;
+}
+.graph-header{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: crimson;
+  height: 10vh;
+  color: white;
+  width: 100%;
+  display: flex;
 }
 
 .info-cards {
@@ -62,7 +75,7 @@ body {
     line-height: 1.5rem;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       z-index: 1000;
     }
 
@@ -158,19 +171,24 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #38003c;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, color 0.2s;
   border: none;
-  border-radius: 100%;
-  // cursor: pointer;
+  // border-radius: 100%;
+  width: 3%;  // cursor: pointer;
 }
 
 .suggestions:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #28002b;
+  color: rgb(228, 228, 228);
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .default-button {
-  height: 100%;
-  width: 100%;
+  height: 30%;
+  width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,18 +208,45 @@ body {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+.graph-card {
+  // background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 5px;
+  transition: transform 0.3s;
+
+  /* Graph re-coloring - you can adjust the following values */
+  // background-color: #FFFFFF;
+  color: #ffffff;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.bottom-section {
+  gap: 1%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4%;
+}
+
+.bottom-section {
+  background: linear-gradient(45deg, #38003C, #5C005A);
+  padding: 1rem;
+}
+
 .custom-modal {
-  max-width: 95%; /* Set to desired width */
+  max-width: 95%;
 }
 
-/* Modernize the modal content with rounded edges and shadow */
 .modal-content {
-  border-radius: 20px; /* Add rounded corners */
-  overflow: hidden; /* Hide any child content (like the modal-body) that might breach the rounded corners */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add a shadow for a lifted look */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Style the modal header for a cleaner look */
 .modal-header {
   border-bottom: none;
   padding: 15px 20px;
@@ -211,21 +256,10 @@ body {
   font-weight: 500;
 }
 
-/* Style the modal body */
 .modal-body {
   padding: 20px;
 }
 
-.carousel-wrapper {
-  display: flex;
-  transition: transform 0.3s ease-out;
-  width: 300%; /* Since there are three cards */
-  overflow: hidden;
-}
-
-.carousel-cards {
-  flex: 0 0 33.33%; /* Each card will take up one third of the wrapper */
-}
 
 // saved for later use
 // .card-title {
