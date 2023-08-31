@@ -3,7 +3,7 @@
   <div class="carousel-container">
     <% @data[:user_players].last(4).each do |player| %>
     <div class="carousel-card" data-carousel-target="card">
-      <div class="player-image"></div>
+      <%= image_tag player.home_team.image_path, class: "player-image"%>
       <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
       <div class="player-team"><%= player.home_team.name %></div>
       <div class="player-stats">
