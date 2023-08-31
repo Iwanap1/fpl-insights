@@ -15,11 +15,13 @@ class PlayersController < ApplicationController
   end
 
   def show
+    @player = Player.find(params[:id])
+    @home_fixtures = @player.home_team.fixtures
+    @away_fixtures = @player.away_team.fixtures
+    @all_fixtures = [@home_fixtures, @away_fixtures].flatten
   end
 
   def fixtures(id)
-    # Currently getting data from 685 APIs so very slow
-    # Need to only search logical player APIs
     url = "https://fantasy.premierleague.com/api/element-summary/#{id}/"
     fixtures = JSON.parse(URI.open(url).read)["fixtures"]
     difficulties = []
@@ -28,6 +30,8 @@ class PlayersController < ApplicationController
     end
     return difficulties.sum
   end
+
+  private
 
   def update_data
     general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
@@ -50,7 +54,4 @@ class PlayersController < ApplicationController
       player.save
     end
   end
-
-  private
-
 end

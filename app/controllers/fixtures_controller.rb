@@ -4,4 +4,5 @@ class FixturesController < ApplicationController
     @next_gw = @general_api["events"].find { |week| week["is_next"] }["id"]
     @fixtures = Fixture.where(gameweek_number: params[:gameweek] || @next_gw)
   end
+
 end

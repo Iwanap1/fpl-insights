@@ -1,0 +1,21 @@
+<div class="container" id="margin-bottom">
+  <h1>Stats</h1>
+</div>
+
+<div class="container">
+  <h1>Fixture Calendar</h1>
+  <div class="calender">
+    <%= month_calendar(events: @all_fixtures) do |date, fixtures| %>
+      <%= date.day %>
+      <% fixtures.each do |fixture| %>
+        <div>
+          <% if fixture.home_team == @player.home_team %>
+            <%= image_tag fixture.away_team.image_path, width: 20, height: 20%>(H)
+          <% else %>
+            <%= image_tag fixture.home_team.image_path, width: 20, height: 20 %>(A)
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
