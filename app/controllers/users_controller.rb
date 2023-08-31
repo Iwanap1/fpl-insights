@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @percentile = ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100
     @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
     @data = collect_card_data(@current_gw)
+    @graph_data = graph_data
   end
 
   # Returns hash available via @data on user/show
@@ -50,6 +51,14 @@ class UsersController < ApplicationController
       players << all_players.find { |p| p.api_id == element["element"] }
     end
     return players.sort_by { |p| p.general_score }
+  end
+
+  def graph_data
+    data = []
+    @weekly_ranks.each_with_index do |rank, i|
+      data << [(i + 1), rank]
+    end
+    return data
   end
 
   private
