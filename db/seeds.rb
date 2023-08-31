@@ -65,6 +65,9 @@ fixture_info.each do |fixture|
     new.away_team_id = fixture["team_a"]
     new.gameweek_number = fixture["event"]
     new.date = Date.parse(fixture["kickoff_time"].split("T")[0])
+    new.finished = fixture["finished"]
+    new.home_team_score = fixture["team_h_score"]
+    new.away_team_score = fixture["team_a_score"]
     new.save
   end
 end
