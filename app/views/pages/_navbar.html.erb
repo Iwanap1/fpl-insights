@@ -1,0 +1,45 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+      <div class="d-flex align-items-baseline">
+        <h3 class="ms-2 mb-0"><a href="http://somelink.com">FPL</a></h3>
+        <h4 class="ms-2 mb-0"><a href="http://somelink.com">insights</a></h4>
+      </div>
+    </div>
+
+    <%= link_to "#", class: "navbar-brand" do %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <%= link_to "", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Dashboard", new_user_session_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Rankings", players_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Fixtures", fixtures_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag "Iwan-Pavord.png", class: "avatar", alt: "dropdown menu" %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
