@@ -73,10 +73,14 @@
       <div class="bottom-section">
         <div>
             <div class="graphs">
-                <%= line_chart @graph_data, xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+              <%= line_chart @graph_data, xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
             </div>
         </div>
-        <div></div>
+        <div>
+            <div class="graphs">
+              <%= column_chart @bar_chart_data, xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
+            </div>
+        </div>
         <div></div>
       </div>
     </div>

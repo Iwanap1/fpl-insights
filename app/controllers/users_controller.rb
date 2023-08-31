@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @data = collect_card_data
     @graph_data = graph_data
     @historical_data = historical_data
+    @bar_chart_data = points_bar_chart
   end
 
   # Returns hash available via @data on user/show
@@ -61,6 +62,14 @@ class UsersController < ApplicationController
     return data
   end
 
+  def points_bar_chart
+    data = []
+    @historical_data[:season_points_array].each_with_index do |points, i|
+      data << [(i + 1), points]
+    end
+    return data
+  end
+
   private
 
   def set_user
@@ -72,9 +81,10 @@ class UsersController < ApplicationController
     past_array = history_api["past"]
     best_rank = past_array.min { |a, b| a["rank"] <=> b["rank"] }["rank"]
     best_season = past_array.min { |a, b| a["rank"] <=> b["rank"] }["season_name"]
-
+    all_points = history_api["current"].map { |w| w["points"] }
     return {
-      all_time_highest: [best_rank, best_season]
+      all_time_highest: [best_rank, best_season],
+      season_points_array: all_points
     }
   end
 end
