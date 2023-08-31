@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @graph_data = graph_data
     @historical_data = historical_data
     @bar_chart_data = points_bar_chart
+    @price_dist_pie_data = price_dist_pie
   end
 
   # Returns hash available via @data on user/show
@@ -68,6 +69,14 @@ class UsersController < ApplicationController
       data << [(i + 1), points]
     end
     return data
+  end
+
+  def price_dist_pie
+    fors = @user_players.select { |p| p.position == "FOR" }.sum{ |p| p.price }.round(1)
+    mids = @user_players.select { |p| p.position == "MID" }.sum{ |p| p.price }.round(1)
+    defs = @user_players.select { |p| p.position == "DEF" }.sum{ |p| p.price }.round(1)
+    gkps = @user_players.select { |p| p.position == "GKP" }.sum{ |p| p.price }.round(1)
+    return [["Forwards", fors], ["Midfielders", mids], ["Defenders", defs], ["Goalkeepers", gkps]]
   end
 
   private
