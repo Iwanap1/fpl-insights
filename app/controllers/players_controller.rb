@@ -4,7 +4,7 @@ require "json"
 class PlayersController < ApplicationController
   def index
     @players = Player.all
-    update_data if (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 0
+    update_data if (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 10
     @players = Player.all
     @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
     if params[:position] && params[:price]
