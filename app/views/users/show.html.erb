@@ -15,7 +15,7 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @rating %>"
+                data-counter-end-value="<%= @data[:team_rating] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
@@ -23,7 +23,7 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter">
-            <%= @bank %>
+            £<%= @data[:bank] %>m
           </span>
           <span>Bank</span>
         </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @percentile %>"
+                data-counter-end-value="<%= @data[:percentile] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
