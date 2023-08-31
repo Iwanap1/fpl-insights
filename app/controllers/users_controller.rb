@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @weekly_ranks = weekly_ranks_array
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
     @user_players = player_array
-    @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
+
     @data = collect_current_gw_data
     @historical_data = historical_data
     @graph_data = graph_data
