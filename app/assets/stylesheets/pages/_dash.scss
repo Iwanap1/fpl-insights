@@ -4,15 +4,17 @@ body {
   background: #38003C;
   // font-family: 'Arial', sans-serif;
   color: #333;
-  padding: 20px;
+  padding: 30px;
+  margin: 0;
 }
 
 
 .page-wrapper {
   display: grid;
   grid-template-rows: 40% 20% 70%;
-  height: 100vh;
-  margin-left: 2.5%;
+  height: calc(100vh - 60px); /* Subtracting 60px because of 30px padding on top and bottom */
+  margin-left: 4.5vw; /* Set margin to 0 to align it centrally */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .top-main-card {
@@ -22,7 +24,7 @@ body {
   align-items: center;
   width: 95%;
   // overflow: hidden;
-  margin-left: 1.245%;
+margin-top: 20px;
 }
 
 .middle-buttons-container {
@@ -30,7 +32,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 95%;
-  margin-left: 1.245%;
 }
 
 .bottom-section {
@@ -75,8 +76,9 @@ body {
     line-height: 1.5rem;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
       z-index: 1000;
+      background-color: #f2f2f2;
     }
 
     .counter {
@@ -97,7 +99,7 @@ body {
   .strength, .weakness, .view-table {
     width: 30%;
     height: 60%;
-    margin: 10px;
+    // margin: 10px;
     color: white;
     font-weight: bold;
     font-size: 2.5rem;
@@ -149,6 +151,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: none;
 }
 
 .new-card {
@@ -167,7 +170,7 @@ body {
 }
 
 .suggestions {
-  margin: 10px;
+  // margin: 10px;
   display: flex;
   align-items: center;
   height: 100%;

@@ -47,5 +47,10 @@
     left: -60px;
     // move down a bit
     top: -2%;
+    &:hover {
+      left: -60px;
+      top: -2%;
+      transform: none;
+    }
   }
 }
