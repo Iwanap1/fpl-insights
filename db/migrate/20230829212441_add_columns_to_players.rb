@@ -11,5 +11,7 @@ class AddColumnsToPlayers < ActiveRecord::Migration[7.0]
     add_column :players, :expected_goal_involvements, :float
     add_column :players, :expected_goals_conceded, :float
     add_column :players, :minutes, :integer
+    add_column :players, :goals, :integer
+    add_column :players, :assists, :integer
   end
 end

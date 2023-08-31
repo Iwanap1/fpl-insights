@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_132108) do
     t.float "expected_goal_involvements"
     t.float "expected_goals_conceded"
     t.integer "minutes"
+    t.integer "goals"
+    t.integer "assists"
     t.index ["away_team_id"], name: "index_players_on_away_team_id"
     t.index ["home_team_id"], name: "index_players_on_home_team_id"
   end
