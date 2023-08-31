@@ -9,6 +9,7 @@
       <div class="player-stats">
         <div class="list-items">
           <ul>
+            <li>Price: <%= player.price %></li>
             <li>Form: <%= player.form %></li>
             <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
             <li>Score: <%= (player.general_score * 100).round %></li>
@@ -23,6 +24,7 @@
             <% end %>
           </ul>
           <% end %>
+          <%= link_to "Suggest Transfers", players_path(price: (player.price + @data[:bank]), position: player.position) %>
         </div>
       </div>
     </div>
