@@ -1,0 +1,180 @@
+<div id="carouselExampleControls" class="carousel slide" >
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="stats">
+        <div class="new-card">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div class="info-cards">
+          <div class="card">
+          <i class="icon-gw"></i>
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @current_gw + 1 %>"
+                data-counter-duration-value="2000"
+                data-counter-target="display">
+                0</span>
+          <span>Game Week</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:team_rating] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Team Rating</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter">
+            £<%= @data[:bank] %>m
+          </span>
+          <span>Bank</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Ranking</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:percentile] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Percentile</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+       <div class="stats">
+        <div class="new-card">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div class="info-cards">
+          <div class="card">
+          <i class="icon-gw"></i>
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @current_gw + 1 %>"
+                data-counter-duration-value="2000"
+                data-counter-target="display">
+                0</span>
+          <span>Game Week</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:team_rating] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Team Rating</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter">
+            £<%= @data[:bank] %>m
+          </span>
+          <span>Bank</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Ranking</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:percentile] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Percentile</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+     <div class="stats">
+      <div class="new-card">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div class="info-cards">
+          <div class="card">
+          <i class="icon-gw"></i>
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @current_gw + 1 %>"
+                data-counter-duration-value="2000"
+                data-counter-target="display">
+                0</span>
+          <span>Game Week</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:team_rating] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Team Rating</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter">
+            £<%= @data[:bank] %>m
+          </span>
+          <span>Bank</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Ranking</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:percentile] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Overall Percentile</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev suggestions" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next suggestions" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

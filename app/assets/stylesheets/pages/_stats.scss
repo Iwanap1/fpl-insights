@@ -1,0 +1,51 @@
+.stats-wrapper {
+  // width: max-content;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stats-container {
+  width: max-content;
+  display: flex;
+  height: 100%;
+}
+
+.stats {
+  display: flex;
+  // width: 100vw;
+  height: 100%;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+.test-div {
+  height: 300px;
+  width: 600px;
+  background-color: blue;
+}
+
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  .carousel-inner {
+    height: 100%;
+    .carousel-item {
+      height: 100%;
+    }
+  }
+
+  .carousel-control-next {
+    right: -60px;
+    // move down a bit
+    top: -2%;
+  }
+  .carousel-control-prev {
+    left: -60px;
+    // move down a bit
+    top: -2%;
+  }
+}
