@@ -73,15 +73,19 @@
       <div class="bottom-section">
         <div>
             <div class="graphs">
-              <%= line_chart @graph_data, xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+              <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
             </div>
         </div>
         <div>
             <div class="graphs">
-              <%= column_chart @bar_chart_data, xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
+              <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
             </div>
         </div>
-        <div></div>
+        <div>
+            <div class="graphs">
+              <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'}%>
+            </div>
+        </div>
       </div>
     </div>
 </div>
