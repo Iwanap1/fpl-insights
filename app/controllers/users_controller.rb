@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @user = User.find(params[:id])
-    @fpl_id = 7090474
+    @fpl_id = 1119409
     @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
     @weekly_ranks = weekly_ranks_array
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
@@ -17,19 +17,19 @@ class UsersController < ApplicationController
     @bank = @users_api["entry_history"]["bank"].to_f / 10
     @percentile = ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100
     @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
-    @data = collect_card_data(@current_gw)
+    @data = collect_card_data
     @graph_data = graph_data
+    @historical_data = historical_data
   end
 
   # Returns hash available via @data on user/show
-  def collect_card_data(gw)
+  def collect_card_data
     return {
       bank: @users_api["entry_history"]["bank"].to_f / 10,
       user_players: player_array,
-      gameweek: gw,
       team_rating: (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4,
       percentile: ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100,
-      personal_api: JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
+      personal_api: JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read),
     }
   end
 
@@ -65,5 +65,16 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def historical_data
+    history_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/history/").read)
+    past_array = history_api["past"]
+    best_rank = past_array.min { |a, b| a["rank"] <=> b["rank"] }["rank"]
+    best_season = past_array.min { |a, b| a["rank"] <=> b["rank"] }["season_name"]
+
+    return {
+      all_time_highest: [best_rank, best_season]
+    }
   end
 end
