@@ -4,7 +4,7 @@ class Player < ApplicationRecord
 
   def general_score
     form_weight = 6
-    fixture_weight = 1.4
+    fixture_weight = 4
     case self.position
     when "GKP"
       goal_conceded_weight = 4
@@ -34,7 +34,7 @@ class Player < ApplicationRecord
     else
       sum = (
         (form_weight * (form > 10 ? 1 : (form / 10))) +
-        (fixture_weight * (14 / self.fixture_difficulty)) +
+        (fixture_weight * calc_fixture) +
         (goal_conceded_weight * (1 / (self.expected_goals_conceded + 0.01))) +
         (goal_involvement_weight * (self.expected_goal_involvements + 0.01)) +
         (ict_weight * (self.ict / 38.9)) +
@@ -46,7 +46,7 @@ class Player < ApplicationRecord
 
   def calc_fixture
     case fixture_difficulty
-    when (9..10) then return 1
+    when (1..10) then return 1
     when (11..12) then return 0.8
     when (13..14) then return 0.6
     when (15..16) then return 0.4

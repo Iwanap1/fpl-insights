@@ -6,16 +6,16 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
+    @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @user = User.find(params[:id])
     @fpl_id = 7090474
-    @current_gw = general_api["events"].find { |week| week["is_current"] }["id"]
+    @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
     @weekly_ranks = weekly_ranks_array
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
     @user_players = player_array
     @rating = (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4
     @bank = @users_api["entry_history"]["bank"].to_f / 10
-    @percentile = ((general_api["total_players"] - @weekly_ranks.last.to_f) / general_api["total_players"]) * 100
+    @percentile = ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100
     @personal_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
     @data = collect_card_data(@current_gw)
   end
