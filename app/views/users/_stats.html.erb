@@ -3,7 +3,7 @@
     <div class="carousel-item active">
       <div class="stats">
         <div class="new-card">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            General Stats
         </div>
         <div class="info-cards">
           <div class="card">
@@ -115,31 +115,31 @@
     <div class="carousel-item">
      <div class="stats">
       <div class="new-card">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <strong>Historical Data</strong>
         </div>
         <div class="info-cards">
           <div class="card">
           <i class="icon-gw"></i>
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @current_gw + 1 %>"
+                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
                 data-counter-duration-value="2000"
                 data-counter-target="display">
                 0</span>
-          <span>Game Week</span>
+          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @data[:team_rating] %>"
+                data-counter-end-value="<%= @historical_data[:best_score][0] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Rating</span>
+          <span>Record Score <%= "(#{@historical_data[:best_score][1]})" %></span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
             £<%= @data[:bank] %>m
           </span>
-          <span>Bank</span>
+          <span>Highest Rank</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
