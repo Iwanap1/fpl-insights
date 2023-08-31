@@ -1,5 +1,27 @@
 <div class="container" id="margin-bottom">
-  <h1>Stats</h1>
+  <div class="inline">
+    <%= image_tag @player.home_team.image_path, height: 50, width: 50 %>
+    <h1><%= @player.first_name %> <%= @player.last_name %></h1>
+    <div class="player-position"><p><%= @player.full_position %></p></div>
+  </div>
+  <div class="inline">
+    <div>
+      <h2>Stats</h2>
+      <ul>
+        <li><%=  %>Goals</li>
+        <li><%=  %>Assists</li>
+        <li>Averages <%= (@player.minutes.to_f / @current_gw).round(1) %> minutes per GW</li>
+        <li><%= @player.expected_goal_involvements %> goal involvements per 90: </li>
+        <li></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Form</h2>
+    </div>
+    <div>
+      <h2>Attributes</h2>
+    </div>
+  </div>
 </div>
 
 <div class="container">

@@ -55,4 +55,13 @@ class Player < ApplicationRecord
       return 0
     end
   end
+
+  def full_position
+    case position
+    when "FOR" then return "forward"
+    when "MID" then return "midfield"
+    when "DEF" then return "defender"
+    when "GKP" then return "goalkeeper"
+    end
+  end
 end

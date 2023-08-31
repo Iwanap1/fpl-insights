@@ -19,6 +19,8 @@ class PlayersController < ApplicationController
     @home_fixtures = @player.home_team.fixtures
     @away_fixtures = @player.away_team.fixtures
     @all_fixtures = [@home_fixtures, @away_fixtures].flatten
+    general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
+    @current_gw = general_api["events"].find { |week| week["is_current"] }["id"]
   end
 
   def fixtures(id)

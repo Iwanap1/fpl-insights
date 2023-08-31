@@ -8,12 +8,11 @@ class UsersController < ApplicationController
   def show
     @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @user = User.find(params[:id])
-    @fpl_id = 1119409
+    @fpl_id = 7090474
     @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
     @weekly_ranks = weekly_ranks_array
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
     @user_players = player_array
-
     @data = collect_current_gw_data
     @historical_data = historical_data
     @graph_data = graph_data
@@ -84,8 +83,13 @@ class UsersController < ApplicationController
   def historical_data
     history_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/history/").read)
     past_array = history_api["past"]
-    best_rank = past_array.min { |a, b| a["rank"] <=> b["rank"] }["rank"]
-    best_season = past_array.min { |a, b| a["rank"] <=> b["rank"] }["season_name"]
+    if past_array.empty?
+      best_rank = @weekly_ranks.last
+      best_season = "current"
+    else
+      best_rank = past_array.min { |a, b| a["rank"] <=> b["rank"] }["rank"]
+      best_season = past_array.min { |a, b| a["rank"] <=> b["rank"] }["season_name"]
+    end
     all_points = history_api["current"].map { |w| w["points"] }
     return {
       all_time_highest: [best_rank, best_season],
