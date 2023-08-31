@@ -1,8 +1,8 @@
 .form-container {
-  margin: 200px;
+  margin: 180px;
   background-image: linear-gradient(#38003C, #FFFFFF);
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 50px auto;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -10,19 +10,41 @@
   color: white;
 }
 
-#default-button {
-  padding: 10px 20px;
+input[type="submit"], button {
   background-color: #04F5FF;
+  width: 100%;
   font-weight: bold;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.5s;
-  transition: color 0.5s;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  &:hover {
+    background-color: #04F5FF;
+    box-shadow: 0px;
+    margin-left: 0px;
+  }
 }
 
-#default-button:hover {
-  background-color: #00FF85;
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+#new_user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+  color: #FFFFFF;
+}
+
+.links a {
+  text-decoration: none;
+  margin-top: 40px;
+  margin-left: 15px;
+  color: #38003C;
+  border-radius: 10px;
 }
