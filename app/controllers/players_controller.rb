@@ -56,4 +56,11 @@ class PlayersController < ApplicationController
       player.save
     end
   end
+
+  private
+
+  # Updates Player table every 8 hours but should change to whenever GW is done
+  def needs_updating?
+    (Time.now - @players[0][:updated_at].to_time) / (60 * 60) > 0
+  end
 end
