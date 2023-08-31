@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_113101) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_132108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_113101) do
     t.float "expected_goal_involvements"
     t.float "expected_goals_conceded"
     t.integer "minutes"
+    t.integer "goals"
+    t.integer "assists"
     t.index ["away_team_id"], name: "index_players_on_away_team_id"
     t.index ["home_team_id"], name: "index_players_on_home_team_id"
   end
@@ -79,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_113101) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "fantasy_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -18,6 +18,9 @@
   </head>
 
   <body>
+    <% unless params[:action] == "home" %>
+      <%= render "pages/navbar" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
