@@ -35,11 +35,7 @@
             <%= image_tag "Iwan-Pavord.png", class: "avatar", alt: "dropdown menu" %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <% while user_signed_in?  %>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            <%# <% else %>
-            <%# <% dropdown-item  %>
-           <% end %>
+            <%# until loop caused all pages to crash so i deleted %>
           </div>
         </li>
       </ul>

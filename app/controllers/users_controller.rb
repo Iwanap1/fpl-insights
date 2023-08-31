@@ -2,8 +2,8 @@ require "open-uri"
 require "json"
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user
+  # before_action :authenticate_user!
+  # before_action :set_user
 
   def show
     @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
