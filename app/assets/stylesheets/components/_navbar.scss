@@ -1,6 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(255, 255, 255, 0.15);
+  margin-bottom: 0px;
+  // border-radius: 35px;
+  width: 100vw;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +16,29 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 5vh;
+}
+
+.navbar {
+  // padding-left: 20px;
+}
+
+h3 {
+  font-family: Raleway;
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  color: white;
+}
+
+h4 {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+  color: white;
+}
+
+.nav-link {
+  color: white;
 }
