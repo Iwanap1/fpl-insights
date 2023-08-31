@@ -1,7 +1,7 @@
-<div class="backg">
-    <div class="content-container">
+<div class="page-wrapper">
+    <div class="top-main-card">
       <div class="new-card">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </div>
       <div class="info-cards">
         <div class="card">
@@ -52,23 +52,48 @@
           <span><%= @personal_api["leagues"]["classic"].last["name"] %> Ranking</span>
         </div>
       </div>
-      <div class="move-right">
-        <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Strengths
-          <span class="button-text">Here are your point winners!</span>
-        </button>
-        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
-          Weaknesses
-          <span class="button-text">You need to move some players on!</span>
-        </button>
-      </div>
-      <div class="suggestions">
+       <div class="suggestions">
           <button class="default-button">→</button>
       </div>
     </div>
+      <div class="middle-buttons-container">
+        <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Strengths
+            <span class="button-text">Here are your point winners!</span>
+        </button>
+        <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
+            Weaknesses
+            <span class="button-text">You need to move some players on!</span>
+        </button>
+        <button class="sandw view-table">
+            View Table
+            <span class="button-text">Check the detailed table here.</span>
+        </button>
+      </div>
+      <div class="bottom-section">
+        <div>
+            <div class="graphs">
+                <%= line_chart @graph_data, xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+            </div>
+        </div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+</div>
 
 
-<!-- Modal -->
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered custom-modal">
     <div class="modal-content">
@@ -95,8 +120,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="graphs">
-  <%= line_chart @graph_data, xtitle: "Gameweek", ytitle: "Overall Rank", thousands: ","%>
 </div>
