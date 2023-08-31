@@ -55,6 +55,8 @@ general_info["elements"].each_with_index do |player, index|
   new.transfers_in = player["transfers_in_event"]
   new.penalty_order = player["penalties_order"].nil? ? 5 : player["penalties_order"]
   new.minutes = player["minutes"]
+  new.goals = player["goals_scored"]
+  new.assists = player["assists"]
   new.save
 end
 

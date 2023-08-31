@@ -7,17 +7,61 @@
   <div class="inline">
     <div>
       <h2>Stats</h2>
-      <ul>
-        <li><%=  %>Goals</li>
-        <li><%=  %>Assists</li>
-        <li>Averages <%= (@player.minutes.to_f / @current_gw).round(1) %> minutes per GW</li>
-        <li><%= @player.expected_goal_involvements %> goal involvements per 90: </li>
-        <li></li>
-      </ul>
+      <div class="stat-card">
+        <span class="counter" data-controller="counter"
+              data-counter-end-value="<%= @player.goals %>"
+              data-counter-duration-value="3000"
+              data-counter-target="display">
+              0</span>
+        <span>Goals</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-controller="counter"
+              data-counter-end-value="<%= @player.assists %>"
+              data-counter-duration-value="3000"
+              data-counter-target="display">
+              0</span>
+        <span>Assists</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-controller="counter"
+              data-counter-end-value="<%= (@player.minutes.to_f / @current_gw).round(1) %>"
+              data-counter-duration-value="3000"
+              data-counter-target="display">
+              0</span>
+        <span>Average Minutes</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-controller="counter"
+              data-counter-end-value="<%= @player.expected_goal_involvements %>"
+              data-counter-duration-value="3000"
+              data-counter-target="display">
+              0</span>
+        <span>Goal Involvements per 90</span>
+      </div>
     </div>
+
     <div>
       <h2>Form</h2>
+      <% @previous_three_data.each do |match| %>
+      <div class="form-card">
+        <div>
+          <%= image_tag HomeTeam.find(match[:opponent]).image_path, height: 40, width: 35 %>
+        </div>
+        <div>
+          <p><%= match[:points] %> points</p>
+          <p><%= match[:minutes] %> minutes</p>
+          <% unless match[:goals].zero? %>
+            <p><%= match[:goals] %> goals</p>
+          <% end %>
+          <% unless match[:assists].zero? %>
+            <p><%= match[:assists] %> assists</p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
     </div>
+
     <div>
       <h2>Attributes</h2>
     </div>
