@@ -16,6 +16,10 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :fantasy_id,
+                  label: "Fantasy ID",
+                  required: true,
+                  input_html: { autocomplete: "fantasy-id" } %>
     </div>
 
     <div class="form-actions" id="default-button">
@@ -23,5 +27,4 @@
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
 </div>
