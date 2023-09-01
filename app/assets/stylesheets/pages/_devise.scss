@@ -10,24 +10,26 @@
   color: white;
 }
 
-input[type="submit"], button {
-  background-color: #04F5FF;
-  width: 100%;
-  font-weight: bold;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #ffffff;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  margin-top: 10px;
-  margin-left: 0px;
-  margin-right: 0px;
-  &:hover {
+#default-button-devise {
+  input {
     background-color: #04F5FF;
-    box-shadow: 0px;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
     margin-left: 0px;
+    margin-right: 0px;
+    &:hover {
+      background-color: #00FF85;
+      box-shadow: 0px;
+      margin-left: 0px;
+   }
   }
 }
 
