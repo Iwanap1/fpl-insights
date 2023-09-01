@@ -81,9 +81,9 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
-            <%= @weekly_data[:points_on_bench].max %>
+            <%= @weekly_ranks.max %>
           </span>
-          <span>Most Points Left on Bench (GW: <%= @weekly_data[:points_on_bench].index(@weekly_data[:points_on_bench].max) + 1 %> )</span>
+          <span>Highest Overall Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.max) %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
@@ -103,11 +103,11 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_data[:number_of_chips] %>"
+                data-counter-end-value="<%= @weekly_data[:points_on_bench].max %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Chips Used</span>
+          <span>Most Points Left on Bench (GW: <%= @weekly_data[:points_on_bench].index(@weekly_data[:points_on_bench].max) + 1 %> )</span>
           </div>
         </div>
       </div>
