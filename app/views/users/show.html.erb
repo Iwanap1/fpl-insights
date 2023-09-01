@@ -29,6 +29,9 @@
       <div class="graph-card">
         <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'}%>
       </div>
+      <div class="graph-card">
+        <%= pie_chart @team_pie_data, title: "Number of Players per Team" ,library: {pieSliceText: 'value-and-percentage'}%>
+      </div>
     </div>
 </div>
 
