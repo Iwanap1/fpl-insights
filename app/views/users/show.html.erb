@@ -12,8 +12,8 @@
           <span class="button-text">You need to move some players on!</span>
       </button>
       <button class="sandw view-table">
-          View Table
-          <span class="button-text">Check the detailed table here.</span>
+          <%= link_to "View Table 📊", players_path, id:"view-table-link"%>
+          <%= link_to "Check the detailed table here", players_path, class:"button-text"%>
       </button>
     </div>
   <div class="graph-header">
@@ -53,7 +53,6 @@
   <div class="modal-dialog modal-dialog-centered custom-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -67,7 +66,6 @@
   <div class="modal-dialog modal-dialog-centered custom-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
