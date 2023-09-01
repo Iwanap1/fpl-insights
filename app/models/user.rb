@@ -5,3 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :fantasy_id, presence: true
 end
+  
