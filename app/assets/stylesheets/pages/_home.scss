@@ -19,7 +19,7 @@
 
 .top-text {
   height: 30vh;
-  padding: 80px;
+  padding: 40px;
 }
 
 .right-button {
@@ -31,16 +31,16 @@
   align-items: center;
   a {
     text-decoration: none;
-    color: #636363;
+    color: #9c9c9c;
     font-size: 35px;
     font-weight: 100;
     font-family: 'Raleway';
   }
   i {
-    color: #636363;
+    color: #9c9c9c;
     font-size: 35px;
     padding-left: 18px;
-    transform:scale(1,1.5);
+    // transform:scale(1,1.5);
   }
 }
 
@@ -62,14 +62,6 @@
   i {
     color: #636363;
     font-size: 35px;
-    transform:scale(1.5,1);
+    // transform:scale(1.5,1);
   }
 }
-
-// .lower {
-//   display:flex;
-// }
-
-// #haaland {
-//   transform:scale(0.4,0.4);
-// }
