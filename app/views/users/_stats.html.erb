@@ -3,7 +3,7 @@
     <div class="carousel-item active">
       <div class="stats">
         <div class="new-card">
-            General Stats
+          <strong>Current Stats</strong>
         </div>
         <div class="info-cards">
           <div class="card">
@@ -59,39 +59,39 @@
     <div class="carousel-item">
        <div class="stats">
         <div class="new-card">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <strong>Season Stats</strong>
         </div>
         <div class="info-cards">
           <div class="card">
           <i class="icon-gw"></i>
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @current_gw + 1 %>"
+                data-counter-end-value="<%= %>"
                 data-counter-duration-value="2000"
                 data-counter-target="display">
                 0</span>
-          <span>Game Week</span>
+          <span>Highest GW Score (GW: )</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @data[:team_rating] %>"
+                data-counter-end-value="<%=  %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Team Rating</span>
+          <span>Highest GW Rank (GW: )</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
-            £<%= @data[:bank] %>m
+            <%= 0 %>
           </span>
-          <span>Bank</span>
+          <span>Highest Points Left on Bench (GW: )</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
+                data-counter-end-value="<%=  %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Overall Ranking</span>
+          <span>Best Monthly Score (month)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"

@@ -101,8 +101,8 @@ class UsersController < ApplicationController
       heighest_percentile: get_percentiles(past_array)[1],
       avg_percentile: get_percentiles(past_array)[0],
       count: past_array.length,
-      avg_rank: (past_array.map{ |s| s["rank"] }.sum.to_f / past_array.count).round,
-      avg_score: (past_array.map{ |s| s["total_points"] }.sum.to_f / past_array.count).round
+      avg_rank: past_array.empty? ? 0 : (past_array.map{ |s| s["rank"] }.sum.to_f / past_array.count).round,
+      avg_score: past_array.empty? ? 0 : (past_array.map{ |s| s["total_points"] }.sum.to_f / past_array.count).round
     }
   end
 
