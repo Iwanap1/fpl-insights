@@ -22,5 +22,4 @@ export default class extends Controller {
       document.querySelector(".actions").style.display = "flex";
   }
   }
-
 }
