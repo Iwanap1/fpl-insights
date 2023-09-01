@@ -11,6 +11,17 @@
   z-index: 1000; /* Ensures the navbar stays above all other elements */
 }
 
+.custom-titles {
+  font-family: 'VT323', monospace;
+  font-size: 50px;
+  color: #ffffff;
+  // margin: 20px 0;
+  margin-left: 10px;
+  font-weight: bolder;
+  // add inner shadow to the text to make it seem like it is inset
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }

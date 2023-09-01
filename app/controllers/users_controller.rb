@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @user = User.find(params[:id])
+    @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @fpl_id = @user.fantasy_id
     @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
     @weekly_data = weekly_data
