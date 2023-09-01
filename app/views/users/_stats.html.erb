@@ -112,6 +112,7 @@
         </div>
       </div>
     </div>
+    <% unless @historical_data[:count].zero? %>
     <div class="carousel-item">
      <div class="stats">
       <div class="new-card">
@@ -168,6 +169,7 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
   <button class="carousel-control-prev suggestions" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
