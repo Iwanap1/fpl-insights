@@ -4,7 +4,11 @@
   margin-bottom: 0px;
   color: white;
   width: 100vw;
-  padding: 0px;
+  padding: 10px 0; /* Added padding for better visual spacing */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* A subtle shadow */
+  // position: sticky; /* Makes the navbar stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensures the navbar stays above all other elements */
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,31 +17,73 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 5vh;
+  transition: transform 0.2s; /* A smooth transition effect for hover */
 }
 
-h3 {
-  font-size: 40px;
-  font-weight: very-bold;
+.navbar-lewagon .navbar-brand img:hover {
+  transform: scale(1.1); /* Scales the image slightly when hovered */
+}
+
+.navbar-nav li {
+  transition: transform 0.5s;
+}
+
+.navbar-nav .avatar:hover {
+  transform: translateY(-5px);
+}
+
+h3, h4 {
+  font-weight: bold;
   text-align: center;
   color: white;
   font-family: Raleway;
   text-decoration: none;
+  margin: 0; /* Resets default margins */
+}
+
+
+h3 {
+  font-size: 40px;
 }
 
 h4 {
   font-size: 20px;
-  font-weight: very-bold;
-  text-align: center;
-  color: white;
-  font-family: Raleway;
-  text-decoration: none;
+  margin-left: 10px; /* Provides a little space between h3 and h4 */
 }
 
 a {
   color: white;
-  text-decoration: none;
+  transition: color 0.3s; /* A transition effect for hover */
+}
+
+a:hover {
+  color: #ccc; /* A subtle hover effect */
 }
 
 .nav-link {
   color: white;
+  padding: 10px 15px; /* Increased padding for better spacing */
+  transition: background 0.3s; /* A transition effect for hover */
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bolder;
+}
+
+.nav-link:hover {
+  background-color: #28002b;
+  color: rgb(228, 228, 228);
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: box-shadow 0.3s; /* A transition effect for hover */
+}
+
+.avatar:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* A shadow on hover */
 }
