@@ -87,3 +87,19 @@ a:hover {
 .avatar:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* A shadow on hover */
 }
+
+.show-menu {
+  display: block;
+}
+
+.navbar-menu-text {
+  color: black;
+  margin-left: 15px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.5);
+  ;
+}
