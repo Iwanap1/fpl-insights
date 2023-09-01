@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       team_rating: (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4,
       percentile: ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100,
       personal_api: JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read),
+      time_till_deadline: (Time.parse(@general_api["events"].find { |week| week["is_next"] }["deadline_time"]) - Time.now)
     }
   end
 
@@ -97,13 +98,18 @@ class UsersController < ApplicationController
       all_time_highest: [best_rank, best_season],
       season_points_array: all_points,
       best_score: [best_score, best_score_season],
-      avg_percentile: get_percentiles(past_array)
+      heighest_percentile: get_percentiles(past_array)[1],
+      avg_percentile: get_percentiles(past_array)[0],
+      count: past_array.length,
+      avg_rank: (past_array.map{ |s| s["rank"] }.sum.to_f / past_array.count).round,
+      avg_score: (past_array.map{ |s| s["total_points"] }.sum.to_f / past_array.count).round
     }
   end
 
   def get_percentiles(past_array)
     if past_array.empty?
       result = []
+      highest = 0
     else
       past_number_players = [
                               1_270_000, 1_700_000, 1_950_000, 2_100_000, 2_350_000, 2_510_000, 2_608_634, 3_218_998,
@@ -113,9 +119,9 @@ class UsersController < ApplicationController
       past_array.map { |s| s["rank"]}.reverse.each_with_index do |season, index|
         percentiles_sum += ((past_number_players[index] - season.to_f) / past_number_players[index])
       end
-
+      highest = past_array.map.with_index { |s, index| ((past_number_players[index] - s["rank"].to_f) / past_number_players[index]) }.max
       result = ((percentiles_sum / past_array.count) * 100).round(1)
     end
-    return result
+    return [result, highest]
   end
 end

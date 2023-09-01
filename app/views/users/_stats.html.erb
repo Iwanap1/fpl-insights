@@ -13,7 +13,21 @@
                 data-counter-duration-value="2000"
                 data-counter-target="display">
                 0</span>
-          <span>Game Week</span>
+          <span>Next Game Week</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @data[:time_till_deadline] / (60 * 60) %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Next Deadline (Hours)</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter">
+            £<%= @data[:bank] %>m
+          </span>
+          <span>Bank</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
@@ -22,12 +36,6 @@
                 data-counter-target="display">
                 0</span>
           <span>Team Rating</span>
-          </div>
-          <div class="card">
-          <span class="counter" data-controller="counter">
-            £<%= @data[:bank] %>m
-          </span>
-          <span>Bank</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
@@ -43,15 +51,7 @@
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Overall Percentile</span>
-          </div>
-          <div class="card">
-          <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
-                data-counter-duration-value="3000"
-                data-counter-target="display">
-                0</span>
-          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
+          <span>Percentile</span>
           </div>
         </div>
       </div>
@@ -137,33 +137,33 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
-            <%= @historical_data[:avg_percentile] %>%
+            <%= (@historical_data[:heighest_percentile] * 100).round(1) %>%
           </span>
+          <span>Record Percentile</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @historical_data[:avg_rank] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Average Rank</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @historical_data[:avg_score] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span>Average Score</span>
+          </div>
+          <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value=""
+                data-counter-duration-value="3000"
+                data-counter-target="display"><%= @historical_data[:avg_percentile] %>%
+                </span>
           <span>Average Percentile</span>
-          </div>
-          <div class="card">
-          <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.last %>"
-                data-counter-duration-value="3000"
-                data-counter-target="display">
-                0</span>
-          <span>Overall Ranking</span>
-          </div>
-          <div class="card">
-          <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @data[:percentile] %>"
-                data-counter-duration-value="3000"
-                data-counter-target="display">
-                0</span>
-          <span>Overall Percentile</span>
-          </div>
-          <div class="card">
-          <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
-                data-counter-duration-value="3000"
-                data-counter-target="display">
-                0</span>
-          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
           </div>
         </div>
       </div>
