@@ -1,5 +1,6 @@
 #margin-bottom {
   margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .calendar-row {
@@ -20,10 +21,11 @@
 }
 
 .player-position {
+  font-size: 15px;
   padding: 10px;
-  height: 15px;
   border-radius: 10px;
-  background-color: lightgrey;
+  background-color: rgba(4, 245, 255, 0.5);
+  color: #38003C;
 }
 
 .form-card {
