@@ -96,7 +96,26 @@ class UsersController < ApplicationController
     return {
       all_time_highest: [best_rank, best_season],
       season_points_array: all_points,
-      best_score: [best_score, best_score_season]
+      best_score: [best_score, best_score_season],
+      avg_percentile: get_percentiles(past_array)
     }
+  end
+
+  def get_percentiles(past_array)
+    if past_array.empty?
+      result = []
+    else
+      past_number_players = [
+                              1_270_000, 1_700_000, 1_950_000, 2_100_000, 2_350_000, 2_510_000, 2_608_634, 3_218_998,
+                              3_502_998, 3_734_001, 4_503_345, 5_190_135, 6_324_237, 7_628_968, 8_153_044, 9_167_407, 11_400_000
+                            ].reverse
+      percentiles_sum = 0
+      past_array.map { |s| s["rank"]}.reverse.each_with_index do |season, index|
+        percentiles_sum += ((past_number_players[index] - season.to_f) / past_number_players[index])
+      end
+
+      result = ((percentiles_sum / past_array.count) * 100).round(1)
+    end
+    return result
   end
 end
