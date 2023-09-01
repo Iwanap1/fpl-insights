@@ -1,8 +1,8 @@
 /* Base Styles */
 body {
   // font-family: 'Roboto', sans-serif;
-  background: #38003C;
   // font-family: 'Arial', sans-serif;
+  background: #38003C;
   color: #333;
   padding: 30px;
   margin: 0;
@@ -32,24 +32,6 @@ margin-top: 20px;
   justify-content: space-between;
   align-items: center;
   width: 95%;
-}
-
-.bottom-section {
-  display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
-  width: 95%;
-  height: 100%;
-  margin: 0 auto;
-}
-.graph-header{
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  background-color: crimson;
-  height: 10vh;
-  color: white;
-  width: 100%;
-  display: flex;
 }
 
 .info-cards {
@@ -136,20 +118,20 @@ margin-top: 20px;
   }
 
   .weakness:hover {
-  background-color: #ab013d;
-  color: white;
-  box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
-}
+    background-color: #ab013d;
+    color: white;
+    box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
+  }
 
-.button-text {
-  font-size: 1rem;
-  color: white;
-  justify-content: center;
-}
+  .button-text {
+    font-size: 1rem;
+    color: white;
+    justify-content: center;
+  }
 
-.sandw {
-  display: flex;
-  flex-direction: column;
+  .sandw {
+    display: flex;
+    flex-direction: column;
   justify-content: center;
   transform: none;
 }
@@ -211,16 +193,40 @@ margin-top: 20px;
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
-.graph-card {
-  // background-color: white;
+.bottom-section .graphs {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  width: 95%;
+  height: 100%;
+}
+
+.graphs {
+  margin-top: -30%;
   padding: 10px;
+}
+
+.graph-header{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  // background-color: crimson;
+  height: 100vh;
+  color: white;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+
+.graph-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  margin: 10px;
   border-radius: 10px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-  margin: 0 5px;
   transition: transform 0.3s;
-
-  /* Graph re-coloring - you can adjust the following values */
-  // background-color: #FFFFFF;
   color: #ffffff;
 
   &:hover {
@@ -228,17 +234,24 @@ margin-top: 20px;
   }
 }
 
-.bottom-section {
-  gap: 1%;
-  justify-content: center;
-  align-items: center;
-  margin-right: 4%;
+.custom-title {
+  font-size: 65px;
+  color: #ffffff;
+  margin: 20px 0;
+  font-weight: bolder;
+  // add inner shadow to the text to make it seem like it is inset
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.bottom-section {
-  background: linear-gradient(45deg, #38003C, #5C005A);
-  padding: 1rem;
-}
+
+
+
+
+
+
+
+
+
 
 .custom-modal {
   max-width: 95%;
@@ -270,12 +283,6 @@ margin-top: 20px;
 //   margin-bottom: 10px;
 // }
 
-// .custom-title {
-//   font-size: 32px;
-//   color: #333;
-//   margin: 20px 0;
-//   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-// }
 
 // .signup-button {
 //   padding: 10px 20px;

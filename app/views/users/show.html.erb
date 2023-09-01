@@ -17,19 +17,21 @@
       </button>
     </div>
   <div class="graph-header">
-    <h1>Graphs</h1>
+    <h1 class="custom-title">YOUR GRAPHS</h1>
   </div>
-    <div class="bottom-section">
+  <div class="bottom-section">
+    <div class="graphs">
       <div class="graph-card">
         <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
       </div>
       <div class="graph-card">
-        <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: ",", id: "users-chart", width: "300px", height: "300px", colors: ["#ffffff", "#666"]%>
+        <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
       </div>
       <div class="graph-card">
-        <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'}%>
+        <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'} %>
       </div>
     </div>
+  </div>
 </div>
 
 
