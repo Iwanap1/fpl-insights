@@ -10,15 +10,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @fpl_id = @user.fantasy_id
     @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
-    @weekly_ranks = weekly_ranks_array
+    @weekly_data = weekly_data
+    @weekly_ranks = weekly_data[:weekly_ranks]
     @users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{@current_gw}/picks/").read)
     @user_players = player_array
     @data = collect_current_gw_data
+    @transfer_history_data = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}/transfers/").read)
     @historical_data = historical_data
     @graph_data = graph_data
     @bar_chart_data = points_bar_chart
     @price_dist_pie_data = price_dist_pie
     @team_pie_data = team_dist_pie
+    @season_stats = get_season_stats
   end
 
   # Returns hash available via @data on user/show
@@ -33,13 +36,25 @@ class UsersController < ApplicationController
     }
   end
 
-  def weekly_ranks_array
-    weekly_ranks = []
+  def weekly_data
+    weekly_overall_ranks = []
+    weekly_points = []
+    points_on_bench = []
+    chips = 0
     (1..@current_gw).to_a.each do |gw|
       url = "https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{gw}/picks/"
-      weekly_ranks << JSON.parse(URI.open(url).read)["entry_history"]["overall_rank"]
+      data = JSON.parse(URI.open(url).read)
+      weekly_overall_ranks << data["entry_history"]["overall_rank"]
+      weekly_points << data["entry_history"]["points"]
+      points_on_bench << data["entry_history"]["points_on_bench"]
+      chips += 1 unless data["active_chip"].nil?
     end
-    return weekly_ranks
+    return {
+              weekly_ranks: weekly_overall_ranks,
+              heighest_points: [weekly_points.max, (weekly_points.index(weekly_points.max) + 1)],
+              points_on_bench: points_on_bench,
+              number_of_chips: chips,
+            }
   end
 
   def player_array
@@ -114,6 +129,10 @@ class UsersController < ApplicationController
       avg_rank: past_array.empty? ? 0 : (past_array.map{ |s| s["rank"] }.sum.to_f / past_array.count).round,
       avg_score: past_array.empty? ? 0 : (past_array.map{ |s| s["total_points"] }.sum.to_f / past_array.count).round
     }
+  end
+
+  def get_season_stats
+
   end
 
   def get_percentiles(past_array)

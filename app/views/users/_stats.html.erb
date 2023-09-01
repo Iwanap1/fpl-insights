@@ -3,7 +3,7 @@
     <div class="carousel-item active">
       <div class="stats">
         <div class="new-card">
-          <strong>Current Stats</strong>
+          <strong>Current Data</strong>
         </div>
         <div class="info-cards">
           <div class="card">
@@ -59,31 +59,31 @@
     <div class="carousel-item">
        <div class="stats">
         <div class="new-card">
-            <strong>Season Stats</strong>
+            <strong>Season Data</strong>
         </div>
         <div class="info-cards">
           <div class="card">
           <i class="icon-gw"></i>
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= %>"
+                data-counter-end-value="<%= @weekly_data[:heighest_points][0] %>"
                 data-counter-duration-value="2000"
                 data-counter-target="display">
                 0</span>
-          <span>Highest GW Score (GW: )</span>
+          <span>Highest GW Score (GW: <%= @weekly_data[:heighest_points][1]  %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%=  %>"
+                data-counter-end-value="<%= @weekly_ranks.max %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Highest GW Rank (GW: )</span>
+          <span>Highest GW Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.max) %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
-            <%= 0 %>
+            <%= @weekly_data[:points_on_bench].max %>
           </span>
-          <span>Highest Points Left on Bench (GW: )</span>
+          <span>Most Points Left on Bench (GW: <%= @weekly_data[:points_on_bench].index(@weekly_data[:points_on_bench].max) + 1 %> )</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
@@ -95,19 +95,19 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @data[:percentile] %>"
+                data-counter-end-value="<%= @transfer_history_data.count %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Overall Percentile</span>
+          <span>Total Transfers</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @historical_data[:all_time_highest][0] %>"
+                data-counter-end-value="<%= @weekly_data[:number_of_chips] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Record Rank <%= "(#{@historical_data[:all_time_highest][1]})" %></span>
+          <span>Chips Used</span>
           </div>
         </div>
       </div>
