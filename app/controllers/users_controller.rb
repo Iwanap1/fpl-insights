@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @graph_data = graph_data
     @bar_chart_data = points_bar_chart
     @price_dist_pie_data = price_dist_pie
+    @team_pie_data = team_dist_pie
   end
 
   # Returns hash available via @data on user/show
@@ -73,6 +74,15 @@ class UsersController < ApplicationController
     defs = @user_players.select { |p| p.position == "DEF" }.sum{ |p| p.price }.round(1)
     gkps = @user_players.select { |p| p.position == "GKP" }.sum{ |p| p.price }.round(1)
     return [["Forwards", fors], ["Midfielders", mids], ["Defenders", defs], ["Goalkeepers", gkps]]
+  end
+
+  def team_dist_pie
+    grouped = @user_players.group_by { |player| player.home_team }
+    pie_data = []
+    grouped.each do |key, value|
+      pie_data << [key.name, value.count]
+    end
+    return pie_data
   end
 
   private
