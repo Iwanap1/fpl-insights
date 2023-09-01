@@ -1,18 +1,20 @@
-
-<div class="home-container" style="background-image: linear-gradient(rgba(56,0,60, 0.7), rgba(255, 255, 255, 0.7)), url(<%= asset_path 'players4.png' %>);">
-  <div class="top-text">
-    <h1>Fantasy Premier League Insights</h1>
-    <h2>Your ultimate guide to FPL success</h2>
+<div class="home-container">
+  <div class="overlay"></div>
+  <div class="content-wrapper">
+    <div class="top-text" data-controller="typing">
+      <h1 data-typing-target="display"></h1><span class="blinking-cursor">|</span>
+      <%# <h2>Your Ultimate Guide to FPL Success</h2> %>
+    </div>
+    <div class="actions">
+      <div class="action-button view-players">
+       <%= link_to "Top Picks", players_path, class: "action-link" %>
+       <i class="eye-icon"></i>
+      </div>
+    </div>
   </div>
-  <div class="lower">
-    <div class="right-button">
-      <%# <a href="www.somelink.com">Top Picks</a> %>
-      <%= link_to "Top Picks", players_path %>
-      <a href="www.somelink.com"> <i class="fa-solid fa-chevron-right"></i></a>
-    </div>
-    <div class="bottom-button">
-      <%= link_to "Login", new_user_session_path %>
-      <i class="fa-solid fa-chevron-down"></i>
-    </div>
+  <div class="action-button login">
+       <%= link_to  new_user_session_path, class: "action-link" do %>
+          <i class="fa-solid fa-chevron-down icon"></i>
+        <% end %>
   </div>
 </div>

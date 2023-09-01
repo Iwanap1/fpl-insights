@@ -1,67 +1,126 @@
-// Specific CSS for your home-page
-
-.home-container{
+.home-container {
+  position: relative;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  h1 {
-    color: #ffffff;
-    font-size: 62px;
-    font-weight: 800;
-    font-family: 'League Spartan';
-  }
-  h2 {
-    color: #c0c0c0;
-    font-size: 36px;
-    font-weight: 100;
-    font-family: 'Raleway';
-  }
+  background-color: #38003C;
 }
 
-.top-text {
-  height: 30vh;
-  padding: 40px;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.right-button {
-  padding: 80px;
-  height: 30vh;
-  padding-right: 35px;
-  justify-content: flex-end;
-  display: flex;
-  align-items: center;
-  a {
-    text-decoration: none;
-    color: #9c9c9c;
-    font-size: 35px;
-    font-weight: 100;
-    font-family: 'Raleway';
-  }
-  i {
-    color: #9c9c9c;
-    font-size: 35px;
-    padding-left: 18px;
-    // transform:scale(1,1.5);
-  }
-}
-
-.bottom-button {
-  justify-content: end;
-  padding-bottom: 20px;
-  height: 40vh;
-  text-align: center;
+.content-wrapper {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  align-items: center;  /* Align items to the start (left) */
+  padding-left: 20px;
+}
 
-  a {
-    text-decoration: none;
-    color: #636363;
-    font-size: 35px;
-    font-weight: 300;
-    font-family: 'Raleway';
-  }
-  i {
-    color: #636363;
-    font-size: 35px;
-    // transform:scale(1.5,1);
-  }
+.top-text h1, .top-text h2 {
+  margin-top: 20px;
+  text-align: center;
+  align-self: flex-start;
+  width: 80vw;   /* Align text to the left side */
+}
+
+
+.top-text h1 {
+  font-family: 'VT323', monospace;
+  font-size: 62px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.blinking-cursor {
+  display: flex; /* Initially hidden */
+  animation: blink 1s infinite;
+  font-size: 62px;
+  color: #ffffff;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.top-text h2 {
+  font-size: 24px;
+  font-weight: 300;
+  font-family: 'Raleway', sans-serif;
+  color: $light-gray;
+  margin-top: 20px;
+}
+
+.actions {
+  display: none;   /* Hide the buttons container */
+  flex-direction: column; /* Stack the buttons vertically */
+  align-items: flex-start; /* Align buttons to the left */
+  gap: 15px;  /* Provide a gap between buttons */
+  opacity: 0;  /* Initially transparent */
+  transition: opacity 0.5s ease-in-out;
+  margin-top: 20px; /* Margin from the text */
+}
+
+
+.action-button {
+  background: $purple;
+  padding: 15px 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #28002b;
+  color: rgb(228, 228, 228);
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.action-link {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  color: $light-gray;
+  text-decoration: none;
+}
+
+.icon {
+  color: $light-gray;
+}
+
+.login {
+  position: fixed;
+  bottom: 20px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.view-players {
+  position: fixed;
+  bottom: 20px;  /* Adjust this value based on the size of your button */
+  right: 10px;
+}
+
+/* Bobbing arrow animation */
+@keyframes bobbing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.login .icon {
+  animation: bobbing 1s infinite;
 }
