@@ -35,6 +35,16 @@
       </div>
     </div>
   </div>
+  <div class="league-graph-form">
+    <form action="/league_graph">
+      <select name="id" id="">
+        <% @data[:personal_api]["leagues"]["classic"].each do |league| %>
+        <option value="<%= league["id"] %>"><%= league["name"] %></option>
+        <% end %>
+      </select>
+      <input type="submit" value="See GW Standings">
+    </form>
+  </div>
 </div>
 
 

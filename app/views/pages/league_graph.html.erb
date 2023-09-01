@@ -1,0 +1,7 @@
+<div class="container">
+  <%= line_chart @graph_data.map.with_index { |player_points, index|
+    {name: @league_manager_names[index], data: player_points}
+  }, title: "Total Points" %>
+
+
+</div>
