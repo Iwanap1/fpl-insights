@@ -35,8 +35,8 @@ class Player < ApplicationRecord
       sum = (
         (form_weight * (form > 10 ? 1 : (form / 10))) +
         (fixture_weight * calc_fixture) +
-        (goal_conceded_weight * (1 / (self.expected_goals_conceded + 0.01))) +
-        (goal_involvement_weight * (self.expected_goal_involvements + 0.01)) +
+        (goal_conceded_weight * goal_concede_calc) +
+        (goal_involvement_weight * goal_involvement_calc) +
         (ict_weight * (self.ict / 38.9)) +
         (penalty_order_weight * (1 / self.penalty_order))
       )
@@ -63,5 +63,25 @@ class Player < ApplicationRecord
     when "DEF" then return "defender"
     when "GKP" then return "goalkeeper"
     end
+  end
+
+  def goal_concede_calc
+    sorted = Player.all.reject { |p| p.expected_goals_conceded == 0 }.sort_by { |player| player.expected_goals_conceded }
+    if sorted.include?(self) && self.minutes > 90
+      result = (sorted.count - sorted.index(self).to_f) / sorted.count
+    else
+      result = 0
+    end
+    return result
+  end
+
+  def goal_involvement_calc
+    sorted = Player.all.reject { |p| p.expected_goal_involvements.zero? }.sort_by { |player| player.expected_goal_involvements }.reverse
+    if sorted.include?(self) && self.minutes > 90
+      result = (sorted.count - sorted.index(self).to_f) / sorted.count
+    else
+      result = 0
+    end
+    return result
   end
 end
