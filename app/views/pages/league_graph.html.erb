@@ -1,7 +1,16 @@
 <div class="container">
   <%= line_chart @graph_data.map.with_index { |player_points, index|
     {name: @league_manager_names[index], data: player_points}
-  }, title: "Total Points" %>
+  }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points" %>
 
+  <%= line_chart @ranks.map { |user_data|
+    {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank"
+  # library: {
+  # scales: {
+  #   yAxis: {
+  #       reverse: true,
+  #   }
+  # }}
+  %>
 
 </div>
