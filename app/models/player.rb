@@ -84,4 +84,71 @@ class Player < ApplicationRecord
     end
     return result
   end
+
+  def fixtures
+    url = "https://fantasy.premierleague.com/api/element-summary/#{self.api_id}/"
+    fixtures = JSON.parse(URI.open(url).read)["fixtures"]
+    difficulties = []
+    fixtures.first(5).each do |fixture|
+      difficulties << fixture["difficulty"].to_i
+    end
+    return difficulties.sum
+  end
+
+  def self.update_all
+    general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    elements = JSON.parse(URI.open(general_url).read)["elements"]
+    elements.each do |element|
+      if Player.all.find { |player| player.api_id == element["id"] }
+        player = Player.all.find { |p| p.api_id == element["id"] }
+        player.fixture_difficulty = player.fixtures
+        player.form = element["form"].to_f
+        player.price = element["now_cost"].to_f / 10
+        player.ict = element["ict_index"].to_f
+        player.selected = element["selected_by_percent"]
+        player.updated_at = Time.now
+        player.chance = element["chance_of_playing_next_round"].to_f / 100
+        player.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
+        player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
+        player.transfers_in = element["transfers_in_event"]
+        player.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
+        player.minutes = element["minutes"]
+        player.goals = element["goals_scored"]
+        player.assists = element["assists"]
+        player.save
+      else
+        new = Player.new
+        new.first_name = element["first_name"]
+        new.last_name = element["second_name"]
+        if element["element_type"] == 1
+          new.position = "GKP"
+        elsif element["element_type"] == 2
+          new.position = "DEF"
+        elsif element["element_type"] == 3
+          new.position = "MID"
+        else
+          new.position = "FOR"
+        end
+        new.away_team_id = element["team"]
+        new.home_team_id = element["team"]
+        new.api_id = element["id"]
+        new.form = element["form"]
+        new.price = element["now_cost"].to_f / 10
+        new.web_name = element["web_name"]
+        new.ict = element["ict_index"].to_f
+        new.selected = element["selected_by_percent"]
+        new.chance = element["chance_of_playing_next_round"].to_f / 100
+        new.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
+        new.expected_goals_conceded = element["expected_goal_conceded_per_90"].to_f
+        new.transfers_in = element["transfers_in_event"]
+        new.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
+        new.minutes = element["minutes"]
+        new.goals = element["goals_scored"]
+        new.assists = element["assists"]
+        new.save
+        new.fixture_difficulty = new.fixtures
+        new.save
+      end
+    end
+  end
 end
