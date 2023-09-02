@@ -26,6 +26,7 @@ class PagesController < ApplicationController
       @all_teams << get_user_players(id)
     end
     @ranks = get_ranks(all_user_data)
+    @player_selections = players_count.sort_by {|player| player[1]}.reverse
   end
 
   def get_points_data(id)
@@ -74,5 +75,10 @@ class PagesController < ApplicationController
       players << Player.all.find { |p| p.api_id == element["element"] }
     end
     return players
+  end
+
+  def players_count
+    groups = @all_teams.flatten.group_by(&:itself)
+    groups.map { |value, group| [value, group.count] }
   end
 end
