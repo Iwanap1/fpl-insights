@@ -29,7 +29,7 @@
   <% else %>
     all players
   <% end %>
-  <%= @params[1] == "all" ? "" : "under £#{@params[1]}m"%>
+  <%= @params[1] == "all" || @params[1].nil? ? "" : "under £#{@params[1]}m"%>
   <table>
   <table>
     <tr>
