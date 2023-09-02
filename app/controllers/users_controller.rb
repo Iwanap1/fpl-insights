@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     @bar_chart_data = points_bar_chart
     @price_dist_pie_data = price_dist_pie
     @team_pie_data = team_dist_pie
-    @season_stats = get_season_stats
   end
 
   # Returns hash available via @data on user/show
@@ -129,10 +128,6 @@ class UsersController < ApplicationController
       avg_rank: past_array.empty? ? 0 : (past_array.map{ |s| s["rank"] }.sum.to_f / past_array.count).round,
       avg_score: past_array.empty? ? 0 : (past_array.map{ |s| s["total_points"] }.sum.to_f / past_array.count).round
     }
-  end
-
-  def get_season_stats
-
   end
 
   def get_percentiles(past_array)

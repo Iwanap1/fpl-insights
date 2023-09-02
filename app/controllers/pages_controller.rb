@@ -3,6 +3,8 @@ require 'json'
 
 class PagesController < ApplicationController
   def home
+    @players = Player.all
+    Player.update_all if (Time.now - @players[-1][:updated_at].to_time) / (60 * 60) > 10
   end
 
 
@@ -14,12 +16,14 @@ class PagesController < ApplicationController
     @league_manager_ids = league_api["standings"]["results"].map{ |user| user["entry"] }
     @league_manager_names = league_api["standings"]["results"].map{ |user| user["player_name"] }
     @graph_data = []
+    @all_teams = []
     all_user_data = []
     @league_manager_ids.each_with_index do |id, index|
       @graph_data << get_points_data(id)
       user_data = get_user_data(id)
       user_data[:name] = @league_manager_names[index]
       all_user_data << user_data
+      @all_teams << get_user_players(id)
     end
     @ranks = get_ranks(all_user_data)
   end
@@ -60,5 +64,15 @@ class PagesController < ApplicationController
       all_rank_data << [user[:name], user_array]
     end
     return all_rank_data
+  end
+
+  def get_user_players(id)
+    users_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{id}/event/#{@current_gw}/picks/").read)
+    latest_team = users_api["picks"]
+    players = []
+    latest_team.each do |element|
+      players << Player.all.find { |p| p.api_id == element["element"] }
+    end
+    return players
   end
 end
