@@ -50,11 +50,11 @@ class UsersController < ApplicationController
       chips += 1 unless data["active_chip"].nil?
     end
     return {
-              weekly_ranks: weekly_overall_ranks,
-              heighest_points: [weekly_points.max, (weekly_points.index(weekly_points.max) + 1)],
-              points_on_bench: points_on_bench,
-              number_of_chips: chips,
-            }
+            weekly_ranks: weekly_overall_ranks,
+            heighest_points: [weekly_points.max, (weekly_points.index(weekly_points.max) + 1)],
+            points_on_bench: points_on_bench,
+            number_of_chips: chips,
+           }
   end
 
   def player_array

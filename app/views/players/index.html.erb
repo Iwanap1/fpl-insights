@@ -17,6 +17,20 @@
 </div>
 
 <div class="container">
+  Showing
+  <% if @params[0] == "DEF" %>
+    defenders
+  <% elsif @params[0] == "GKP" %>
+    goalkeepers
+  <% elsif @params[0] == "MID" %>
+    midfielders
+  <% elsif @params[0] == "FOR" %>
+    forwards
+  <% else %>
+    all players
+  <% end %>
+  <%= @params[1] == "all" ? "" : "under £#{@params[1]}m"%>
+  <table>
   <table>
     <tr>
   <th data-tooltip="Player's overall ranking in the league">Rank</th>

@@ -73,17 +73,17 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @weekly_ranks.max %>"
+                data-counter-end-value="<%= %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Highest GW Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.max) %>)</span>
+          <span>Best GW Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.min) + 1 %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
-            <%= @weekly_ranks.max %>
+            <%= @weekly_ranks.min %>
           </span>
-          <span>Highest Overall Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.max) %>)</span>
+          <span>Best Overall Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.min) + 1 %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
