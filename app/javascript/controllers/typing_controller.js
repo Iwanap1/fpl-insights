@@ -20,6 +20,12 @@ export default class extends Controller {
       document.querySelector(".blinking-cursor").style.display = "inline-block"; // Display cursor after typing
       document.querySelector(".actions").style.opacity = "1";
       document.querySelector(".actions").style.display = "flex";
+
+      let arrow = document.querySelector(".arrow1");
+      setTimeout(() => {
+          arrow.style.opacity = "1";
+          arrow.style.visibility = "visible";  // Make it visible
+      }, 500);
   }
   }
 }
