@@ -12,6 +12,7 @@ class PlayersController < ApplicationController
     else
       @ranked = @players.sort_by(&:general_score).reverse
     end
+    @params = [params[:position], params[:price]]
   end
 
   def show
