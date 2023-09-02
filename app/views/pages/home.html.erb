@@ -2,19 +2,31 @@
   <div class="overlay"></div>
   <div class="content-wrapper">
     <div class="top-text" data-controller="typing">
-      <h1 data-typing-target="display"></h1><span class="blinking-cursor">|</span>
-      <%# <h2>Your Ultimate Guide to FPL Success</h2> %>
+      <h1 data-typing-target="display"></h1><span class="blinking-cursor"></span>
     </div>
+    <%= image_tag 'Untitled design (5).png', alt: 'arrow', class: 'arrow1' %>
     <div class="actions">
       <div class="action-button view-players">
-       <%= link_to "Top Picks", players_path, class: "action-link" %>
-       <i class="eye-icon"></i>
+        <%= link_to players_path, class: "action-link" do %>
+          <i class="fa fa-eye eye-icon"></i>
+          <span class="players-text">View Best Players</span>
+         <% end %>
       </div>
     </div>
   </div>
+
   <div class="action-button login">
-       <%= link_to  new_user_session_path, class: "action-link" do %>
-          <i class="fa-solid fa-chevron-down icon"></i>
-        <% end %>
+   <%= link_to new_user_session_path, class: "action-link" do %>
+      <i class="fa-solid fa-chevron-left icon"></i>
+      <span class="login-text">Log In</span>
+   <% end %>
   </div>
+
+  <div class="info-section">
+    <h2>About Our App</h2>
+    <p>Here's some information about what our app does...</p>
+    <p>More details about our features...</p>
+    <!-- Add more content as you need -->
+  </div>
+
 </div>

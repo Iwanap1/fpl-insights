@@ -1,9 +1,37 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .home-container {
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   background-color: #38003C;
+}
+
+.home-container {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: #38003C;
+  /* Animated Gradient Fade */
+  background-image: linear-gradient(to bottom, transparent, #38003C 70%);
+}
+
+.arrow1{
+  position: absolute;
+  bottom: 40px;
+  right: 10%;
+  rotate: 20deg;
+  transform: scaleX(-1);
+  width: auto;
+  height: 200px;
+  margin-bottom: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
 }
 
 .overlay {
@@ -104,23 +132,101 @@
 
 .login {
   position: fixed;
-  bottom: 20px;
+  top: 20px;
   left: 10px;
   z-index: 1000;
-}
-
-.view-players {
-  position: fixed;
-  bottom: 20px;  /* Adjust this value based on the size of your button */
-  right: 10px;
-}
-
-/* Bobbing arrow animation */
-@keyframes bobbing {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  transition: width 0.3s ease;
 }
 
 .login .icon {
-  animation: bobbing 1s infinite;
+  margin-left: -10px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.login-text {
+  font-size: 20px;  /* Making the text smaller */
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  margin-left: 5px;  /* Spacing between the icon and text */
+}
+
+.login:hover {
+  width: auto;  /* Let it auto adjust based on content */
+  padding-right: 10px;  /* Padding on hover for better spacing */
+}
+
+.login:hover .login-text {
+  opacity: 1;  /* Display text on hover */
+}
+
+
+
+.view-players {
+  position: fixed;
+  top: 20px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.eye-icon {
+  transition: transform 0.3s ease;
+}
+
+.players-text {
+  font-size: 20px;  /* Making the text smaller */
+  margin-left: -5px;
+  display: none;
+  white-space: nowrap;
+}
+
+.view-players:hover {
+  width: 200px;  /* Adjust based on your design */
+  background-color: #28002b;  /* Darken background on hover */
+}
+
+.view-players:hover .players-text {
+  display: inline;
+}
+
+.view-players:hover .eye-icon.fa-eye-slash {
+  display: none;
+}
+
+.view-players:hover .eye-icon.fa-eye {
+  display: inline;
+}
+
+
+.info-section {
+  position: relative;
+  height: 100vh;  /* Adjust height as required */
+  color: #ffffff;  /* Text color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+}
+
+.info-section h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.info-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
