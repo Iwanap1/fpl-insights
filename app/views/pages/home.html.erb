@@ -1,4 +1,4 @@
-<div class="home-container">
+<div class="home-container" data-controller="scroll-effect">
   <div class="overlay"></div>
   <div class="content-wrapper">
     <div class="top-text" data-controller="typing">
@@ -22,11 +22,35 @@
    <% end %>
   </div>
 
-  <div class="info-section">
-    <h2>About Our App</h2>
-    <p>Here's some information about what our app does...</p>
-    <p>More details about our features...</p>
-    <!-- Add more content as you need -->
+  <div class="scroll1">
+    <div class="middle-section">
+      <%= image_tag 'homepage1.png', alt: 'homepage1', class: 'homepage1' %>
+      <h1>
+        With my extensive data sets, you're empowered
+        with insights to make data-driven decisions every game week.
+      </h1>
+    </div>
+    <%= image_tag 'Untitled design (3).png', alt: 'arrow', class: 'arrow2' %>
   </div>
 
+  <div class="scroll2">
+    <div class="middle-section">
+      <h1>
+        My custom-built model predicts which players are
+        poised to bring you the most points in upcoming matches!
+      </h1>
+      <%= image_tag 'homepage2.png', alt: 'homepage1', class: 'homepage2' %>
+    </div>
+    <%= image_tag 'Untitled design (2).png', alt: 'arrow', class: 'arrow3' %>
+  </div>
+
+  <div class="scroll3">
+    <div class="middle-section">
+      <%= image_tag 'homepage3.png', alt: 'homepage1', class: 'homepage3' %>
+      <h1>
+        I'll spotlight your team's MVPs and identify areas
+        for improvement. Every decision shapes your FPL journey.
+      </h1>
+    </div>
+  </div>
 </div>
