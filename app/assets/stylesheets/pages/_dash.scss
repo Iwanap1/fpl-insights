@@ -78,7 +78,8 @@ margin-top: 20px;
       span:last-child {
         font-family: 'VT323', monospace;
         margin-top: 10px;
-        font-size: 2rem;
+        // make the font size max for box size
+        font-size: 1.5rem;
         color: #888;
         text-align: center;
       }

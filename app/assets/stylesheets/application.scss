@@ -13,3 +13,9 @@
 @import "pages/dash";
 @import "pages/caro";
 
+body {
+  margin-top: -10px;
+  margin-right: -20px;
+  padding: 0;
+  box-sizing: border-box;
+}
