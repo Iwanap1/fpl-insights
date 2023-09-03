@@ -1,6 +1,6 @@
 .fixture-container {
   // background-image: linear-gradient(#00FF85, #FFFFFF);
-  background-color: #00FF85;
+  background-color: #B58DB6;
   margin: 150px;
   width: 100%;
   max-width: 1200px;
@@ -8,7 +8,7 @@
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border-radius: 8px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .fixture-titles {
@@ -16,19 +16,21 @@
   align-items: center;
 
   h1 {
-    padding-left: 20px;
+    padding-left: 500px;
     font-size: 32px;
     // color: #333;
-    color: $purple;
-    margin: 20px 0;
+    color: white;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   }
 
   h2 {
     font-size: 20px;
     // color: #333;
-    color: $purple;
-    margin: 20px 0;
+    color: white;
+    // margin: 0 auto;
+    margin-left: -520px;
+    margin-top: 40px;
+    margin-bottom: -20px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     padding-top: 5px;
     padding-left: 325px;
@@ -37,6 +39,7 @@
 
 .accordion {
   margin: 20px;
+  border-radius: 10px;
 }
 
 .team-name {
@@ -83,5 +86,6 @@ button:hover {
   padding-top: 5px;
   &:hover {
     background-color: rgba(232, 225, 225, 0.8);
+    color: black;
   }
 }
