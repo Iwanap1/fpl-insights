@@ -1,13 +1,23 @@
+
 html {
   scroll-behavior: smooth;
 }
 
-.home-container {
-  position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  background-color: #38003C;
+
+.scroll1{
+  opacity: 0;
+  // transition slowly, fade in
+  transition: opacity 1s ease-in-out;
+}
+.scroll2{
+  opacity: 0;
+  // transition slowly, fade in
+  transition: opacity 1s ease-in-out;
+}
+.scroll3{
+  opacity: 0;
+  // transition slowly, fade in
+  transition: opacity 1s ease-in-out;
 }
 
 .home-container {
@@ -16,14 +26,12 @@ html {
   background-repeat: no-repeat;
   height: 100vh;
   background-color: #38003C;
-  /* Animated Gradient Fade */
-  background-image: linear-gradient(to bottom, transparent, #38003C 70%);
 }
 
 .arrow1{
   position: absolute;
   bottom: 40px;
-  right: 10%;
+  right: 20%;
   rotate: 20deg;
   transform: scaleX(-1);
   width: auto;
@@ -55,7 +63,6 @@ html {
   padding-left: 20px;
 }
 
-
 .top-text h1 {
   margin-top: 20px;
   text-align: center;
@@ -68,21 +75,6 @@ html {
   margin: 0;
 }
 
-.blinking-cursor {
-  display: flex; /* Initially hidden */
-  animation: blink 1s infinite;
-  font-size: 62px;
-  color: #ffffff;
-}
-
-@keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-
-
 .actions {
   display: none;   /* Hide the buttons container */
   flex-direction: column; /* Stack the buttons vertically */
@@ -93,9 +85,7 @@ html {
   margin-top: 20px; /* Margin from the text */
 }
 
-
 .action-button {
-  background: $purple;
   padding: 15px 30px;
   border-radius: 5px;
   display: flex;
@@ -105,9 +95,7 @@ html {
 }
 
 .action-button:hover {
-  background-color: #28002b;
   color: rgb(228, 228, 228);
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .action-link {
@@ -124,7 +112,7 @@ html {
 
 .login {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   left: 10px;
   z-index: 1000;
   display: flex;
@@ -147,21 +135,25 @@ html {
   transition: opacity 0.3s ease;
   margin-left: 5px;  /* Spacing between the icon and text */
 }
+.login:hover{
+  width: 200px;  /* Adjust based on your design */
+  background-color: #28002b;  /* Darken background on hover */
+}
 
 .login:hover {
+  background-color: #28002b;  /* Darken background on hover */
   width: auto;  /* Let it auto adjust based on content */
   padding-right: 10px;  /* Padding on hover for better spacing */
 }
 
 .login:hover .login-text {
+  background-color: #28002b;  /* Darken background on hover */
   opacity: 1;  /* Display text on hover */
 }
 
-
-
 .view-players {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 15px;
   z-index: 1000;
   display: flex;
@@ -183,15 +175,14 @@ html {
 }
 
 .view-players:hover {
-  width: 200px;  /* Adjust based on your design */
-  background-color: #28002b;  /* Darken background on hover */
+  width: 200px;
 }
 
 .view-players:hover .players-text {
   display: inline;
 }
 
-.view-players:hover .eye-icon.fa-eye-slash {
+.view-players:hover .eye-icon.fa-eye {
   display: none;
 }
 
@@ -199,11 +190,88 @@ html {
   display: inline;
 }
 
-.section2 {
-  // position: relative;
-  background-color: #38003C;
-  // height: 100vh;
-  background-color: #38003C;
-  /* Animated Gradient Fade */
-  background-image: linear-gradient(to bottom, transparent, #38003C 70%);
+
+
+
+
+
+
+
+
+
+.middle-section {
+  display: flex;
+  justify-content: flex-end; /* This pushes content to the right */
+  align-items: center;
+  height: 100vh; /* Takes up the full height of the viewport */
+  padding-right: 5%; /* Add some padding to the right to give it some space from the edge */
+  position: relative;
+  margin-top: -250px; /* For any absolutely positioned children if needed */
+}
+
+.middle-section h1 {
+  text-align: left; /* Aligns the text to the right */
+  font-family: 'VT323', monospace;
+  font-size: 50px;
+  font-weight: 800;
+  color: #ffffff;
+  width: 50vw; /* You might need to adjust this based on the size and structure of your site */
+  margin-top: 0;
+  line-height: 1.2; /* Better spacing between lines */
+}
+
+.middle-section h1 span {
+  display: block;
+  color: #ECE2D0; /* Different color for emphasis */
+  font-size: 55px; /* Slightly larger for emphasis */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
+}
+
+.homepage1 {
+  position: relative;
+  height: 50vh;
+  width: 40vw;
+  margin-right: 60px;
+  margin-top: 50px;
+
+}
+
+.arrow2{
+  height: 30vh;
+  width: auto;
+  bottom: 40px;
+  margin-left: 800px;
+  margin-top: -300px;
+  transform: rotate(40deg);
+  opacity: 0;
+  // transition slowly, fade in
+  transition: opacity 1s ease-in-out;
+}
+
+.homepage2 {
+  position: relative;
+  height: 50vh;
+  width: 40vw;
+  margin-top: 50px;
+  margin-right: -100px;
+}
+
+.arrow3{
+  height: 20vh;
+  width: auto;
+  bottom: 40px;
+  margin-left: 400px;
+  margin-top: -250px;
+  transform: rotate(-40deg);
+  opacity: 0;
+  // transition slowly, fade in
+  transition: opacity 1s ease-in-out;
+}
+
+.homepage3 {
+  position: relative;
+  height: 50vh;
+  width: 40vw;
+  margin-top: 50px;
+  margin-right: 20px;
 }
