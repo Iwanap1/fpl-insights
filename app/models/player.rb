@@ -86,13 +86,21 @@ class Player < ApplicationRecord
   end
 
   def fixtures
-    url = "https://fantasy.premierleague.com/api/element-summary/#{self.api_id}/"
-    fixtures = JSON.parse(URI.open(url).read)["fixtures"]
+    data = JSON.parse(URI.open("https://fantasy.premierleague.com/api/element-summary/#{self.api_id}/").read)
+    fixtures = data["fixtures"]
     difficulties = []
     fixtures.first(5).each do |fixture|
       difficulties << fixture["difficulty"].to_i
     end
-    return difficulties.sum
+    if data["history_past"].empty?
+      previous_points = 0
+    else
+      previous_points = data["history_past"].last["total_points"]
+    end
+    return {
+      fixture_difficulty: difficulties.sum,
+      previous_points: previous_points
+    }
   end
 
   def self.update_all
@@ -101,7 +109,7 @@ class Player < ApplicationRecord
     elements.each do |element|
       if Player.all.find { |player| player.api_id == element["id"] }
         player = Player.all.find { |p| p.api_id == element["id"] }
-        player.fixture_difficulty = player.fixtures
+        player.fixture_difficulty = player.fixtures[:fixture_difficulty]
         player.form = element["form"].to_f
         player.price = element["now_cost"].to_f / 10
         player.ict = element["ict_index"].to_f
@@ -112,9 +120,11 @@ class Player < ApplicationRecord
         player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
         player.transfers_in = element["transfers_in_event"]
         player.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
+        player.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
         player.minutes = element["minutes"]
         player.goals = element["goals_scored"]
         player.assists = element["assists"]
+        player.total = element["total_points"]
         player.save
       else
         new = Player.new
@@ -142,13 +152,27 @@ class Player < ApplicationRecord
         new.expected_goals_conceded = element["expected_goal_conceded_per_90"].to_f
         new.transfers_in = element["transfers_in_event"]
         new.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
+        new.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
         new.minutes = element["minutes"]
         new.goals = element["goals_scored"]
         new.assists = element["assists"]
+        new.total = element["total_points"]
         new.save
-        new.fixture_difficulty = new.fixtures
+        new.previous_points = new.fixtures[:previous_points]
+        new.fixture_difficulty = new.fixtures[:fixture_difficulty]
         new.save
       end
     end
   end
+
+  def attributes(current_gw)
+    attributes = []
+    attributes << "Top 10 This Season" if Player.all.sort_by { |p| p.total }.reverse.index(self) < 10
+    attributes << "Top 10 Last Season" if Player.all.sort_by { |p| p.previous_points }.reverse.index(self) < 10
+    attributes << "Penalty Taker" if self.penalty_order == 1
+    attributes << "Free Kick Taker" if self.free_kick_order == 1
+    attributes << "Regular Game Time" if (self.minutes / current_gw) > 80
+    return attributes
+  end
+
 end

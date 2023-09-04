@@ -74,8 +74,10 @@
 
     <div class="attr-card">
       <h2>ATTRIBUTES</h2>
+      <% @attributes do |att| %>
+        <h2><%= att %></h2>
+      <% end %>
     </div>
-
   </div>
 </div>
 
