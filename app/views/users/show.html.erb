@@ -35,6 +35,10 @@
               <div class="graph-card">
                   <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: ",",
                     library: {
+                      animation: {},
+                      interaction: {
+                        intersect: false
+                      },
                     scales: {
                       y: {
                           reverse: true,
@@ -84,7 +88,7 @@
     </form>
     <form action="/user_dash">
       <select name="entry" id="">
-        <option value="<%= current_user.fantasy_id %>">Select Friend</option>
+        <option value="<%= current_user.fantasy_id %>">Select User</option>
         <% @friends.uniq.each do |user| %>
           <option value="<%= user[1] %>"><%= user[0] %></option>
         <% end %>
