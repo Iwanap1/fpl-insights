@@ -213,6 +213,11 @@ class PagesController < ApplicationController
     return banned
   end
 
+  private
+
+  def get_params
+    params[:id]
+  end
 
   def set_user
     @user = User.find(params[:id])

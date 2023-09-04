@@ -3,15 +3,15 @@
     {name: @league_manager_names[index], data: player_points}
   }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points", height: "550px" %>
 
-  <%# <%= line_chart @ranks.map { |user_data|
+  <%= line_chart @ranks.map { |user_data|
     {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank",
   library: {
   scales: {
-    yAxis: {
+    y: {
         reverse: true,
     }
-  }}
-  %>
+  }} %>
+
 
 </div>
 
