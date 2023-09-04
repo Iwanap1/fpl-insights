@@ -19,6 +19,11 @@
         <li class="nav-item active">
           <%= link_to "", root_path, class: "nav-link" %>
         </li>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to "Admin", sidekiq_web_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "Dashboard", user_signed_in? ? user_path(current_user) : new_user_session_path, class: "nav-link" %>
         </li>

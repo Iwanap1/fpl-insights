@@ -80,3 +80,5 @@ end
 gem "devise"
 gem "chartkick"
 gem "simple_calendar", "~> 2.4"
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"

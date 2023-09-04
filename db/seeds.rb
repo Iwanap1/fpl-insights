@@ -60,10 +60,8 @@ general_info["elements"].each_with_index do |player, index|
   new.assists = player["assists"]
   new.total = player["total_points"]
   new.save
-  # Might cause error
   new.fixture_difficulty = new.fixtures[:fixture_difficulty]
   new.previous_points = new.fixtures[:previous_points]
-  #
   new.save
 end
 
