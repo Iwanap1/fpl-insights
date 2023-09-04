@@ -225,11 +225,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.1.2)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.14.0)
+    sidekiq (6.5.5)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.5.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
     simple_calendar (2.4.3)
@@ -296,7 +295,7 @@ DEPENDENCIES
   redis
   sassc-rails
   selenium-webdriver
-  sidekiq
+  sidekiq (~> 6)
   sidekiq-failures (~> 1.0)
   simple_calendar (~> 2.4)
   simple_form!
