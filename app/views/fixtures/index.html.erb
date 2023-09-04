@@ -28,7 +28,159 @@
             </h2>
             <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <%= "#{fixture.home_team.name}" %> vs <%= "#{fixture.away_team.name}" %><%="#{fixture.date}" %>
+                <% if fixture.home_goals.present? || fixture.away_goals.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Goals Scored<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_goals.split(",").each do |g| %>
+                          <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_goals.split(",").each do |g| %>
+                          <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_assists.present? || fixture.away_assists.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Assists<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                       <% fixture.home_assists.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                      <% fixture.away_assists.split(",").each do |g| %>
+                        <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                 <% if fixture.home_own_goals.present? || fixture.away_own_goals.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Own Goals<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                       <% fixture.home_own_goals.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_own_goals.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_penalties_saved.present? || fixture.away_penalties_saved.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Penalties Saved<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_penalties_saved.split(",").each do |g| %>
+                          <p><%= g %></p>
+                          <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_penalties_saved.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_penalties_missed.present? || fixture.away_penalties_missed.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Penalties Missed<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_penalties_missed.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_penalties_missed.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_yellow_cards.present? || fixture.away_yellow_cards.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Yellow Cards<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_yellow_cards.split(",").each do |g| %>
+                          <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_yellow_cards.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_red_cards.present? || fixture.away_red_cards.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Red Cards<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_red_cards.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                        <% fixture.away_red_cards.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% if fixture.home_saves.present? || fixture.away_saves.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Saves<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_saves.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    <div class="game-info-box-away">
+                        <% fixture.away_saves.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <% if fixture.home_bonus.present? || fixture.away_bonus.present?%>
+                  <div class="game-info-container">
+                    <h1 class="game-info-header">Bonus<h1>
+                    <div class="card-info-container">
+                      <div class="game-info-box-home">
+                        <% fixture.home_bonus.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                      <div class="game-info-box-away">
+                         <% fixture.away_bonus.split(",").each do |g| %>
+                         <p><%= g %></p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

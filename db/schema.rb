@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_132108) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_103614) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_132108) do
     t.boolean "finished"
     t.integer "home_team_score"
     t.integer "away_team_score"
+    t.string "away_goals"
+    t.string "home_goals"
+    t.string "away_assists"
+    t.string "home_assists"
+    t.string "away_own_goals"
+    t.string "home_own_goals"
+    t.string "away_penalties_saved"
+    t.string "home_penalties_saved"
+    t.string "away_penalties_missed"
+    t.string "home_penalties_missed"
+    t.string "away_yellow_cards"
+    t.string "home_yellow_cards"
+    t.string "away_red_cards"
+    t.string "home_red_cards"
+    t.string "away_saves"
+    t.string "home_saves"
+    t.string "away_bonus"
+    t.string "home_bonus"
     t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
     t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
   end

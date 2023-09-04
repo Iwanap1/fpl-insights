@@ -77,7 +77,7 @@ button:hover {
 
 .date-button {
   text-decoration: none;
-  color: black;
+  color: white;
   background-color: rgba(232, 225, 225, 0.5);
   border-radius: 10px;
   padding-right: 10px;
@@ -86,6 +86,48 @@ button:hover {
   padding-top: 5px;
   &:hover {
     background-color: rgba(232, 225, 225, 0.8);
-    color: black;
+    color: white;
   }
+}
+
+// within the accordian collapsed //
+
+.game-info-container {
+  width: 80%;
+  margin: 0px auto;
+  padding-right: 20px;
+}
+
+.game-info-header {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+  background-color: #B58DB6;
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.card-info-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0px auto;
+  font-size: 14px;
+}
+
+.game-info-box-home  {
+  width: 50%;
+  color:black;
+  font-size: 14px;
+  padding-right: 10px;
+  text-align: right;
+  border-right: solid #B58DB6 1px ;
+}
+
+.game-info-box-away {
+  padding-left: 10px;
+  width: 50%;
+  color:black;
+  font-size: 14px;
 }
