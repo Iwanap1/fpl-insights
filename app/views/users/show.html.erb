@@ -33,10 +33,16 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="other-charts" role="tabpanel" aria-labelledby="other-charts-tab" data-tabs-target="perfCharts">
               <div class="graph-card">
-                  <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+                  <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: ",",
+                    library: {
+                    scales: {
+                      y: {
+                          reverse: true,
+                      }
+                    }} %>
               </div>
               <div class="graph-card">
-                  <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
+                  <%= line_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
               </div>
           </div>
 
