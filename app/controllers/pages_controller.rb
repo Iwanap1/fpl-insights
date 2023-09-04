@@ -3,8 +3,8 @@ require 'json'
 
 class PagesController < ApplicationController
   def home
-    # @players = Player.all
-    # Player.update_all if (Time.now - @players[-1][:updated_at].to_time) / (60 * 60) > 10
+    @players = Player.all
+    UpdateJob.perform_later
   end
 
 
