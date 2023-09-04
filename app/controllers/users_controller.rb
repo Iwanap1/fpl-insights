@@ -31,7 +31,8 @@ class UsersController < ApplicationController
       team_rating: (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4,
       percentile: ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100,
       personal_api: JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read),
-      time_till_deadline: (Time.parse(@general_api["events"].find { |week| week["is_next"] }["deadline_time"]) - Time.now)
+      time_till_deadline: (Time.parse(@general_api["events"].find { |week| week["is_next"] }["deadline_time"]) - Time.now),
+      banned_leagues: ["England", "Gameweek 1", "Overall", "Second Chance", "Sky Sports League"]
     }
   end
 

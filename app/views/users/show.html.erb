@@ -68,7 +68,19 @@
     <form action="/league_graph">
       <select name="id" id="">
         <% @data[:personal_api]["leagues"]["classic"].each do |league| %>
-        <option value="<%= league["id"] %>"><%= league["name"] %></option>
+          <% unless @data[:banned_leagues].include?(league["name"]) %>
+            <option value="<%= league["id"] %>"><%= league["name"] %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <input type="submit" value="See GW Standings">
+    </form>
+    <form action="/users">
+      <select name="id" id="">
+        <% @data[:personal_api]["leagues"]["classic"].each do |league| %>
+          <% unless @data[:banned_leagues].include?(league["name"]) %>
+            <option value="<%= league["id"] %>"><%= league["name"] %></option>
+          <% end %>
         <% end %>
       </select>
       <input type="submit" value="See GW Standings">
