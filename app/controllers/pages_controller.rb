@@ -74,11 +74,15 @@ class PagesController < ApplicationController
     latest_team.each do |element|
       players << Player.all.find { |p| p.api_id == element["element"] }
     end
-    return players
+    return [id, players]
   end
 
   def players_count
-    groups = @all_teams.flatten.group_by(&:itself)
+    groups = @all_teams.map{ |team| team[1] }.flatten.group_by(&:itself)
     groups.map { |value, group| [value, group.count] }
+  end
+
+  def find_selected
+
   end
 end

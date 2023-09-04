@@ -53,8 +53,8 @@
     </div>
 
   <div class="larger-form-card">
-    <h2>FORM</h2>
-    <% @previous_three_data.each do |match| %>
+    <h2>RECENT GAMES</h2>
+    <% @previous_three_data.reverse.each do |match| %>
       <div class="form-card">
         <%= image_tag HomeTeam.find(match[:opponent]).image_path, height: 40, width: 35 %>
         <span class="ellipsis">...</span>
@@ -74,7 +74,7 @@
 
     <div class="attr-card">
       <h2>ATTRIBUTES</h2>
-      <% @player.attributes(@current_gw) do |att| %>
+      <% @player.attributes(@current_gw).each do |att| %>
         <h2><%= att %></h2>
       <% end %>
     </div>
