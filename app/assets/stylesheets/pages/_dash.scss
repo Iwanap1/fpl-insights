@@ -322,29 +322,47 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-
 .custom-modal {
   max-width: 95%;
+  margin: 20px auto;
 }
 
 .modal-content {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  background-color: #F6F6F6; /* You can use a subtle background color if you want */
 }
 
 .modal-header {
+  color: white;
   border-bottom: none;
   padding: 15px 20px;
+  background-color: #38003C; /* Darker color for the header */
+}
+
+.btn-close {
+  background-color: #B58DB6; /* Lighter color for close button */
+  border: none;
+  color: #ffffff;
+  opacity: 1; /* To make sure it's not transparent */
+}
+
+.btn-close:hover {
+  color: white;
+  background-color: #9E79A3; /* A slightly darker tint of your lighter color on hover */
 }
 
 .modal-title {
   font-weight: 500;
+  color: #B58DB6; /* Lighter color for the title */
 }
 
 .modal-body {
   padding: 20px;
+  background-color: #38003C; /* Darker color for the body text */
 }
+
 
 
 // saved for later use

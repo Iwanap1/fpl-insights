@@ -4,14 +4,16 @@
   width: 100%;
   margin: 0 5%;
   position: relative;
+  // background-color: #38003c;
+  // background-color: #F6F6F6; /* Subtle background */
+  // border: 2px solid #B58DB6; /* Lighter color as a border */
 }
 
 .carousel-card {
   min-width: 300px;
-  background-color: white;
+  background-color: #B58DB6; /* Subtle background */
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   display: flex;
   flex: 0 0 calc(80%);
   justify-content: center;
@@ -19,20 +21,90 @@
   align-items: center;
   transition: transform 0.3s ease;
   margin: 0 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-card:hover{
+  transform: scale(1.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+
+
+.player-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.caro-link1 {
+  text-decoration: none;
+  background-color: #636363;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  // make it the same size as the carousel card
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.caro-weak-link-transfers1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  z-index: 2;
+  text-decoration: none;
+  border-radius: 10px;
+  background-color: #E90052 ;
+  padding: 10px 10px;
+}
+
+.caro-weak-link-transfers1:hover {
+  background-color: #B8003C;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #f3f3f3;
 }
 
 
 button[data-action="carousel#goPrev"],
 button[data-action="carousel#goNext"] {
   position: absolute;
-  top: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 47.5%;
+  background-color: #38003C; /* Darker color for the buttons */
   color: white;
+  box-shadow: none;
   border: none;
   padding: 10px 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
-  z-index: 1;
+  height: 80%;
+  z-index: 2; /* Increased z-index for better stacking */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+button[data-action="carousel#goPrev"]{
+  margin-left: 2%;
+}
+button[data-action="carousel#goNext"]{
+  margin-right: 2%;
+}
+
+
+
+button[data-action="carousel#goPrev"]:hover,
+button[data-action="carousel#goNext"]:hover {
+  background-color: #250028;
+  // add inner shadow
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 button[data-action="carousel#goPrev"] {
@@ -44,24 +116,29 @@ button[data-action="carousel#goNext"] {
 }
 
 .player-image {
-  width: 100px;
-  height: 100px;
+  width: 8rem;
   // border-radius: 50%;
+  // margin-bottom: 2rem;
 }
 
 .player-name {
   margin-top: 10px;
   font-weight: bold;
+  color: #ffffff; /* Darker color for the name */
+  font-family: 'Montserrat', sans-serif;
 }
 
 .player-team {
-  margin-top: 5px;
-  color: gray;
+  margin-top: -5px;
+  color: #F6F6F6; /* Lighter color for the team name */
 }
 
 .player-stats {
   margin-top: 15px;
-  font-size: 0.9em;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #ffffff; /* Darker color for the stats */
 }
 
 .indicator-container {
@@ -73,7 +150,7 @@ button[data-action="carousel#goNext"] {
 .indicator {
   width: 10px;
   height: 10px;
-  background-color: #ddd;
+  background-color: #B58DB6; /* Lighter color for the indicators */
   margin: 0 5px;
   border-radius: 50%;
   cursor: pointer;
@@ -81,5 +158,5 @@ button[data-action="carousel#goNext"] {
 }
 
 .indicator.active {
-  background-color: #333; /* color for the active card's indicator */
+  background-color: #38003C; /* Darker color for the active card's indicator */
 }

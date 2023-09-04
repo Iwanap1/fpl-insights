@@ -3,9 +3,11 @@
   <div class="carousel-container">
     <% @user_players.first(4).each do |player| %>
     <div class="carousel-card" data-carousel-target="card">
-      <%= image_tag player.home_team.image_path, class: "player-image"%>
-      <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
-      <div class="player-team"><%= player.home_team.name %></div>
+        <div class="player-info">
+          <%= image_tag player.home_team.image_path, class: "player-image" %>
+          <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
+        </div>
+          <div class="player-team"><%= player.home_team.name %></div>
       <div class="player-stats">
         <div class="list-items">
           <ul>
@@ -24,8 +26,8 @@
         </div>
       </div>
         <div class="caro-weak-links">
-          <%= link_to "More info", player_path(player), class:"caro-weak-link-info" %>
-          <%= link_to "Suggest Transfers", players_path(price: (player.price + @data[:bank]), position: player.position), class:"caro-weak-link-transfers" %>
+          <%= link_to "More info", player_path(player), class:"caro-link1" %>
+          <%= link_to "Suggest Transfer", players_path(price: (player.price + @data[:bank]), position: player.position), class:"caro-weak-link-transfers1" %>
         </div>
     </div>
     <% end %>
