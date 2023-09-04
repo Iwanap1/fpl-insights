@@ -4,13 +4,13 @@
   }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points" %>
 
   <%= line_chart @ranks.map { |user_data|
-    {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank"
-  # library: {
-  # scales: {
-  #   yAxis: {
-  #       reverse: true,
-  #   }
-  # }}
+    {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank",
+  library: {
+  scales: {
+    yAxis: {
+        reverse: true,
+    }
+  }}
   %>
 
 </div>
@@ -21,7 +21,7 @@
       <tr>
     <th data-tooltip="Most selected player in your league">Rank</th>
     <th data-tooltip="Player's full name">Name</th>
-    <th data-tooltip="Percentage of teams that have selected this player">League Selection</th>
+    <th data-tooltip="Ownership of player in your league">League Selection</th>
     <th data-tooltip="Player's position on the field">Position</th>
     <th data-tooltip="The team the player is part of">Team</th>
     <th data-tooltip="Current price of the player">Price</th>
@@ -34,7 +34,9 @@
     <tr class="<%= player[0].home_team.short_name.downcase %>">
       <div class="player-info-row"><td><%= link_to "#{index + 1}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].web_name}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{player[1]} / #{@league_manager_ids.count}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td data-tooltip="<% @ownership["#{player[0].id}"].each do |name| %>
+        <%= "#{name}" %>
+        <% end %>"><%= link_to "#{player[1]} / #{@league_manager_ids.count}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].position}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].home_team.short_name}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "£#{player[0].price}m", player_path(player), class:"table-link" %></td></div>

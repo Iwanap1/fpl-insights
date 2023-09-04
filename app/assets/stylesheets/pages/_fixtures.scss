@@ -1,3 +1,5 @@
+
+
 .fixture-container {
   // background-image: linear-gradient(#00FF85, #FFFFFF);
   background-color: #B58DB6;
@@ -9,33 +11,39 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   border-radius: 8px;
   color: rgb(255, 255, 255);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .fixture-titles {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 
   h1 {
-    padding-left: 500px;
-    font-size: 32px;
-    // color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    width: 100%;
+    font-weight: bold;
     color: white;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: -10px; /* Adjust as needed */
+    margin-top: -10px;
   }
 
   h2 {
-    font-size: 20px;
-    // color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    width: 100%;
     color: white;
-    // margin: 0 auto;
-    margin-left: -520px;
-    margin-top: 40px;
-    margin-bottom: -20px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: -20px; /* Adjust as needed */
     padding-top: 5px;
-    padding-left: 325px;
   }
 }
+
 
 .accordion {
   margin: 20px;
@@ -77,8 +85,8 @@ button:hover {
 
 .date-button {
   text-decoration: none;
-  color: white;
-  background-color: rgba(232, 225, 225, 0.5);
+  color: rgb(255, 255, 255);
+  background-color: #38003C;
   border-radius: 10px;
   padding-right: 10px;
   padding-left: 10px;
@@ -86,7 +94,8 @@ button:hover {
   padding-top: 5px;
   &:hover {
     background-color: rgba(232, 225, 225, 0.8);
-    color: white;
+    color: black;
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
   }
 }
 

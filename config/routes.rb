@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'test', to: "pages#test"
   get 'league_graph', to: "pages#league_graph"
+  get 'user_dash', to: "pages#user_dash"
   resources :players, only: [:index, :show]
   resources :fixtures, only: [:index]
   resources :users, only: [:show]
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

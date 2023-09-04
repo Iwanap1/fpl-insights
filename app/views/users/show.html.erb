@@ -18,20 +18,20 @@
     </div>
     <div class="bottom-section">
       <h1 class="title">Your Data!</h1>
-      <div class="tabs-wrapper">
+      <div class="tabs-wrapper" data-controller="tabs">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTabs" role="tablist">
           <li class="nav-item" role="presentation">
-              <a class="nav-link" id="other-charts-tab" data-bs-toggle="tab" href="#other-charts" role="tab" aria-controls="other-charts" aria-selected="false">Performance</a>
+              <a class="nav-link" id="other-charts-tab" data-bs-toggle="tab" href="#other-charts" role="tab" aria-controls="other-charts" aria-selected="false" data-action="click->tabs#togglePerformance" >Performance</a>
           </li>
           <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="pie-charts-tab" data-bs-toggle="tab" href="#pie-charts" role="tab" aria-controls="pie-charts" aria-selected="true">Team</a>
+              <a class="nav-link active" id="pie-charts-tab" data-bs-toggle="tab" href="#pie-charts" role="tab" aria-controls="pie-charts" aria-selected="true" data-action="click->tabs#toggleTeam">Team</a>
           </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="other-charts" role="tabpanel" aria-labelledby="other-charts-tab">
+          <div class="tab-pane fade show active" id="other-charts" role="tabpanel" aria-labelledby="other-charts-tab" data-tabs-target="perfCharts">
               <div class="graph-card">
                   <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
               </div>
@@ -41,7 +41,7 @@
           </div>
 
           <!-- Pie Charts Tab -->
-          <div class="tab-pane fade" id="pie-charts" role="tabpanel" aria-labelledby="pie-charts-tab">
+          <div class="tab-pane fade active show " id="pie-charts" role="tabpanel" aria-labelledby="pie-charts-tab" data-tabs-target="teamCharts">
               <div class="graph-card">
                   <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'} %>
               </div>
@@ -67,11 +67,23 @@
   <div class="league-graph-form">
     <form action="/league_graph">
       <select name="id" id="">
+        <option value="redirect">Select League</option>
         <% @data[:personal_api]["leagues"]["classic"].each do |league| %>
-        <option value="<%= league["id"] %>"><%= league["name"] %></option>
+          <% unless @banned_leagues.include?(league["id"]) || @leagues_data.find { |l| l[:id] == league["id"] }[:banned] %>
+            <option value="<%= league["id"] %>"><%= league["name"] %></option>
+          <% end %>
         <% end %>
       </select>
-      <input type="submit" value="See GW Standings">
+      <input type="submit" value="View League Stats">
+    </form>
+    <form action="/user_dash">
+      <select name="entry" id="">
+        <option value="<%= current_user.fantasy_id %>">Select Friend</option>
+        <% @friends.uniq.each do |user| %>
+          <option value="<%= user[1] %>"><%= user[0] %></option>
+        <% end %>
+      </select>
+      <input type="submit" value="View Dashboard">
     </form>
   </div>
 </div>
@@ -94,7 +106,7 @@
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="1">
           <%= render "caro", user: @user %>
       </div>
     </div>

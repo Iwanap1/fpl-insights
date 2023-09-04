@@ -9,6 +9,7 @@ body {
 }
 
 
+
 .page-wrapper {
   display: grid;
   grid-template-rows: 40% 20% 70%;
@@ -18,18 +19,18 @@ body {
 }
 
 .top-main-card {
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 95%;
   // overflow: hidden;
-margin-top: 20px;
+  margin-top: 20px;
 }
 
 .middle-buttons-container {
-  font-family: 'VT323', monospace;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +38,7 @@ margin-top: 20px;
 }
 
 .info-cards {
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -47,7 +48,7 @@ margin-top: 20px;
   margin: 0;
 
   .card {
-    font-family: 'VT323', monospace;
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     height: 100%;
     border: none;
@@ -68,18 +69,18 @@ margin-top: 20px;
     }
 
     .counter {
-      font-family: 'VT323', monospace;
+      font-family: 'Montserrat', sans-serif;
       margin-top: 10px;
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: bold;
       color: #333;
       }
 
       span:last-child {
-        font-family: 'VT323', monospace;
+        font-family: 'Montserrat', sans-serif;
         margin-top: 10px;
         // make the font size max for box size
-        font-size: 1.5rem;
+        font-size: 1rem;
         color: #888;
         text-align: center;
       }
@@ -87,13 +88,13 @@ margin-top: 20px;
   }
 
   .strength, .weakness, .view-table {
-    font-family: 'VT323', monospace;
+    font-family: 'Montserrat', sans-serif;
     width: 30%;
     height: 70%;
     padding-top: 20px;
     color: white;
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 2.5rem;
     border: none;
     border-radius: 15px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
@@ -133,8 +134,8 @@ margin-top: 20px;
   }
 
   .button-text {
-    font-family: 'VT323', monospace;
-    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
     color: white;
     justify-content: center;
     text-decoration: none;
@@ -233,8 +234,8 @@ margin-top: 20px;
 }
 
 .nav.nav-tabs {
-  font-family: 'VT323', monospace;
-  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
   display: flex;
   justify-content: flex-end;
   // margin-left:10px;
@@ -318,32 +319,50 @@ margin-top: 20px;
   margin-bottom: -90px;
   margin-top: 10px;
   margin-left: 0;
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
-
 
 .custom-modal {
   max-width: 95%;
+  margin: 20px auto;
 }
 
 .modal-content {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  background-color: #F6F6F6; /* You can use a subtle background color if you want */
 }
 
 .modal-header {
+  color: white;
   border-bottom: none;
   padding: 15px 20px;
+  background-color: #38003C; /* Darker color for the header */
+}
+
+.btn-close {
+  background-color: #B58DB6; /* Lighter color for close button */
+  border: none;
+  color: #ffffff;
+  opacity: 1; /* To make sure it's not transparent */
+}
+
+.btn-close:hover {
+  color: white;
+  background-color: #9E79A3; /* A slightly darker tint of your lighter color on hover */
 }
 
 .modal-title {
   font-weight: 500;
+  color: #B58DB6; /* Lighter color for the title */
 }
 
 .modal-body {
   padding: 20px;
+  background-color: #38003C; /* Darker color for the body text */
 }
+
 
 
 // saved for later use

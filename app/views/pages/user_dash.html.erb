@@ -1,0 +1,101 @@
+<div class="page-wrapper">
+    <div class="top-main-card">
+      <%= render 'stats' %>
+    </div>
+    <div class="middle-buttons-container">
+      <button class="sandw strength" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Strengths
+          <span class="button-text">Here are your point winners!</span>
+      </button>
+      <button class="sandw weakness" data-bs-toggle="modal" data-bs-target="#exampleModalWeak">
+          Weaknesses
+          <span class="button-text">You need to move some players on!</span>
+      </button>
+      <button class="sandw view-table">
+          <%= link_to "View Table", players_path, id:"view-table-link"%>
+          <%= link_to "Check the detailed table here", players_path, class:"button-text"%>
+      </button>
+    </div>
+    <div class="bottom-section">
+      <h1 class="title"><%= @data[:personal_api]["player_first_name"] %>'s Data!</h1>
+      <div class="tabs-wrapper">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+              <a class="nav-link" id="other-charts-tab" data-bs-toggle="tab" href="#other-charts" role="tab" aria-controls="other-charts" aria-selected="false">Performance</a>
+          </li>
+          <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="pie-charts-tab" data-bs-toggle="tab" href="#pie-charts" role="tab" aria-controls="pie-charts" aria-selected="true">Team</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="other-charts" role="tabpanel" aria-labelledby="other-charts-tab">
+              <div class="graph-card">
+                  <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: "," %>
+              </div>
+              <div class="graph-card">
+                  <%= column_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: "," %>
+              </div>
+          </div>
+
+          <!-- Pie Charts Tab -->
+          <div class="tab-pane fade" id="pie-charts" role="tabpanel" aria-labelledby="pie-charts-tab">
+              <div class="graph-card">
+                  <%= pie_chart @price_dist_pie_data, title: "Price Distribution per Position" ,library: {pieSliceText: 'value-and-percentage'} %>
+              </div>
+              <div class="graph-card">
+                  <%= pie_chart @team_pie_data, title: "Number of Players per Team" ,library: {pieSliceText: 'value-and-percentage'}%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= render "caro", user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalWeak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= render "caroweak", user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
