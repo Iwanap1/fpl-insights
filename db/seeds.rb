@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
 general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
 general_info = JSON.parse(URI.open(general_url).read)
 fixture_url = "https://fantasy.premierleague.com/api/fixtures/"
@@ -75,6 +77,134 @@ fixture_info.each do |fixture|
     new.finished = fixture["finished"]
     new.home_team_score = fixture["team_h_score"]
     new.away_team_score = fixture["team_a_score"]
-    new.save
+      fixture["stats"].each do |game|
+        if game["identifier"] == "goals_scored"
+          a_goals = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_goals << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_goals = a_goals
+          h_goals = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_goals << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_goals = h_goals
+        end
+        if game["identifier"] == "assists"
+          a_assists = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_assists << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_assists = a_assists
+          h_assists = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_assists << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_assists = h_assists
+        end
+        if game["identifier"] == "own_goals"
+          a_own_goals = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_own_goals << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_own_goals = a_own_goals
+          h_own_goals = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_own_goals << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_own_goals = h_own_goals
+        end
+        if game["identifier"] == "penalties_saved"
+          a_penalties_saved = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_penalties_saved << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_penalties_saved = a_penalties_saved
+          h_penalties_saved = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_penalties_saved << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_penalties_saved = h_penalties_saved
+        end
+        if game["identifier"] == "penalties_missed"
+          a_penalties_missed = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_penalties_missed << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_penalties_missed = a_penalties_missed
+          h_penalties_missed = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_penalties_missed << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_penalties_missed = h_penalties_missed
+        end
+        if game["identifier"] == "yellow_cards"
+          a_yellow_cards = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_yellow_cards << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_yellow_cards = a_yellow_cards
+          h_yellow_cards = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_yellow_cards << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_yellow_cards = h_yellow_cards
+        end
+        if game["identifier"] == "red_cards"
+          a_red_cards = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_red_cards << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_red_cards = a_red_cards
+          h_red_cards = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_red_cards << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_red_cards = h_red_cards
+        end
+        if game["identifier"] == "saves"
+          a_saves = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_saves << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_saves = a_saves
+          h_saves = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_saves << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_saves = h_saves
+        end
+        if game["identifier"] == "bonus"
+          a_bonus = ""
+          game["a"].each do |a|
+            player = Player.find_by(api_id: a["element"])
+            a_bonus << "#{player.web_name}(#{a['value']}),"
+          end
+          new.away_bonus = a_bonus
+          h_bonus = ""
+          game["h"].each do |h|
+            player = Player.find_by(api_id: h["element"])
+            h_bonus << "#{player.web_name}(#{h['value']}),"
+          end
+          new.home_bonus = h_bonus
+        end
+      end
+     new.save
   end
 end
