@@ -98,6 +98,7 @@ GEM
       xpath (~> 3.2)
     chartkick (5.0.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -200,6 +201,8 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis-client (0.16.0)
+      connection_pool
     regexp_parser (2.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
@@ -220,6 +223,13 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (7.1.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
+    sidekiq-failures (1.0.4)
+      sidekiq (>= 4.0.0)
     simple_calendar (2.4.3)
       rails (>= 3.0)
     sprockets (4.2.0)
@@ -283,6 +293,8 @@ DEPENDENCIES
   rails (~> 7.0.7)
   sassc-rails
   selenium-webdriver
+  sidekiq
+  sidekiq-failures (~> 1.0)
   simple_calendar (~> 2.4)
   simple_form!
   sprockets-rails

@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :players, only: [:index, :show]
   resources :fixtures, only: [:index]
   resources :users, only: [:show]
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
