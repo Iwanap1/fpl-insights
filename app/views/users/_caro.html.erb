@@ -1,11 +1,13 @@
 <div data-controller="carousel">
-<button data-action="carousel#goPrev"><i class="fa fa-arrow-left"></i></button>
+<button data-action="carousel#goPrev"><span class="carousel-control-prev-icon"></span></button>
   <div class="carousel-container">
     <% @data[:user_players].last(4).reverse.each do |player| %>
     <div class="carousel-card" data-carousel-target="card">
-      <%= image_tag player.home_team.image_path, class: "player-image"%>
-      <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
-      <div class="player-team"><%= player.home_team.name %></div>
+        <div class="player-info">
+          <%= image_tag player.home_team.image_path, class: "player-image" %>
+          <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
+        </div>
+          <div class="player-team"><%= player.home_team.name %></div>
       <div class="player-stats">
         <div class="list-items">
           <ul>
@@ -24,13 +26,13 @@
       </div>
 
       <div class="caro-link">
-          <%= link_to "More info", player_path(player), class:"caro-link-info" %>
+          <%= link_to " a", player_path(player), class:"caro-link1" %>
       </div>
     </div>
     <% end %>
 
   </div>
-<button data-action="carousel#goNext"><i class="fa fa-arrow-right"></i></button>
+<button data-action="carousel#goNext"><span class="carousel-control-next-icon"></span></button>
   <div class="indicator-container">
     <span class="indicator" data-carousel-target="indicator"></span>
     <span class="indicator" data-carousel-target="indicator"></span>
