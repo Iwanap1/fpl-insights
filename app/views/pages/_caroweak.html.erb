@@ -1,0 +1,41 @@
+<div data-controller="carousel">
+<button data-action="carousel#goPrev"><i class="fa fa-arrow-left"></i></button>
+  <div class="carousel-container">
+    <% @user_players.first(4).each do |player| %>
+    <div class="carousel-card" data-carousel-target="card">
+      <%= image_tag player.home_team.image_path, class: "player-image"%>
+      <div class="player-name"><%= "#{player.first_name} #{player.last_name}" %></div>
+      <div class="player-team"><%= player.home_team.name %></div>
+      <div class="player-stats">
+        <div class="list-items">
+          <ul>
+            <li>Price: £<%= player.price %>m</li>
+            <li>Form: <%= player.form %></li>
+            <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
+            <li>Score: <%= (player.general_score * 100).round %></li>
+          </ul>
+          <% unless player.attributes(@current_gw).empty? %>
+          <ul>
+            <% player.attributes(@current_gw).each do |a| %>
+              <li><%= a %></li>
+            <% end %>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+        <div class="caro-weak-links">
+          <%= link_to "More info", player_path(player), class:"caro-weak-link-info" %>
+          <%= link_to "Suggest Transfers", players_path(price: (player.price + @data[:bank]), position: player.position), class:"caro-weak-link-transfers" %>
+        </div>
+    </div>
+    <% end %>
+
+  </div>
+<button data-action="carousel#goNext"><i class="fa fa-arrow-right"></i></button>
+  <div class="indicator-container">
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+    <span class="indicator" data-carousel-target="indicator"></span>
+  </div>
+</div>
