@@ -74,7 +74,7 @@
 
     <div class="attr-card">
       <h2>ATTRIBUTES</h2>
-      <% @attributes do |att| %>
+      <% @player.attributes(@current_gw) do |att| %>
         <h2><%= att %></h2>
       <% end %>
     </div>

@@ -14,16 +14,13 @@
             <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
             <li>Score: <%= (player.general_score * 100).round %></li>
           </ul>
-          <% if player.penalty_order == 1 || player.minutes / @current_gw > 80 %>
+          <% unless player.attributes(@current_gw).empty? %>
           <ul>
-            <% if player.penalty_order == 1 %>
-              <li>Penalty taker</li>
-            <% end %>
-            <% if player.minutes / @current_gw > 80 %>
-              <li>Regular game time</li>
+            <% player.attributes(@current_gw).each do |a| %>
+              <li><%= a %></li>
             <% end %>
           </ul>
-          <% end %> 
+          <% end %>
         </div>
       </div>
         <div class="caro-weak-links">
