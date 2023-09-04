@@ -43,12 +43,13 @@
   transform: translateY(-5px);
 }
 
-h3, h4 {
+h2, h3, h4 {
   font-weight: bold;
   text-align: center;
-  color: white;
-  font-family: Raleway;
+  color: #ffffff;
+  font-family: Montserrat;
   text-decoration: none;
+  font-family: Montserrat;
   margin: 0; /* Resets default margins */
 }
 
@@ -108,7 +109,8 @@ a:hover {
   color: black;
   margin-left: 15px;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: montserrat, sans-serif;
+  text-decoration: none;
 }
 
 .dropdown-menu {
