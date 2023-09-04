@@ -34,7 +34,9 @@
     <tr class="<%= player[0].home_team.short_name.downcase %>">
       <div class="player-info-row"><td><%= link_to "#{index + 1}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].web_name}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{player[1]} / #{@league_manager_ids.count}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td data-tooltip="<% @ownership["#{player[0].id}"].each do |name| %>
+        <%= "#{name}" %>
+        <% end %>"><%= link_to "#{player[1]} / #{@league_manager_ids.count}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].position}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player[0].home_team.short_name}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "£#{player[0].price}m", player_path(player), class:"table-link" %></td></div>

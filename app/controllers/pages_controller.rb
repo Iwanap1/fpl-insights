@@ -27,6 +27,7 @@ class PagesController < ApplicationController
     end
     @ranks = get_ranks(all_user_data)
     @player_selections = players_count.sort_by {|player| player[1]}.reverse
+    @ownership = ownership
   end
 
   def get_points_data(id)
@@ -82,7 +83,17 @@ class PagesController < ApplicationController
     groups.map { |value, group| [value, group.count] }
   end
 
-  def find_selected
-
+  def ownership
+    data = {}
+    @player_selections.each do |player|
+      data["#{player[0].id}"] = []
+      @all_teams.each do |team|
+        if team[1].include?(player[0])
+          data["#{player[0].id}"] << "#{@league_manager_names[@league_manager_ids.index(team[0])]},"
+        end
+      end
+      data["#{player[0].id}"].last.gsub!(",", "")
+    end
+    return data
   end
 end
