@@ -57,17 +57,20 @@ export default class extends Controller {
 
   scroll1() {
     const scroll1Element = document.querySelector('.scroll1');
-    scroll1Element.style.opacity = '1';
+    // scroll1Element.style.opacity = '1';
+    // scroll1Element.style.opacity = '1';
+    scroll1Element.style.transform = 'translateY(0)';
   }
 
   scroll2() {
     const scroll2Element = document.querySelector('.scroll2');
-    scroll2Element.style.opacity = '1';
+    // scroll2Element.style.opacity = '1';
+    scroll2Element.style.transform = 'translateY(0)';
   }
 
   scroll3() {
     const scroll3Element = document.querySelector('.scroll3');
-    scroll3Element.style.opacity = '1';
+    scroll3Element.style.transform = 'translateY(-0)';
   }
 
   triggerHoverEffect() {

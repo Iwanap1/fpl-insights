@@ -1,4 +1,11 @@
 <div class="home-container" data-controller="scroll-effect">
+  <%= video_tag "video.mp4",
+     class: "background-video",
+     data: { controller: "fade-video" },
+     autoplay: true,
+     loop: true,
+     muted: true,
+     playsinline: true %>
   <div class="overlay"></div>
   <div class="content-wrapper">
     <div class="top-text" data-controller="typing">
