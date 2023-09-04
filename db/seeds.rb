@@ -54,9 +54,16 @@ general_info["elements"].each_with_index do |player, index|
   new.expected_goals_conceded = player["expected_goal_conceded_per_90"].to_f
   new.transfers_in = player["transfers_in_event"]
   new.penalty_order = player["penalties_order"].nil? ? 5 : player["penalties_order"]
+  new.free_kick_order = player["direct_freekicks_order"].nil? ? 5 : player["direct_freekicks_order"]
   new.minutes = player["minutes"]
   new.goals = player["goals_scored"]
   new.assists = player["assists"]
+  new.total = player["total_points"]
+  new.save
+  # Might cause error
+  new.fixture_difficulty = new.fixtures[:fixture_difficulty]
+  new.previous_points = new.fixtures[:previous_points]
+  #
   new.save
 end
 

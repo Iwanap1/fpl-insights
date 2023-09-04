@@ -69,6 +69,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_132108) do
     t.integer "minutes"
     t.integer "goals"
     t.integer "assists"
+    t.integer "total"
+    t.integer "previous_points"
+    t.integer "free_kick_order"
     t.index ["away_team_id"], name: "index_players_on_away_team_id"
     t.index ["home_team_id"], name: "index_players_on_home_team_id"
   end
