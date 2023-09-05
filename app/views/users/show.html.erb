@@ -35,7 +35,7 @@
             <option value="<%= user[1] %>"><%= user[0] %></option>
           <% end %>
         </select>
-        <input type="submit" value="View Dashboard">
+        <input type="submit" value="View Friend's Dashboard">
       </form>
     </div>
     <div class="bottom-section">
@@ -190,34 +190,6 @@
       </div>
     </div>
 </div>
-  <div class="league-graph-form">
-    <h3>Even More Data!</h3>
-    <div id="view_league_stats">
-      <form action="/league_graph">
-        <select name="id" id="">
-          <option value="redirect">Select League</option>
-          <% @data[:personal_api]["leagues"]["classic"].each do |league| %>
-            <% unless @banned_leagues.include?(league["id"]) || @leagues_data.find { |l| l[:id] == league["id"] }[:banned] %>
-              <option value="<%= league["id"] %>"><%= league["name"] %></option>
-            <% end %>
-          <% end %>
-        </select>
-        <input type="submit" value="View League Stats">
-      </form>
-    </div>
-    <div id="view_dashboard">
-      <form action="/user_dash">
-        <select name="entry" id="">
-          <option value="<%= current_user.fantasy_id %>">Select User</option>
-          <% @friends.uniq.each do |user| %>
-            <option value="<%= user[1] %>"><%= user[0] %></option>
-          <% end %>
-        </select>
-        <input type="submit" value="View Dashboard">
-      </form>
-    </div>
-
-  </div>
 </div>
 
 
