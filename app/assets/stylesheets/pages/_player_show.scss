@@ -55,9 +55,10 @@ h1 {
   font-size: 15px;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: rgba(4, 245, 255, 0.5);
-  color: #38003C;
-  margin-top: 10px;
+  background-color: #38003C;
+  color: white;
+  margin-top: 45px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .stats-card, .larger-form-card, .attr-card {
@@ -79,10 +80,10 @@ h1 {
 .larger-form-card h2 {
   justify-content: center;
   display: flex;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .form-card {
@@ -180,18 +181,29 @@ h1 {
 .stats-card h2{
   justify-content: center;
   display: flex;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
+
+.attr-card h1 {
+  justify-content: center;
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
 .attr-card h2{
   justify-content: center;
   display: flex;
-  font-size: 3rem;
+  font-size: 20px;
   font-weight: bold;
   color: #ffffff;
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .card {
@@ -229,11 +241,11 @@ h1 {
   color: #ffffff;
   justify-content: center;
   display: flex;
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .info-cards {
-  font-family: 'VT323', monospace;
+  font-family: 'Montserrat', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -243,7 +255,36 @@ h1 {
   margin: 0;
 }
 
-
 .colour{
   background-color: #ECE2D0;
+}
+
+.show-badge {
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.calender-title {
+  font-family:'Montserrat', sans-serif;
+}
+
+.attribute-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px;
+  background-color:white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  h2 {
+    color: #888;
+  }
+}
+
+.fa-lg {
+  color: black;
+
 }
