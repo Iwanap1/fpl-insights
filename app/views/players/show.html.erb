@@ -11,43 +11,51 @@
       <div class="info-cards">
         <div class="card colour">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @player.goals %>"
+                data-counter-end-value="<%= @stats[0][1] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Goals</span>
+          <span><%= @stats[0][0] %></span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @player.assists %>"
+                data-counter-end-value="<%= @stats[1][1] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Assists</span>
+          <span><%= @stats[1][0] %></span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= (@player.minutes.to_f / @current_gw).round(1) %>"
+                data-counter-end-value="<%= @stats[2][1] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Average Minutes</span>
+          <span><%= @stats[2][0] %></span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @player.expected_goal_involvements %>"
+                data-counter-end-value="<%= @stats[3][1] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Goals + Assists /90mins</span>
+          <span><%= @stats[3][0] %></span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @player.general_score * 100 %>"
+                data-counter-end-value="<%= @stats[4][1] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Rating</span>
+          <span><%= @stats[4][0] %></span>
+        </div>
+        <div class="card">
+          <span class="counter" data-controller="counter"
+                data-counter-end-value="<%= @stats[5][1] %>"
+                data-counter-duration-value="3000"
+                data-counter-target="display">
+                0</span>
+          <span><%= @stats[5][0] %></span>
         </div>
       </div>
     </div>
