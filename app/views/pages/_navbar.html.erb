@@ -1,14 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-brand" do %>
       <div class="d-flex align-items-baseline">
         <h3 class="custom-titles">FPLBOT</h3>
         <%# <h4 class="ms-2 mb-0">BOT</h4> %>
       </div>
+      <% end %>
     </div>
 
-    <%= link_to "#", class: "navbar-brand" do %>
-    <% end %>
+
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
