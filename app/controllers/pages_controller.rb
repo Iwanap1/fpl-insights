@@ -135,6 +135,7 @@ class PagesController < ApplicationController
     weekly_points = []
     gw_ranks = []
     points_on_bench = []
+    captains = []
     chips = 0
     total_transfer_cost = 0
     (1..@current_gw).to_a.each do |gw|
@@ -143,6 +144,7 @@ class PagesController < ApplicationController
       weekly_overall_ranks << data["entry_history"]["overall_rank"]
       gw_ranks << data["entry_history"]["rank"]
       weekly_points << data["entry_history"]["points"]
+      captains << Player.find_by(api_id: data["picks"].find { |p| p["is_captain"] }["element"])
       points_on_bench << data["entry_history"]["points_on_bench"]
       total_transfer_cost += data["entry_history"]["event_transfers_cost"]
       chips += 1 unless data["active_chip"].nil?
@@ -153,7 +155,8 @@ class PagesController < ApplicationController
             points_on_bench: points_on_bench,
             number_of_chips: chips,
             gw_ranks: gw_ranks,
-            total_transfer_cost: total_transfer_cost
+            total_transfer_cost: total_transfer_cost,
+            captains: captains.map { |p| [p.web_name, captains.count { |pl| pl.id == p.id }] }.uniq
            }
   end
 
