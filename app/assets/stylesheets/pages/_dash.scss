@@ -104,31 +104,31 @@ body {
   }
 
   .weakness {
-    background-color: #e90052;
+    background-color: #a6003a;
   }
 
   .strength {
-    background-color: #00ff85;
+    background-color: #00ad59;
   }
 
   .view-table {
-    background-color: #04F5FF;
+    background-color: #00b4ba;
   }
 
   .view-table:hover {
     color: white;
     box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
-    background-color: #03d1d8;
+    background-color: rgb(0, 145, 150)
   }
 
   .strength:hover {
-    background-color: #02d871;
+    background-color: #008344;
     color: white;
     box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
   }
 
   .weakness:hover {
-    background-color: #ab013d;
+    background-color: #85002f;
     color: white;
     box-shadow: inset 0 2.5px 2.5px rgba(0, 0, 0, 0.5);
   }
@@ -375,17 +375,7 @@ width: 100%;
 
 .type1{
   background-color: #38003C;
-  margin-bottom: 50px;
 }
-
-#view_league_stats{
-  padding-top: 20px;
-}
-
-#view_dashboard{
-  margin-bottom: 50px;
-}
-
 // saved for later use
 // .card-title {
 //   font-size: 24px;
@@ -444,7 +434,6 @@ width: 100%;
   padding: 10px;
   border-radius: 15px;
 }
-
 
 .caro-link {
   width: 100%;
