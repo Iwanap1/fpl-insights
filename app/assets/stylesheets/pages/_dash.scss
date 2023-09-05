@@ -262,8 +262,8 @@ width: 100%;
 }
 
 #pie-charts-tab {
-  background-color: #ffffff;
-  color: rgb(64, 64, 64);
+  background-color: #B58DB6;
+  color: rgb(255, 255, 255);
 }
 
 #other-charts-tab {
@@ -284,7 +284,7 @@ width: 100%;
 }
 
 #pie-charts {
-  background-color: #ffffff;
+  background-color: #B58DB6;
   padding: 20px 0;
   display: flex;
   border-radius: 10px;
@@ -294,6 +294,11 @@ width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 0px;
 }
+
+.white{
+  color: white;
+}
+
 
 .tabs-wrapper .tab-content {
   margin-top: 0.5rem;
