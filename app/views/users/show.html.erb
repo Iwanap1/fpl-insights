@@ -33,16 +33,53 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="other-charts" role="tabpanel" aria-labelledby="other-charts-tab" data-tabs-target="perfCharts">
               <div class="graph-card">
-                  <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: ",", colors: ["#E90052"],
+                  <%= line_chart @graph_data, title: "Global Ranking per GW" ,xtitle: "Gameweek", ytitle: "Overall Rank", thousands: ",", colors: ["white"],
                     library: {
                       interaction: {
                       intersect: false
                       },
                       scales: {
                         y: {
-                          min: 1,
                           reverse: true,
-                          color: "#FFFFFF"
+                          min: 1,
+                          grid: {display: false, borderColor: "#FFFFFF"},
+                          title: {
+                            display: true,
+                            color: "white",
+                            text: "Global Rank"
+                          },
+                          border: {
+                            display: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          },
+                          ticks: {
+                            diplay: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          }
+                        },
+                        x: {
+                          grid: {borderColor: "#FFFFFF"},
+                          title: {
+                            display: true,
+                            color: "white",
+                            text: "Gameweek"
+                          },
+                          border: {
+                            display: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          },
+                          ticks: {
+                            diplay: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          }
                         }
                       },
                       plugins: {
@@ -54,7 +91,60 @@
                     } %>
               </div>
               <div class="graph-card">
-                  <%= line_chart @bar_chart_data, title: "Points Scored per GW", xtitle: "Gameweek", ytitle: "Points", thousands: ",", colors: ["#E90052"] %>
+                  <%= line_chart @bar_chart_data, title: "Points Scored per GW", thousands: ",", colors: ["white"],
+                    library: {
+                      interaction: {
+                      intersect: false
+                      },
+                      scales: {
+                        y: {
+                          grid: {display: false, borderColor: "#FFFFFF"},
+                          title: {
+                            display: true,
+                            color: "white",
+                            text: "Gameweek Points"
+                          },
+                          border: {
+                                  display: true,
+                                  color: "white",
+                                  fontColor: "#FFFFFF",
+                                  fontSize: 14
+                          },
+                          ticks: {
+                            diplay: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          }
+                        },
+                        x: {
+                          grid: {borderColor: "#FFFFFF"},
+                          title: {
+                            display: true,
+                            color: "white",
+                            text: "Gameweek"
+                          },
+                          border: {
+                                  display: true,
+                                  color: "white",
+                                  fontColor: "#FFFFFF",
+                                  fontSize: 14
+                          },
+                          ticks: {
+                            diplay: true,
+                            color: "white",
+                            fontColor: "#FFFFFF",
+                            fontSize: 14
+                          }
+                        }
+                      },
+                      plugins: {
+                        title: {
+                            display: true,
+                            color: "#FFFFFF"
+                        }
+                      }
+                    } %>
               </div>
           </div>
 
