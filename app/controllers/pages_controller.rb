@@ -133,14 +133,18 @@ class PagesController < ApplicationController
   def weekly_data
     weekly_overall_ranks = []
     weekly_points = []
+    gw_ranks = []
     points_on_bench = []
     chips = 0
+    total_transfer_cost = 0
     (1..@current_gw).to_a.each do |gw|
       url = "https://fantasy.premierleague.com/api/entry/#{@fpl_id}/event/#{gw}/picks/"
       data = JSON.parse(URI.open(url).read)
       weekly_overall_ranks << data["entry_history"]["overall_rank"]
+      gw_ranks << data["entry_history"]["rank"]
       weekly_points << data["entry_history"]["points"]
       points_on_bench << data["entry_history"]["points_on_bench"]
+      total_transfer_cost += data["entry_history"]["event_transfers_cost"]
       chips += 1 unless data["active_chip"].nil?
     end
     return {
@@ -148,6 +152,8 @@ class PagesController < ApplicationController
             heighest_points: [weekly_points.max, (weekly_points.index(weekly_points.max) + 1)],
             points_on_bench: points_on_bench,
             number_of_chips: chips,
+            gw_ranks: gw_ranks,
+            total_transfer_cost: total_transfer_cost
            }
   end
 

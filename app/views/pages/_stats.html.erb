@@ -3,7 +3,7 @@
     <div class="carousel-item active">
       <div class="stats">
         <div class="new-card">
-          <strong>Current Data</strong>
+          <strong>CURRENT DATA</strong>
         </div>
         <div class="info-cards">
           <div class="card">
@@ -59,7 +59,7 @@
     <div class="carousel-item">
        <div class="stats">
         <div class="new-card">
-            <strong>Season Data</strong>
+            <strong>SEASON DATA</strong>
         </div>
         <div class="info-cards">
           <div class="card">
@@ -73,11 +73,11 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= %>"
+                data-counter-end-value="<%= @weekly_data[:gw_ranks].min %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Best GW Rank (GW: <%= @weekly_ranks.index(@weekly_ranks.min) + 1 %>)</span>
+          <span>Best GW Rank (GW: <%= @weekly_data[:gw_ranks].index(@weekly_data[:gw_ranks].min) + 1 %>)</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter">
@@ -87,11 +87,11 @@
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%=  %>"
+                data-counter-end-value="-<%= @weekly_data[:total_transfer_cost] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Best Monthly Score (month)</span>
+          <span>Total Transfer Cost</span>
           </div>
           <div class="card">
           <span class="counter" data-controller="counter"
@@ -116,7 +116,7 @@
     <div class="carousel-item">
      <div class="stats">
       <div class="new-card">
-        <strong>All-time Data</strong>
+        <strong>ALL-TIME DATA</strong>
         </div>
         <div class="info-cards">
           <div class="card">
