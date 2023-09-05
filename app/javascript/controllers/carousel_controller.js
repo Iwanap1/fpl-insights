@@ -10,9 +10,9 @@ export default class extends Controller {
   }
 
   showCard(index) {
-    const offset = -index * 1200;  // width of one card
+    const offset = -index * 112;  // width of one card
     this.cardTargets.forEach(card => {
-      card.style.transform = `translateX(${offset}px)`;
+      card.style.transform = `translateX(${offset}%)`;
     });
 
     this.indicatorTargets.forEach((indicator, i) => {
