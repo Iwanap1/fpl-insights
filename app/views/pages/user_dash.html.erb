@@ -158,13 +158,12 @@
                           }
                 %>
             </div>
-            <div class="graph-card">
-                <%= pie_chart @team_pie_data, title: "Number of Players per Team" ,
+              <div class="graph-card">
+                  <%= pie_chart @weekly_data[:captains], title: "Favourite Captains" , colors: ["#E90052", "#38003C", "#00FF85", "#04F5FF"],
                   library: {pieSliceText: 'value-and-percentage',
                             animation: {easing: 'easeInCirc'}
-                            }
-                %>
-            </div>
+                            }%>
+              </div>
           </div>
         </div>
       </div>
