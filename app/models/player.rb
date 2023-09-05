@@ -5,6 +5,7 @@ require 'json'
 class Player < ApplicationRecord
   belongs_to :away_team
   belongs_to :home_team
+  validates :api_id, uniqueness: true
 
   def general_score
     form_weight = 6
