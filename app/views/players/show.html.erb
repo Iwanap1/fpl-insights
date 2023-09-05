@@ -1,6 +1,6 @@
 <div class="container" id="margin-bottom">
   <div class="inline-1">
-    <%= image_tag @player.home_team.image_path, height: 50, width: 50%>
+    <%= image_tag @player.home_team.image_path, height: 50, width: 50, class: "show-badge"%>
     <h1 class="player-name"><%= @player.first_name.upcase %> <%= @player.last_name.upcase %></h1>
     <h1 class="player-position"><%= @player.full_position %></h1>
   </div>
@@ -72,17 +72,52 @@
     <% end %>
   </div>
 
+   <% if @player.attributes(@current_gw).present? %>
     <div class="attr-card">
-      <h2>ATTRIBUTES</h2>
+      <h1>ATTRIBUTES</h1>
       <% @player.attributes(@current_gw).each do |att| %>
-        <h2><%= att %></h2>
+         <% if att == "Top 10 This Season" %>
+          <div class="attribute-box">
+            <i class="fa-solid fa-ranking-star fa-xl"></i>
+            <h2><%= att %></h2>
+            <span></span>
+          </div>
+         <% elsif att == "Top 10 Last Season" %>
+          <div class="attribute-box">
+            <i class="fa-solid fa-star fa-xl"></i>
+            <h2><%= att %></h2>
+            <span></span>
+          </div>
+         <% elsif att == "Penalty Taker" %>
+          <div class="attribute-box">
+            <i class="fa-solid fa-crosshairs fa-xl"></i>
+            <h2><%= att %></h2>
+            <span></span>
+          </div>
+         <% elsif att == "Free Kick Taker" %>
+          <div class="attribute-box">
+            <i class="fa-regular fa-futbol fa-xl"></i>
+            <h2><%= att %></h2>
+            <span></span>
+          </div>
+         <% elsif att == "Regular Game Time" %>
+          <div class="attribute-box">
+            <i class="fa-solid fa-clock fa-xl"></i>
+            <h2><%= att %></h2>
+            <span></span>
+          </div>
+         <% end %>
       <% end %>
+    </div>
+      <% else %>
+    <div class="attr-card">
+      <h1>No Attributes!</h1>
+     <% end  %>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <h1>Fixture Calendar</h1>
   <div class="calender">
     <%= month_calendar(events: @all_fixtures) do |date, fixtures| %>
       <%= date.day %>
