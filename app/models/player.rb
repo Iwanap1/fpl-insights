@@ -5,6 +5,7 @@ require 'json'
 class Player < ApplicationRecord
   belongs_to :away_team
   belongs_to :home_team
+  validates :api_id, uniqueness: true
 
   def general_score
     form_weight = 6
@@ -41,7 +42,7 @@ class Player < ApplicationRecord
         (fixture_weight * calc_fixture) +
         (goal_conceded_weight * goal_concede_calc) +
         (goal_involvement_weight * goal_involvement_calc) +
-        (ict_weight * (self.ict / 38.9)) +
+        (ict_weight * (self.ict / 50)) +
         (penalty_order_weight * (1 / self.penalty_order))
       )
     end

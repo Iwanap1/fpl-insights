@@ -1,25 +1,7 @@
 <div class="container">
-  <%= line_chart @graph_data.map.with_index { |player_points, index|
-    {name: @league_manager_names[index], data: player_points}
-  }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points", height: "550px",
-  library: {
-    animation: { easing: 'easeOutQuad' }
-    }
-   %>
-
-  <%= line_chart @ranks.map { |user_data|
-    {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank", id: "league-points",
-  library: {
-    scales: {
-      y: {
-          min: 1,
-          reverse: true,
-      }
-    },
-    animation: { easing: 'easeInQuad' }
-  } %>
-
-
+    <div class="top-main-card">
+      <%= render 'graph_caro' %>
+    </div>
 </div>
 
 <div class="container">
