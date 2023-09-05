@@ -23,6 +23,7 @@ class PlayersController < ApplicationController
     @current_gw = general_api["events"].find { |week| week["is_current"] }["id"]
     @attributes = @player.attributes(@current_gw)
     @previous_three_data = past_three_gw_data
+    @stats = show_stats(general_api["elements"])
   end
 
   # def fixtures(id) NOW IN PLAYER MODEL
@@ -50,5 +51,40 @@ class PlayersController < ApplicationController
     return data
   end
 
-
+  def show_stats(elements)
+    case @player.position
+    when "FOR"
+      return [["Goals", @player.goals],
+              ["Assists", @player.assists],
+              ["Average Minutes", @player.minutes / @current_gw],
+              ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
+              ["GW Transfers In", @player.transfers_in],
+              ["Rating", @player.general_score * 100]
+            ]
+    when "MID"
+      return [["Goals", @player.goals],
+              ["Assists", @player.assists],
+              ["Average Minutes", @player.minutes / @current_gw],
+              ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
+              ["GW Transfers In", @player.transfers_in],
+              ["Rating", @player.general_score * 100]
+              ]
+    when "DEF"
+      return [["Clean Sheets", elements.find { |e| e["id"] == @player.api_id }["clean_sheets"]],
+              ["Goal Involvements", @player.assists + @player.goals],
+              ["Average Minutes", @player.minutes / @current_gw],
+              ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
+              ["GW Transfers In", @player.transfers_in],
+              ["Rating", @player.general_score * 100]
+            ]
+    when "GKP"
+      return [["Clean Sheets", elements.find { |e| e["id"] == @player.api_id }["clean_sheets"]],
+              ["Saved Penalties", elements.find { |e| e["id"] == @player.api_id }["penalties_saved"]],
+              ["Average Minutes", @player.minutes / @current_gw],
+              ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
+              ["GW Transfers In", @player.transfers_in],
+              ["Rating", @player.general_score * 100]
+            ]
+    end
+  end
 end
