@@ -59,27 +59,27 @@
         </div>
             <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @stats[3][1] %>"
+                data-counter-end-value="<%= @player_api_data["bonus"] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Iwan vibes</span>
+          <span>Bonus Points</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @stats[4][1] %>"
+                data-counter-end-value="<%= @player_api_data["yellow_cards"] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Iwan magic</span>
+          <span>Yellow Cards</span>
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @stats[5][1] %>"
+                data-counter-end-value="<%= @player_api_data["red_cards"] %>"
                 data-counter-duration-value="3000"
                 data-counter-target="display">
                 0</span>
-          <span>Iwan time</span>
+          <span>Red Cards</span>
         </div>
       </div>
     </div>
