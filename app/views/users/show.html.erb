@@ -178,6 +178,10 @@
                 pieSliceText: 'value-and-percentage',
                 animation: {easing: 'easeInCirc'},
                   plugins:{
+                  title: {
+                    display: true,
+                    color: "#FFFFFF"
+                  },
                   legend: {
                     labels: {
                       color: "white",
@@ -192,9 +196,18 @@
             <div class="graph-card">
               <%= pie_chart @weekly_data[:captains], class:"white", title: "Favourite Captains" , colors: ["#E90052", "#38003C", "#00FF85", "#04F5FF"],
               library: {
+                # title: {
+                #   display: true,
+                #   color: "white",
+                #   text: "Gameweek"
+                # }
                 pieSliceText: 'value-and-percentage',
                 animation: {easing: 'easeInCirc'},
                 plugins:{
+                  title: {
+                    display: true,
+                    color: "#FFFFFF"
+                  },
                   legend: {
                     labels: {
                       color: "white",
