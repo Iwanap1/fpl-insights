@@ -4,7 +4,7 @@
   margin-bottom: 0px;
   color: white;
   width: 100vw;
-  padding: 10px 0; /* Added padding for better visual spacing */
+  padding: 5px 0; /* Added padding for better visual spacing */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* A subtle shadow */
   // position: sticky; /* Makes the navbar stick to the top */
   top: 0;
@@ -40,7 +40,7 @@
 }
 
 .navbar-nav .avatar:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
 }
 
 h2, h3, h4 {
@@ -80,6 +80,7 @@ a:hover {
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bolder;
+  margin-top: 10px;
 }
 
 .nav-link:hover {
@@ -93,20 +94,20 @@ a:hover {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  overflow: hidden;
-  transition: box-shadow 0.3s; /* A transition effect for hover */
+  // overflow: hidden;
+  // transition: box-shadow 0.3s; /* A transition effect for hover */
+  margin-top: 40px;
 }
 
-.avatar:hover {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* A shadow on hover */
-}
+// .avatar:hover {
+//   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* A shadow on hover */
+// }
 
 .show-menu {
   display: block;
 }
 
 .navbar-menu-text {
-  color: black;
   margin-left: 15px;
   color: white;
   font-family: montserrat, sans-serif;
