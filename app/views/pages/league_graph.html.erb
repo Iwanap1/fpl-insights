@@ -3,7 +3,7 @@
     {name: @league_manager_names[index], data: player_points}
   }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points", height: "550px",
   library: {
-    animation: { easing: 'easeOutQuad' }
+    animation: { easing: 'easeInSine' }
     }
    %>
 
@@ -14,9 +14,14 @@
       y: {
           min: 1,
           reverse: true,
+      },
+      x: {
+        type: 'linear'
       }
     },
-    animation: { easing: 'easeInQuad' }
+    animation: {
+      easing: 'easeInSine'
+    },
   } %>
 
 
