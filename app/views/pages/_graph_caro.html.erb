@@ -1,0 +1,49 @@
+<div id="carouselExampleControls" class="carousel slide" >
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div id="league-points-graph">
+        <%= line_chart @graph_data.map.with_index { |player_points, index|
+            {name: @league_manager_names[index], data: player_points}
+          }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points", height: "550px",
+          library: {
+          }
+        %>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div id="league-ranks-graph">
+          <%= line_chart @ranks.map { |user_data|
+            {name: user_data[0], data: user_data[1]}}, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank", id: "league-points", height: "550px",
+            library: {
+              scales: {
+                y: {
+                    min: 1,
+                    reverse: true,
+                },
+                x: {
+                  type: 'linear'
+                }
+              }
+            }
+          %>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div id="top-placed-pie">
+        <%= pie_chart @pie_data, title: "Gameweeks Ranked 1st" , height: "550px", colors: ["#38003C", "#E90052", "#00FF85", "#04F5FF"],
+          library: {
+            pieSliceText: 'value-and-percentage'
+          }
+        %>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev suggestions" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next suggestions" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
