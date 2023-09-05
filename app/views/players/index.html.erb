@@ -44,7 +44,7 @@
   <th data-tooltip="Index measuring player's Influence, Creativity, and Threat - a key statistic!">ICT Index</th>
 </tr>
 
-    <% @ranked.first(30).each_with_index do |player, index| %>
+    <% @ranked.first(30).reject{ |p| p.form == 0 }.each_with_index do |player, index| %>
     <tr class="<%= @ranked[index].home_team.short_name.downcase %>">
       <div class="player-info-row"><td><%= link_to "#{index + 1}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{@ranked[index].web_name}", player_path(player), class:"table-link" %></td></div>
