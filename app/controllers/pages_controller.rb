@@ -29,6 +29,7 @@ class PagesController < ApplicationController
     @ranks = get_ranks(all_user_data)
     @player_selections = players_count.sort_by {|player| player[1]}.reverse
     @ownership = ownership
+    @pie_data = get_pie
   end
 
   def get_points_data(id)
@@ -289,5 +290,17 @@ class PagesController < ApplicationController
       end
     end
     return data
+  end
+
+  def get_pie
+    first_count = {}
+    @ranks.each do |user|
+      user_sum = 0
+      user[1].each do |ranks|
+        user_sum += 1 if ranks[1] == 1
+      end
+      first_count["#{user[0]}"] = user_sum unless user_sum.zero?
+    end
+    return first_count
   end
 end
