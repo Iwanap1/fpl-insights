@@ -114,9 +114,6 @@ class PagesController < ApplicationController
     @bar_chart_data = points_bar_chart
     @price_dist_pie_data = price_dist_pie
     @team_pie_data = team_dist_pie
-    @banned_leagues = banned_leagues
-    @leagues_data = individual_leagues
-    @friends = individual_leagues.map { |l| l[:friends] }.flatten(2).reject { |x| x.nil? }
   end
 
   def collect_current_gw_data
@@ -203,25 +200,7 @@ class PagesController < ApplicationController
     return pie_data
   end
 
-  # def league_info
-  #   league_data = []
-  #   @data[:personal_api]["leagues"]["classic"].each do |league|
-  #     info = JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read)
-  #     league_data << {
 
-
-  #     }
-  #   end
-  #   return league_data
-  # end
-
-  def banned_leagues
-    banned = []
-    @data[:personal_api]["leagues"]["classic"].each do |league|
-      banned << league["id"] if league["league_type"] == "s"
-    end
-    return banned
-  end
 
   private
 
@@ -277,29 +256,6 @@ class PagesController < ApplicationController
     return [result, highest]
   end
 
-  def individual_leagues
-    data = []
-    @data[:personal_api]["leagues"]["classic"].each do |league|
-      if @banned_leagues.include?(league["id"])
-        data << {id: league["id"], banned: true}
-      else
-        friends = []
-        url = "https://fantasy.premierleague.com/api/leagues-classic/#{league["id"]}/standings/"
-        info = JSON.parse(URI.open(url).read)
-        if info["standings"]["has_next"]
-          data << {id: league["id"], banned: true}
-        else
-          friends << info["standings"]["results"].map { |u| [u["player_name"], u["entry"]] }
-          data << {
-            id: league["id"],
-            banned: info["standings"]["has_next"],
-            friends: friends
-          }
-        end
-      end
-    end
-    return data
-  end
 
   def get_pie
     first_count = {}

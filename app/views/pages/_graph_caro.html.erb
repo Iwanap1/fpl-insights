@@ -5,7 +5,7 @@
         <%= line_chart @graph_data.map.with_index { |player_points, index|
             {name: @league_manager_names[index], data: player_points,
               dataset: {
-                hidden: index > 5 ? true : false
+                hidden: index > 4 ? true : false
               }
             }
           }, title: "Total Points", xtitle: "Gameweek", ytitle: "Total Points", height: "550px",
@@ -19,7 +19,7 @@
           <%= line_chart @ranks.map.with_index { |user_data, index|
               {name: user_data[0], data: user_data[1],
                 dataset: {
-                  hidden: index > 5 ? true : false
+                  hidden: index > 4 ? true : false
                 }
               }
             }, title: "League Rankings", xtitle: "Gameweek", ytitle: "League Rank", id: "league-points", height: "550px",

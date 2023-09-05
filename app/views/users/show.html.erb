@@ -110,7 +110,8 @@
                             color: "#FFFFFF"
                         }
                       }
-                    } %>
+                    }
+                %>
               </div>
               <div class="graph-card">
                   <%= line_chart @bar_chart_data, title: "Points Scored per GW", thousands: ",", colors: ["white"],
@@ -166,7 +167,8 @@
                             color: "#FFFFFF"
                         }
                       }
-                    } %>
+                    }
+                  %>
               </div>
           </div>
 
@@ -195,29 +197,30 @@
             </div>
             <div class="graph-card">
               <%= pie_chart @weekly_data[:captains], class:"white", title: "Favourite Captains" , colors: ["#E90052", "#38003C", "#00FF85", "#04F5FF"],
-              library: {
-                # title: {
-                #   display: true,
-                #   color: "white",
-                #   text: "Gameweek"
-                # }
-                pieSliceText: 'value-and-percentage',
-                animation: {easing: 'easeInCirc'},
-                plugins:{
-                  title: {
-                    display: true,
-                    color: "#FFFFFF"
-                  },
-                  legend: {
-                    labels: {
-                      color: "white",
-                      font: {
-                        size: 14
+                library: {
+                  # title: {
+                  #   display: true,
+                  #   color: "white",
+                  #   text: "Gameweek"
+                  # }
+                  pieSliceText: 'value-and-percentage',
+                  animation: {easing: 'easeInCirc'},
+                  plugins:{
+                    title: {
+                      display: true,
+                      color: "#FFFFFF"
+                    },
+                    legend: {
+                      labels: {
+                        color: "white",
+                        font: {
+                          size: 14
+                        }
                       }
                     }
                   }
                 }
-              } %>
+              %>
             </div>
           </div>
         </div>
