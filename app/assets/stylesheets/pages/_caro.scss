@@ -34,10 +34,11 @@
 
 .player-info {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
+  width: 100%;
 }
 
 .caro-link1 {
@@ -159,4 +160,14 @@ button[data-action="carousel#goNext"] {
 
 .indicator.active {
   background-color: #ffffff; /* Darker color for the active card's indicator */
+}
+
+.player-position-caro {
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #38003C;
+  color: white;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
 }
