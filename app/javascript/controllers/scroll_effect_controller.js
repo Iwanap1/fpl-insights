@@ -22,10 +22,10 @@ export default class extends Controller {
       this.scroll1();
     }
 
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight- -300) {
-      // User is at the bottom of the page
-      this.homenav();
-    }
+    // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight- -300) {
+    //   // User is at the bottom of the page
+    //   this.homenav();
+    // }
 
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight- -500) {
       // User is at the bottom of the page
