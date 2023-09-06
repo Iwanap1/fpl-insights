@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   def index
     @players = Player.all
     @max = @players.max { |a,b| a.price <=> b.price}
-    @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
+    @filtered = @players.select { |p| p.position == position_params[0] || position_params[0] == "all players" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
     if params[:sliderValue]
       if params[:position] && params[:price]
         @ranked = @filtered.sort_by { |p| p.general_score(params[:sliderValue].to_i) }.reverse
@@ -19,7 +19,7 @@ class PlayersController < ApplicationController
         @ranked = @players.sort_by{ |p| p.general_score(5) }.reverse
       end
     end
-    @params = [params[:position], params[:price], params[:sliderValue]]
+    @params = [position_params, params[:price], params[:sliderValue]]
   end
 
   def show
@@ -94,6 +94,21 @@ class PlayersController < ApplicationController
               ["GW Transfers In", @player.transfers_in],
               ["Rating", @player.general_score(5) * 100]
             ]
+    end
+  end
+
+  def position_params
+    if params["position"]
+      case params["position"]
+      when "0" then return ["GKP", "goalkeepers", 0]
+      when "1" then return ["DEF", "defenders", 1]
+      when "2" then return ["MID", "midfielders", 2]
+      when "3" then return ["FOR", "forwards", 3]
+      else
+        return ["all players"]
+      end
+    else
+      return ["all players"]
     end
   end
 end
