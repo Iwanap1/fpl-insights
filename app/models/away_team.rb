@@ -24,6 +24,7 @@ class AwayTeam < ApplicationRecord
       update.strength_overall = team["strength_overall_away"]
       update.strength_attack = team["strength_attack_away"]
       update.strength_defence = team["strength_defence_away"]
+      update.updated_at = Time.now
       update.save
     end
   end
