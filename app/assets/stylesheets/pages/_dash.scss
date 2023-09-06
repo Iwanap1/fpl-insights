@@ -208,7 +208,7 @@ body {
 }
 
 .bottom-section {
-margin-top: -45%;
+margin-top: -42.7%;
 margin-bottom: 10%;
 
 height: 100%;
@@ -259,14 +259,23 @@ width: 100%;
 .nav-tabs .nav-link.active {
   color: rgb(228, 228, 228);
   border: none;
+  background-color: #8b6d8c;
 }
 
 #pie-charts-tab {
+  background-color: #816581;
+  color: rgb(255, 255, 255);
+}
+#pie-charts-tab.active {
   background-color: #B58DB6;
   color: rgb(255, 255, 255);
 }
 
+
 #other-charts-tab {
+  background-color: #816581;
+}
+#other-charts-tab.active {
   background-color: #B58DB6;
 }
 
@@ -294,6 +303,7 @@ width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 0px;
 }
+
 
 .white{
   color: white;
@@ -446,4 +456,3 @@ width: 100%;
   display: flex;
   justify-content: start;
 }
-
