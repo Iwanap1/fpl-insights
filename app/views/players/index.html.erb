@@ -4,24 +4,26 @@
     <div id="demo" data-slider-target="output"></div>
   </div> %>
   <form action="/players">
-    <label for="customRange2" class="form-label">Fixture Search Range</label>
-    <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value">
-    <output><%= @params[2].nil? ? 5 : @params[2] %></output>
-
-    <select name="price">
-      <option value="all">Max Price</option>
-      <% (39..140).to_a.map { |p| p.to_f / 10 }.each do |price| %>
-      <option value="<%= price %>">£<%= price %>m</option>
-      <% end %>
-    </select>
-
-    <select name="position">
-      <option value="all">Position</option>
-      <% ["GKP", "DEF", "MID", "FOR"].each do |pos| %>
-      <option value="<%= pos %>"><%= pos %></option>
-      <% end %>
-    </select>
-    <input type="submit" value="Apply">
+    <div class="slider">
+      <label for="customRange2" class="form-label">Fixture Search Range</label>
+      <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value">
+      <output><%= @params[2].nil? ? 5 : @params[2] %></output>
+    </div>
+    <div class="search">
+      <select name="price">
+        <option value="all">Max Price</option>
+        <% (39..140).to_a.map { |p| p.to_f / 10 }.each do |price| %>
+        <option value="<%= price %>">£<%= price %>m</option>
+        <% end %>
+      </select>
+      <select name="position">
+        <option value="all">Position</option>
+        <% ["GKP", "DEF", "MID", "FOR"].each do |pos| %>
+        <option value="<%= pos %>"><%= pos %></option>
+        <% end %>
+      </select>
+      <input type="submit" value="Apply">
+    </div>
   </form>
 </div>
 
