@@ -75,11 +75,11 @@
         </div>
         <div class="card">
           <span class="counter" data-controller="counter"
-                data-counter-end-value="<%= @player_api_data["red_cards"] %>"
+                data-counter-end-value=""
                 data-counter-duration-value="3000"
                 data-counter-target="display">
-                0</span>
-          <span>Red Cards</span>
+                <%= @player.position == "FOR" || @player.position == "MID" ? @player.expected_goal_involvements : @player.expected_goals_conceded %></span>
+          <span><%= @player.position == "FOR" || @player.position == "MID" ? "xG & A's per 90" : "xG's conceded"%></span>
         </div>
       </div>
     </div>

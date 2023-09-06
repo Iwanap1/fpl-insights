@@ -68,7 +68,8 @@ class PlayersController < ApplicationController
               ["Average Minutes", @player.minutes / @current_gw],
               ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
               ["GW Transfers In", @player.transfers_in],
-              ["Rating", @player.general_score(5) * 100]
+              ["Rating", @player.general_score(5) * 100],
+              ["Expected G's & A's", @player.expected_goal_involvements]
             ]
     when "MID"
       return [["Goals", @player.goals],

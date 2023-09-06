@@ -41,6 +41,7 @@
     all players<%= @params[1].nil? ? "," : "" %>
   <% end %>
   <%= @params[1] == "all" || @params[1].nil? ? "" : "under £#{@params[1]}m,"%> looking <%= @params[2].nil? ? 4 : @params[2] %> fixtures ahead
+
   <table>
     <tr class="sticky-top">
   <th data-tooltip="Player's overall ranking in the league">Rank</th>

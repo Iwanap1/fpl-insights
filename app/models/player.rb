@@ -13,24 +13,24 @@ class Player < ApplicationRecord
     fixture_calc = n.zero? ? 0 : fixture_weight * calc_fixture_two(n).to_f
     case self.position
     when "GKP"
-      goal_conceded_weight = 4
+      goal_conceded_weight = 3
       goal_involvement_weight = 0
       penalty_order_weight = 0
       ict_weight = 0
     when "DEF"
       goal_conceded_weight = 2.2
       goal_involvement_weight = 1.2
-      penalty_order_weight = 0.2
+      penalty_order_weight = 0.0
       ict_weight = 0.4
     when "MID"
       goal_conceded_weight = 0.2
       goal_involvement_weight = 2.1
-      penalty_order_weight = 0.6
+      penalty_order_weight = 0.1
       ict_weight = 1
     else
       goal_conceded_weight = 0
-      goal_involvement_weight = 2.5
-      penalty_order_weight = 1
+      goal_involvement_weight = 2
+      penalty_order_weight = 0.7
       ict_weight = 0.5
     end
     sum_of_weights = form_weight + fixture_weight + goal_conceded_weight + goal_involvement_weight + penalty_order_weight + ict_weight
