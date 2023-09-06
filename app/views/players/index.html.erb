@@ -5,9 +5,8 @@
   </div> %>
   <form action="/players">
     <div class="slider">
-      <label for="customRange2" class="form-label">Fixture Search Range</label>
-      <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value">
-      <output><%= @params[2].nil? ? 5 : @params[2] %></output>
+      <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
+      Searching the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures
     </div>
     <div class="search">
       <select name="price">
