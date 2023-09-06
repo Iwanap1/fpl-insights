@@ -9,30 +9,30 @@
   <div class="overlay"></div>
   <div class="content-wrapper">
     <div class="top-text" data-controller="typing">
-      <h1 data-typing-target="display"></h1><span class="blinking-cursor"></span>
+      <h1 data-typing-target="display"></h1><span id="span" class="blinking-cursor"></span>
     </div>
     <%= image_tag 'Untitled design (5).png', alt: 'arrow', class: 'arrow1' %>
   </div>
-  <div class="homenav">
+  <div class="homenav" data-controller="fade-navbar">
     <div class="nav-section">
       <%= link_to new_user_session_path, class: "action-link" do %>
     <i class="fa-solid fa-chevron-left icon"></i>
       <% if current_user %>
-        <span>Dashboard</span>
+        <span id="span">Dashboard</span>
       <% else %>
-        <span>Log In</span>
+        <span id="span">Log In</span>
       <% end %>
     <% end %>
     </div>
     <div class="nav-section">
       <%= link_to players_path, class: "action-link" do %>
         <i class="fa fa-eye eye-icon icon"></i>
-        <span>View Players</span>
+        <span id="span">View Players</span>
       <% end %>
     </div>
     <div class="nav-section">
       <%= link_to fixtures_index_path, class: "action-link" do %>
-        <span>Fixtures</span>
+        <span id="span">Fixtures</span>
         <i class="fa-solid fa-chevron-right icon"></i>
       <% end %>
     </div>
