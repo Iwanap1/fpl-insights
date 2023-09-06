@@ -55,16 +55,16 @@
 </tr>
 
     <% @ranked.first(30).reject{ |p| p.form == 0 }.each_with_index do |player, index| %>
-    <tr class="<%= @ranked[index].home_team.short_name.downcase %>">
+    <tr class="<%= player.home_team.short_name.downcase %>">
       <div class="player-info-row"><td><%= link_to "#{index + 1}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].web_name}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].position}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].home_team.short_name}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "£#{@ranked[index].price}m", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].form}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].selected}%", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.web_name}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.position}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.home_team.short_name}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "£#{player.price}m", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.form}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.selected}%", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{@params[2].nil? ? player.fixtures_array.split("X")[5] : player.fixtures_array.split("X")[@params[2].to_i]}", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].ict}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{player.ict}", player_path(player), class:"table-link" %></td></div>
     </tr>
     <% end %>
   </table>
