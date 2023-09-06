@@ -112,9 +112,10 @@ class Player < ApplicationRecord
   def self.update_all
     general_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
     elements = JSON.parse(URI.open(general_url).read)["elements"]
+    @all_players = Player.all
     elements.each do |element|
-      if Player.all.find { |player| player.api_id == element["id"] }
-        player = Player.all.find { |p| p.api_id == element["id"] }
+      if @all_players.find { |player| player.api_id == element["id"] }
+        player = @all_players.find { |p| p.api_id == element["id"] }
         player.fixture_difficulty = player.fixtures[:fixture_difficulty]
         player.fixtures_array = player.fixture_diff_array
         player.form = element["form"].to_f
