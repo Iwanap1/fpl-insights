@@ -1,15 +1,20 @@
 <div>
-<div class="slidecontainer" data-controller="slider">
-  <input type="range" min="0" max="10" value="5" class="slider" id="myRange" data-action="input->slider#sliderValueChanged">
-  <div id="demo" data-slider-target="output"></div>
-</div>
+  <%# <div class="slidecontainer" data-controller="slider">
+    <input type="range" min="0" max="10" value="5" class="slider" id="myRange" data-action="input->slider#sliderValueChanged">
+    <div id="demo" data-slider-target="output"></div>
+  </div> %>
   <form action="/players">
+    <label for="customRange2" class="form-label">Fixture Search Range</label>
+    <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value">
+    <output><%= @params[2].nil? ? 5 : @params[2] %></output>
+
     <select name="price">
       <option value="all">Max Price</option>
       <% (39..140).to_a.map { |p| p.to_f / 10 }.each do |price| %>
       <option value="<%= price %>">£<%= price %>m</option>
       <% end %>
     </select>
+
     <select name="position">
       <option value="all">Position</option>
       <% ["GKP", "DEF", "MID", "FOR"].each do |pos| %>
@@ -35,7 +40,6 @@
   <% end %>
   <%= @params[1] == "all" || @params[1].nil? ? "" : "under £#{@params[1]}m"%>
   <table>
-  <table>
     <tr>
   <th data-tooltip="Player's overall ranking in the league">Rank</th>
   <th data-tooltip="Player's full name">Name</th>
@@ -44,7 +48,7 @@
   <th data-tooltip="Current price of the player">Price</th>
   <th data-tooltip="Player's current form based on recent performance">Form</th>
   <th data-tooltip="Percentage of teams that have selected this player">% Selected</th>
-  <th data-tooltip="Difficulty of next 5 matches for this player - higher the number, tougher the fixtures!!">Fixture Difficulty</th>
+  <th data-tooltip="Dependent on attacking or defensive strengths of their upcoming opponents">Fixture Difficulty</th>
   <th data-tooltip="Index measuring player's Influence, Creativity, and Threat - a key statistic!">ICT Index</th>
 </tr>
 
@@ -57,7 +61,7 @@
       <div class="player-info-row"><td><%= link_to "£#{@ranked[index].price}m", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{@ranked[index].form}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{@ranked[index].selected}%", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@ranked[index].fixture_difficulty}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{@params[2].nil? ? player.fixtures_array.split("X")[5] : player.fixtures_array.split("X")[@params[2].to_i]}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{@ranked[index].ict}", player_path(player), class:"table-link" %></td></div>
     </tr>
     <% end %>

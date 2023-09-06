@@ -18,6 +18,9 @@ general_info["teams"].each_with_index do |team, index|
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
   new.image_path = "#{index + 1}.png"
+  new.strength_overall = team["strength_overall_home"]
+  new.strength_attack = team["strength_attack_home"]
+  new.strength_defence = team["strength_defence_home"]
   new.save
 end
 
@@ -27,6 +30,9 @@ general_info["teams"].each_with_index do |team, index|
   new.short_name = team["short_name"]
   new.difficulty = team["strength"]
   new.image_path = "#{index + 1}.png"
+  new.strength_overall = team["strength_overall_away"]
+  new.strength_attack = team["strength_attack_away"]
+  new.strength_defence = team["strength_defence_away"]
   new.save
 end
 
@@ -64,8 +70,10 @@ general_info["elements"].each_with_index do |player, index|
   new.save
   new.fixture_difficulty = new.fixtures[:fixture_difficulty]
   new.previous_points = new.fixtures[:previous_points]
+  new.fixtures_array = new.fixture_diff_array
   new.save
 end
+
 
 fixture_info.each do |fixture|
   unless fixture["event"].to_i == 0

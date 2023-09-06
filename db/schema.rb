@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_120426) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_092011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_120426) do
     t.datetime "updated_at", null: false
     t.string "short_name"
     t.string "image_path"
+    t.integer "strength_overall"
+    t.integer "strength_attack"
+    t.integer "strength_defence"
   end
 
   create_table "fixtures", force: :cascade do |t|
@@ -62,6 +65,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_120426) do
     t.datetime "updated_at", null: false
     t.string "short_name"
     t.string "image_path"
+    t.integer "strength_overall"
+    t.integer "strength_attack"
+    t.integer "strength_defence"
   end
 
   create_table "players", force: :cascade do |t|
@@ -90,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_120426) do
     t.integer "total"
     t.integer "previous_points"
     t.integer "free_kick_order"
+    t.string "fixtures_array"
     t.index ["away_team_id"], name: "index_players_on_away_team_id"
     t.index ["home_team_id"], name: "index_players_on_home_team_id"
   end

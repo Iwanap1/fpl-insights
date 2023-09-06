@@ -7,9 +7,10 @@ class Player < ApplicationRecord
   belongs_to :home_team
   validates :api_id, uniqueness: true
 
-  def general_score
-    form_weight = 6
-    fixture_weight = 4
+  def general_score(n)
+    form_weight = 7
+    fixture_weight = n.zero? ? 0 : 6
+    fixture_calc = n.zero? ? 0 : fixture_weight * calc_fixture_two(n).to_f
     case self.position
     when "GKP"
       goal_conceded_weight = 4
@@ -38,8 +39,8 @@ class Player < ApplicationRecord
       sum = 0
     else
       sum = (
-        (form_weight * (form > 10 ? 1 : (form / 10))) +
-        (fixture_weight * calc_fixture) +
+        (form_weight * (self.form > 10 ? 1 : (self.form / 10))) +
+        fixture_calc +
         (goal_conceded_weight * goal_concede_calc) +
         (goal_involvement_weight * goal_involvement_calc) +
         (ict_weight * (self.ict / 50)) +
@@ -72,7 +73,7 @@ class Player < ApplicationRecord
 
   def goal_concede_calc
     sorted = Player.all.reject { |p| p.expected_goals_conceded == 0 }.sort_by { |player| player.expected_goals_conceded }
-    if sorted.include?(self) && self.minutes > 90
+    if sorted.uniq.include?(self) && self.minutes > 90
       result = (sorted.count - sorted.index(self).to_f) / sorted.count
     else
       result = 0
@@ -82,7 +83,7 @@ class Player < ApplicationRecord
 
   def goal_involvement_calc
     sorted = Player.all.reject { |p| p.expected_goal_involvements.zero? }.sort_by { |player| player.expected_goal_involvements }.reverse
-    if sorted.include?(self) && self.minutes > 90
+    if sorted.uniq.include?(self) && self.minutes > 90
       result = (sorted.count - sorted.index(self).to_f) / sorted.count
     else
       result = 0
@@ -115,6 +116,7 @@ class Player < ApplicationRecord
       if Player.all.find { |player| player.api_id == element["id"] }
         player = Player.all.find { |p| p.api_id == element["id"] }
         player.fixture_difficulty = player.fixtures[:fixture_difficulty]
+        player.fixtures_array = player.fixture_diff_array
         player.form = element["form"].to_f
         player.price = element["now_cost"].to_f / 10
         player.ict = element["ict_index"].to_f
@@ -165,6 +167,7 @@ class Player < ApplicationRecord
         new.save
         new.previous_points = new.fixtures[:previous_points]
         new.fixture_difficulty = new.fixtures[:fixture_difficulty]
+        new.fixtures_array = new.fixture_diff_array
         new.save
       end
     end
@@ -180,4 +183,46 @@ class Player < ApplicationRecord
     return attributes
   end
 
+
+  def fixtures_variable(n)
+    upcoming_fixtures = Fixture.all.select { |f| f.home_team == self.home_team || f.away_team == self.away_team }.reject { |f| f.finished }.first(n)
+    difficulty_score = 0
+    difficulty_attack = 0
+    difficulty_defence = 0
+
+    upcoming_fixtures.each do |f|
+      if f.home_team == self.home_team
+        difficulty_score += f.away_team.difficulty
+        difficulty_attack += f.away_team.strength_defence
+        difficulty_defence += f.away_team.strength_attack
+      else
+        difficulty_score += f.home_team.difficulty
+        difficulty_attack += f.home_team.strength_defence
+        difficulty_defence += f.home_team.strength_attack
+      end
+    end
+    return {
+      difficulty_score: difficulty_score,
+      difficulty_attackers: difficulty_attack,
+      difficulty_defenders: difficulty_defence
+    }
+  end
+
+  def fixture_diff_array
+    array = [0]
+    (1..10).each do |n|
+      if self.position == "DEF" || self.position == "GKP"
+        array << self.fixtures_variable(n)[:difficulty_defenders]
+      else
+        array << self.fixtures_variable(n)[:difficulty_attackers]
+      end
+    end
+    return array.map { |e| e.to_s }.join("X")
+  end
+
+  def calc_fixture_two(n)
+    all = Player.all.map { |p| p.fixtures_array.split("X")[n].to_f }.uniq.sort
+    rank = all.index(self.fixtures_array.split("X")[n].to_f)
+    return (all.count - rank.to_f) / (all.count - 1)
+  end
 end
