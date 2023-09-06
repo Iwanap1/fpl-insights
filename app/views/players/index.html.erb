@@ -63,7 +63,7 @@
       <div class="player-info-row"><td><%= link_to "£#{player.price}m", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.form}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.selected}%", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@params[2].to_i.zero? ? "0" : @params[2].nil? ? "#{(player.calc_fixture_two(4) * 100).round}%" : "#{(player.calc_fixture_two(@params[2].to_i) * 100).round}%" }", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{ @params[2] == "0" ? "0" : @params[2].nil? ? "#{(player.calc_fixture_two(4) * 100).round}%" : "#{(player.calc_fixture_two(@params[2].to_i) * 100).round}%" }", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.ict}", player_path(player), class:"table-link" %></td></div>
     </tr>
     <% end %>
