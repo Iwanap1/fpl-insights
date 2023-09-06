@@ -22,6 +22,11 @@ export default class extends Controller {
       this.scroll1();
     }
 
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight- -300) {
+      // User is at the bottom of the page
+      this.homenav();
+    }
+
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight- -500) {
       // User is at the bottom of the page
       this.arrow2();
@@ -42,6 +47,14 @@ export default class extends Controller {
     }
 
 
+  }
+
+
+  homenav() {
+    const homenavElement = document.querySelector('.homenav');
+    homenavElement.style.backgroundColor = '#38003C';
+    homenavElement.style.opacity = '1';
+    homenavElement.style.color = 'white';
   }
 
   arrow2() {

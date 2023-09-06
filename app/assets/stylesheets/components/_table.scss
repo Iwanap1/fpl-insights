@@ -18,12 +18,16 @@ div.container {
 
 form {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   // background-color: #38003C;
   padding: 15px;
   border-radius: 10px;
   color: #FFFFFF;
 }
+
+// .slider{
+//   width: 50%;
+// }
 
 
 select, input[type="submit"] {
@@ -83,6 +87,11 @@ th {
 td {
   text-align: center;
 }
+
+.form-rage {
+  width: 20%;
+}
+
 
 tr {
   border-radius: 5px;

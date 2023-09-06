@@ -16,9 +16,13 @@
   <div class="homenav">
     <div class="nav-section">
       <%= link_to new_user_session_path, class: "action-link" do %>
-        <i class="fa-solid fa-chevron-left icon"></i>
+    <i class="fa-solid fa-chevron-left icon"></i>
+      <% if current_user %>
+        <span>Dashboard</span>
+      <% else %>
         <span>Log In</span>
       <% end %>
+    <% end %>
     </div>
     <div class="nav-section">
       <%= link_to players_path, class: "action-link" do %>
