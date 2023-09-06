@@ -4,63 +4,123 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+   .error-background {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: #38003C;
+  background-image: linear-gradient(180deg, rgb(0, 0, 0) 5%, rgba(56,0,60,1) 60%);
+  }
+
+  .error-dialog {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
     text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  .error-container {
+    width: 80vw;
+    margin: 140px auto;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .error-action-box {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: center;
+    color: #ffffff;
+    opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    margin: 10px;
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  .error-action-box:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  .error-actions-container {
+    display: flex;
+    width: 60%;
+    padding-left: 275px;
+  }
+
+  .error-text-box {
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .error-link {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+  }
+
+    .soccer {
+    background: url(http://upload.wikimedia.org/wikipedia/en/e/ec/Soccer_ball.svg);
+    background-size: 100px 100px;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    -webkit-animation:roll 4.5s infinite;
+    -moz-animation:roll 4.5s infinite;
+    animation:roll 4.5s infinite;
+  }
+
+  @-moz-keyframes roll {
+    0% {left:0px; -webkit-transform: rotate(-360deg);}
+    50% {left:1000px; -webkit-transform: rotate(360deg);}
+    100% {left:0px; -webkit-transform: rotate(-360deg);}
+  }
+  @-webkit-keyframes roll {
+    0% {left:0px; -webkit-transform: rotate(-360deg);}
+    50% {left:1000px; -webkit-transform: rotate(360deg);}
+    100% {left:0px; -webkit-transform: rotate(-360deg);}
+  }
+
+  @keyframes roll {
+    0% {left:0px; -webkit-transform: rotate(-360deg);}
+    50% {left:1000px; -webkit-transform: rotate(360deg);}
+    100% {left:0px; -webkit-transform: rotate(-360deg);}
+  }
+
+  .world-cup {
+    color: #82AE6F;
+    text-align: center;
   }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="error-background">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <div class="error-container">
+    <div class="error-text-box">
+      <h1 class="error-dialog">You seem to have got a little bit lost (cough Eden Hazard cough) </h1>
+      <p class="error-dialog"> Please find your way back to your FBLBOT with the below options...</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <div class="error-actions-container">
+        <a class="error-link" href="http://localhost:3000/users/sign_in">
+          <div class="error-action-box">Login</div>
+        </a>
+        <a class="error-link" href="http://localhost:3000/users/sign_in">
+          <div class="error-action-box">Dashboard</div>
+        </a>
+    </div>
+    <div class="error-actions-container">
+        <a class="error-link" href="http://localhost:3000/players">
+          <div class="error-action-box">Rankings</div>
+        </a>
+        <a class="error-link" href="http://localhost:3000/fixtures">
+          <div class="error-action-box">Fixtures</div>
+        </a>
+    </div>
   </div>
+  <div class="soccer"></div>
 </body>
 </html>
