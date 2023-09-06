@@ -4,7 +4,7 @@ require "json"
 class PlayersController < ApplicationController
   def index
     @players = Player.all
-    @players = Player.all
+    @max = @players.max { |a,b| a.price <=> b.price}
     @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
     if params[:sliderValue]
       if params[:position] && params[:price]

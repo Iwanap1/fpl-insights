@@ -6,15 +6,13 @@
   <form action="/players">
     <div class="slider">
       <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
-      Searching the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures
+      Search the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures
+    </div>
+    <div class="slider">
+      <input type="range" name="price" class="form-range" min="3.9" max="<%= @max.price %>" step="0.1" value="<%= @params[1].nil? ? 14 : @params[1] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
+      Filter players under  £<output><%= @params[1].nil? ? 14.1 : @params[1] %></output>m
     </div>
     <div class="search">
-      <select name="price">
-        <option value="all">Max Price</option>
-        <% (39..140).to_a.map { |p| p.to_f / 10 }.each do |price| %>
-        <option value="<%= price %>">£<%= price %>m</option>
-        <% end %>
-      </select>
       <select name="position">
         <option value="all">Position</option>
         <% ["GKP", "DEF", "MID", "FOR"].each do |pos| %>
