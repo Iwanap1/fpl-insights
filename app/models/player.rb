@@ -226,4 +226,13 @@ class Player < ApplicationRecord
     rank = all.index(self.fixtures_array.split("X")[n].to_f)
     return (all.count - rank.to_f) / (all.count - 1)
   end
+
+  def position_number
+    case position
+    when "FOR" then return 3
+    when "MID" then return 2
+    when "DEF" then return 1
+    when "GKP" then return 0
+    end
+  end
 end

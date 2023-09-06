@@ -5,21 +5,21 @@
   </div> %>
   <form action="/players">
     <div class="slider">
-      <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
-      Include the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures,
-    </div>
-    <div class="slider">
       <input type="range" name="position" class="form-range" min="0" max="4" value="<%= @params[0][2] ? @params[0][2] : 4 %>" id="customRange2" list="markers"  oninput="if(this.value == 0) {
         this.nextElementSibling.value = 'goalkeepers'} else if (this.value == 1) {
         this.nextElementSibling.value = 'defenders'} else if (this.value == 2) {
         this.nextElementSibling.value = 'midfielders'} else if (this.value == 3) {
         this.nextElementSibling.value = 'forwards' } else
         this.nextElementSibling.value = 'all players'"></b>
-      searching for <output><%= @params[0] == ["all players"] ? "all players" : @params[0][1] %></output>
+      Search for <output><%= @params[0] == ["all players"] ? "all players" : @params[0][1] %></output>
     </div>
     <div class="slider">
       <input type="range" name="price" class="form-range" min="3.9" max="<%= @max.price %>" step="0.1" value="<%= @params[1].nil? ? 14 : @params[1] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
-       under  £<output><%= @params[1].nil? ? 14.1 : @params[1] %></output>m
+       under  £<output><%= @params[1].nil? ? 14.1 : @params[1] %></output>m.
+    </div>
+    <div class="slider">
+      <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
+      Include the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures
     </div>
     <div class="search">
       <input type="submit" value="Apply">
@@ -50,7 +50,7 @@
   <th data-tooltip="Current price of the player">Price</th>
   <th data-tooltip="Player's current form based on recent performance">Form</th>
   <th data-tooltip="Percentage of teams that have selected this player">% Selected</th>
-  <th data-tooltip="Dependent on attacking or defensive strengths of their upcoming opponents">Fixture Difficulty</th>
+  <th data-tooltip="Dependent on attacking or defensive strengths of their upcoming (n) opponents">Fixture Difficulty</th>
   <th data-tooltip="Index measuring player's Influence, Creativity, and Threat - a key statistic!">ICT Index</th>
 </tr>
 
