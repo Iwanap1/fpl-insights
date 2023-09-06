@@ -14,7 +14,7 @@
             <li>Price: £<%= player.price %>m</li>
             <li>Form: <%= player.form %></li>
             <li>Goal Contributions per 90: <%= player.expected_goal_involvements %></li>
-            <li>Score: <%= (player.general_score * 100).round %></li>
+            <li>Score: <%= (player.general_score(5) * 100).round %></li>
           </ul>
           <% unless player.attributes(@current_gw).empty? %>
           <ul>

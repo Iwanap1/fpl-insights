@@ -16,5 +16,6 @@ class AddColumnsToPlayers < ActiveRecord::Migration[7.0]
     add_column :players, :total, :integer
     add_column :players, :previous_points, :integer
     add_column :players, :free_kick_order, :integer
+    add_column :players, :fixtures_array, :string
   end
 end

@@ -25,13 +25,13 @@ export default class extends Controller {
   }
 
   sendAjaxRequest() {
-    fetch("/path/to/your/server/endpoint", {
+    fetch("/players", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         // Include other headers if needed (e.g., for authentication)
       },
-      body: JSON.stringify({ sliderValue: this.sliderValue }),
+      body: JSON.stringify({ "sliderValue": this.sliderValue }),
     })
     .then(response => response.json())
     .then(data => {

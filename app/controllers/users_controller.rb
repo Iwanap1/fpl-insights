@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     return {
       bank: @users_api["entry_history"]["bank"].to_f / 10,
       user_players: player_array,
-      team_rating: (@user_players.sum { |player| player.general_score } / 15) * 100 * 1.4,
+      team_rating: (@user_players.sum { |player| player.general_score(5) } / 15) * 100 * 1.4,
       percentile: ((@general_api["total_players"] - @weekly_ranks.last.to_f) / @general_api["total_players"]) * 100,
       personal_api: JSON.parse(URI.open("https://fantasy.premierleague.com/api/entry/#{@fpl_id}").read),
       time_till_deadline: (Time.parse(@general_api["events"].find { |week| week["is_next"] }["deadline_time"]) - Time.now),
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     latest_picks.each do |element|
       players << all_players.find { |p| p.api_id == element["element"] }
     end
-    return players.sort_by { |p| p.general_score }
+    return players.sort_by { |p| p.general_score(5) }
   end
 
   def graph_data

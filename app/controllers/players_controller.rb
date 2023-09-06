@@ -6,12 +6,20 @@ class PlayersController < ApplicationController
     @players = Player.all
     @players = Player.all
     @filtered = @players.select { |p| p.position == params[:position] || params[:position] == "all" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
-    if params[:position] && params[:price]
-      @ranked = @filtered.sort_by { |p| p.general_score }.reverse
+    if params[:sliderValue]
+      if params[:position] && params[:price]
+        @ranked = @filtered.sort_by { |p| p.general_score(params[:sliderValue].to_i) }.reverse
+      else
+        @ranked = @players.sort_by{ |p| p.general_score(params[:sliderValue].to_i) }.reverse
+      end
     else
-      @ranked = @players.sort_by(&:general_score).reverse
+      if params[:position] && params[:price]
+        @ranked = @filtered.sort_by { |p| p.general_score(5) }.reverse
+      else
+        @ranked = @players.sort_by{ |p| p.general_score(5) }.reverse
+      end
     end
-    @params = [params[:position], params[:price]]
+    @params = [params[:position], params[:price], params[:sliderValue]]
   end
 
   def show
@@ -60,7 +68,7 @@ class PlayersController < ApplicationController
               ["Average Minutes", @player.minutes / @current_gw],
               ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
               ["GW Transfers In", @player.transfers_in],
-              ["Rating", @player.general_score * 100]
+              ["Rating", @player.general_score(5) * 100]
             ]
     when "MID"
       return [["Goals", @player.goals],
@@ -68,7 +76,7 @@ class PlayersController < ApplicationController
               ["Average Minutes", @player.minutes / @current_gw],
               ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
               ["GW Transfers In", @player.transfers_in],
-              ["Rating", @player.general_score * 100]
+              ["Rating", @player.general_score(5) * 100]
               ]
     when "DEF"
       return [["Clean Sheets", elements.find { |e| e["id"] == @player.api_id }["clean_sheets"]],
@@ -76,7 +84,7 @@ class PlayersController < ApplicationController
               ["Average Minutes", @player.minutes / @current_gw],
               ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
               ["GW Transfers In", @player.transfers_in],
-              ["Rating", @player.general_score * 100]
+              ["Rating", @player.general_score(5) * 100]
             ]
     when "GKP"
       return [["Clean Sheets", elements.find { |e| e["id"] == @player.api_id }["clean_sheets"]],
@@ -84,7 +92,7 @@ class PlayersController < ApplicationController
               ["Average Minutes", @player.minutes / @current_gw],
               ["GW Transfers Out", elements.find { |e| e["id"] == @player.api_id }["transfers_out_event"]],
               ["GW Transfers In", @player.transfers_in],
-              ["Rating", @player.general_score * 100]
+              ["Rating", @player.general_score(5) * 100]
             ]
     end
   end
