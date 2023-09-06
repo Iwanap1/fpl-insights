@@ -41,7 +41,7 @@
     <div class="bottom-section">
       <h1 class="title">Your Data</h1>
       <div class="tabs-wrapper" data-controller="tabs">
-        <!-- Nav tabs -->
+
         <ul class="nav nav-tabs" id="myTabs" role="tablist">
           <li class="nav-item" role="presentation">
               <a class="nav-link" id="other-charts-tab" data-bs-toggle="tab" href="#other-charts" role="tab" aria-controls="other-charts" aria-selected="false" data-action="click->tabs#togglePerformance" >Performance</a>
@@ -175,7 +175,7 @@
           <!-- Pie Charts Tab -->
           <div class="tab-pane fade active show " id="pie-charts" role="tabpanel" aria-labelledby="pie-charts-tab" data-tabs-target="teamCharts">
             <div class="graph-card">
-              <%= pie_chart @price_dist_pie_data, class:"white", title: "Price Distribution per Position", colors: ["#38003C", "#E90052", "#00FF85", "#04F5FF"] ,
+              <%= pie_chart @price_dist_pie_data, class:"white", title: "Price Distribution per Position", colors: ["#38003C", "#a6003a", "#00ad59", "#00b4ba"] ,
               library: {
                 pieSliceText: 'value-and-percentage',
                 animation: {easing: 'easeInCirc'},
@@ -196,7 +196,7 @@
               } %>
             </div>
             <div class="graph-card">
-              <%= pie_chart @weekly_data[:captains], class:"white", title: "Favourite Captains" , colors: ["#E90052", "#38003C", "#00FF85", "#04F5FF"],
+              <%= pie_chart @weekly_data[:captains], class:"white", title: "Favourite Captains" , colors: ["#38003C", "#a6003a", "#00ad59", "#00b4ba"],
                 library: {
                   # title: {
                   #   display: true,
