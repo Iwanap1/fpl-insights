@@ -1,4 +1,8 @@
 <div>
+<div class="slidecontainer" data-controller="slider">
+  <input type="range" min="0" max="10" value="5" class="slider" id="myRange" data-action="input->slider#sliderValueChanged">
+  <div id="demo" data-slider-target="output"></div>
+</div>
   <form action="/players">
     <select name="price">
       <option value="all">Max Price</option>
