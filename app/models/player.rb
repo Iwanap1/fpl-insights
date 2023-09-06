@@ -9,7 +9,7 @@ class Player < ApplicationRecord
 
   def general_score(n)
     form_weight = 7
-    fixture_weight = n.zero? ? 0 : 6
+    fixture_weight = n.zero? ? 0 : 7
     fixture_calc = n.zero? ? 0 : fixture_weight * calc_fixture_two(n).to_f
     case self.position
     when "GKP"
@@ -224,7 +224,7 @@ class Player < ApplicationRecord
   def calc_fixture_two(n)
     all = Player.all.map { |p| p.fixtures_array.split("X")[n].to_f }.uniq.sort
     rank = all.index(self.fixtures_array.split("X")[n].to_f)
-    return (all.count - rank.to_f) / (all.count - 1)
+    return (all.count - rank.to_f) / (all.count)
   end
 
   def position_number

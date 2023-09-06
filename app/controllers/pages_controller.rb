@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   def league_graph
     @general_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/bootstrap-static/").read)
     @current_gw = @general_api["events"].find { |week| week["is_current"] }["id"]
-    @league_id = params[:id]
+    @league_id = get_params
     league_api = JSON.parse(URI.open("https://fantasy.premierleague.com/api/leagues-classic/#{@league_id}/standings/").read)
     @league_manager_ids = league_api["standings"]["results"].map{ |user| user["entry"] }
     @league_manager_names = league_api["standings"]["results"].map{ |user| user["player_name"] }

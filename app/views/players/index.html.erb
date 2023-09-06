@@ -19,7 +19,7 @@
     </div>
     <div class="slider">
       <input type="range" name="sliderValue" class="form-range" min="0" max="10" value="<%= @params[2].nil? ? 5 : @params[2] %>" id="customRange2" list="markers"  oninput="this.nextElementSibling.value = this.value"></b>
-      Include the next <output><%= @params[2].nil? ? 5 : @params[2] %></output> fixtures
+      Include the next <output><%= @params[2].nil? ? 4 : @params[2] %></output> fixtures
     </div>
     <div class="search">
       <input type="submit" value="Apply">
@@ -38,9 +38,9 @@
   <% elsif @params[0][0] == "FOR" %>
     forwards
   <% else %>
-    all players
+    all players<%= @params[1].nil? ? "," : "" %>
   <% end %>
-  <%= @params[1] == "all" || @params[1].nil? ? "" : "under £#{@params[1]}m"%>
+  <%= @params[1] == "all" || @params[1].nil? ? "" : "under £#{@params[1]}m,"%> looking <%= @params[2].nil? ? 4 : @params[2] %> fixtures ahead
   <table>
     <tr>
   <th data-tooltip="Player's overall ranking in the league">Rank</th>
@@ -63,7 +63,7 @@
       <div class="player-info-row"><td><%= link_to "£#{player.price}m", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.form}", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.selected}%", player_path(player), class:"table-link" %></td></div>
-      <div class="player-info-row"><td><%= link_to "#{@params[2].nil? ? player.fixtures_array.split("X")[5] : player.fixtures_array.split("X")[@params[2].to_i]}", player_path(player), class:"table-link" %></td></div>
+      <div class="player-info-row"><td><%= link_to "#{@params[2].to_i.zero? ? "0" : @params[2].nil? ? "#{(player.calc_fixture_two(4) * 100).round}%" : "#{(player.calc_fixture_two(@params[2].to_i) * 100).round}%" }", player_path(player), class:"table-link" %></td></div>
       <div class="player-info-row"><td><%= link_to "#{player.ict}", player_path(player), class:"table-link" %></td></div>
     </tr>
     <% end %>

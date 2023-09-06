@@ -3,27 +3,27 @@ require "json"
 
 class PlayersController < ApplicationController
   def index
+    @params = get_params
     @players = Player.all
     @max = @players.max { |a,b| a.price <=> b.price}
-    @filtered = @players.select { |p| p.position == position_params[0] || position_params[0] == "all players" }.select { |p| p.price <= params[:price].to_f || params[:price] == "all"}
-    if params[:sliderValue]
-      if params[:position] && params[:price]
-        @ranked = @filtered.sort_by { |p| p.general_score(params[:sliderValue].to_i) }.reverse
+    @filtered = @players.select { |p| p.position == position_params[0] || position_params[0] == "all players" }.select { |p| p.price <= @params[1].to_f || @params[1] == "all"}
+    if @params[2]
+      if @params[0] && @params[1]
+        @ranked = @filtered.sort_by { |p| p.general_score(@params[2].to_i) }.reverse
       else
-        @ranked = @players.sort_by{ |p| p.general_score(params[:sliderValue].to_i) }.reverse
+        @ranked = @players.sort_by { |p| p.general_score(@params[2].to_i) }.reverse
       end
     else
-      if params[:position] && params[:price]
-        @ranked = @filtered.sort_by { |p| p.general_score(5) }.reverse
+      if @params[0] && @params[1]
+        @ranked = @filtered.sort_by { |p| p.general_score(4) }.reverse
       else
-        @ranked = @players.sort_by{ |p| p.general_score(5) }.reverse
+        @ranked = @players.sort_by { |p| p.general_score(4) }.reverse
       end
     end
-    @params = [position_params, params[:price], params[:sliderValue]]
   end
 
   def show
-    @player = Player.find(params[:id])
+    @player = Player.find(show_params)
     @home_fixtures = @player.home_team.fixtures
     @away_fixtures = @player.away_team.fixtures
     @all_fixtures = [@home_fixtures, @away_fixtures].flatten
@@ -97,6 +97,8 @@ class PlayersController < ApplicationController
     end
   end
 
+  private
+
   def position_params
     if params["position"]
       case params["position"]
@@ -110,5 +112,13 @@ class PlayersController < ApplicationController
     else
       return ["all players"]
     end
+  end
+
+  def get_params
+    return [position_params, params[:price], params[:sliderValue]]
+  end
+
+  def show_params
+    return params[:id]
   end
 end
