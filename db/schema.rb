@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_092011) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_100759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_092011) do
     t.integer "previous_points"
     t.integer "free_kick_order"
     t.string "fixtures_array"
+    t.integer "transfers_out"
     t.index ["away_team_id"], name: "index_players_on_away_team_id"
     t.index ["home_team_id"], name: "index_players_on_home_team_id"
   end

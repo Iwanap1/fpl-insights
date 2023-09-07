@@ -27,7 +27,7 @@
       </div>
         <div class="caro-weak-links">
           <%= link_to "More info", player_path(player), class:"caro-link1" %>
-          <%= link_to "Suggest Transfer", players_path(price: (player.price + @data[:bank]), position: player.position), class:"caro-weak-link-transfers1" %>
+          <%= link_to "Suggest Transfer", players_path(price: (player.price + @data[:bank]), position: player.position_number), class:"caro-weak-link-transfers1" %>
         </div>
     </div>
     <% end %>
