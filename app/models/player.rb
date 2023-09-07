@@ -119,23 +119,23 @@ class Player < ApplicationRecord
       if @all_players.find { |player| player.api_id == element["id"] }
         player = @all_players.find { |p| p.api_id == element["id"] }
         # player.fixture_difficulty = player.fixtures[:fixture_difficulty]
-        # player.fixtures_array = player.fixture_diff_array
-        # player.form = element["form"].to_f
-        # player.price = element["now_cost"].to_f / 10
-        # player.ict = element["ict_index"].to_f
-        # player.selected = element["selected_by_percent"]
-        # player.updated_at = Time.now
-        # player.chance = element["chance_of_playing_next_round"].to_f / 100
-        # player.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
-        # player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
-        # player.transfers_in = element["transfers_in_event"]
-        # player.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
-        # player.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
-        # player.minutes = element["minutes"]
-        # player.goals = element["goals_scored"]
-        player.transfers_out = elements["transfers_out_event"].to_i
-        # player.assists = element["assists"]
-        # player.total = element["total_points"]
+        player.fixtures_array = player.fixture_diff_array
+        player.form = element["form"].to_f
+        player.price = element["now_cost"].to_f / 10
+        player.ict = element["ict_index"].to_f
+        player.selected = element["selected_by_percent"]
+        player.updated_at = Time.now
+        player.chance = element["chance_of_playing_next_round"].to_f / 100
+        player.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
+        player.expected_goals_conceded = element["expected_goals_conceded_per_90"].to_f
+        player.transfers_in = element["transfers_in_event"]
+        player.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
+        player.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
+        player.minutes = element["minutes"]
+        player.goals = element["goals_scored"]
+        player.transfers_out = elements["transfers_out_event"]
+        player.assists = element["assists"]
+        player.total = element["total_points"]
         player.save
       else
         new = Player.new
@@ -162,7 +162,7 @@ class Player < ApplicationRecord
         new.expected_goal_involvements = element["expected_goal_involvements_per_90"].to_f
         new.expected_goals_conceded = element["expected_goal_conceded_per_90"].to_f
         new.transfers_in = element["transfers_in_event"]
-        new.transfers_out = elements["transfers_out_event"]
+        new.transfers_out = element["transfers_out_event"]
         new.penalty_order = element["penalties_order"].nil? ? 5 : element["penalties_order"]
         new.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
         new.minutes = element["minutes"]
