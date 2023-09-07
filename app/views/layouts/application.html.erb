@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FPLBOT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -25,6 +24,11 @@
     <%= javascript_importmap_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= javascript_include_tag "https://www.google.com/jsapi" %>
+    <title><%= meta_product_name %></title>
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta name="description" content="<%= meta_description %>">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<%= meta_image %>" />
   </head>
 
   <body>
