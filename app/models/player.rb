@@ -133,7 +133,7 @@ class Player < ApplicationRecord
         player.free_kick_order = element["direct_freekicks_order"].nil? ? 5 : element["direct_freekicks_order"]
         player.minutes = element["minutes"]
         player.goals = element["goals_scored"]
-        player.transfers_out = elements["transfers_out_event"]
+        player.transfers_out = element["transfers_out_event"]
         player.assists = element["assists"]
         player.total = element["total_points"]
         player.save
