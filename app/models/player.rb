@@ -140,6 +140,7 @@ class Player < ApplicationRecord
       else
         new = Player.new
         new.first_name = element["first_name"]
+        new.previous_points = 0
         new.last_name = element["second_name"]
         if element["element_type"] == 1
           new.position = "GKP"
